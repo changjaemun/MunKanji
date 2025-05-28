@@ -10,7 +10,7 @@ struct DictionaryView:View {
     var body: some View{
         NavigationStack{
             ScrollView{
-                KanjiCellView().padding()
+                KanjiCellView()
                 KanjiCellView()
                 KanjiCellView()
             }.navigationTitle("전체보기")
