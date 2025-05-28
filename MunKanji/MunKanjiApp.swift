@@ -11,7 +11,7 @@ import SwiftUI
 struct MunKanjiApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            ContentView()
         }
     }
 }
@@ -23,7 +23,7 @@ struct MainView: View{
                 ContentView()
             }
             Tab("Dictionary", systemImage: "gear"){
-                DictionaryView()
+                //DictionaryView()
             }
             Tab("설정", systemImage: "gear"){
                 Button(action: {

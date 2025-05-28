@@ -27,7 +27,6 @@
 			membershipExceptions = (
 				Json/excharacters.json,
 				Json/newwords.json,
-				View/KanjiCellView.swift,
 			);
 			target = A1BE559F2D9AB26A00DE62D6 /* MunKanjiTests */;
 		};
