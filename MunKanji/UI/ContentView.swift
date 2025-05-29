@@ -15,21 +15,8 @@ struct ContentView: View {
                     .font(.system(size: 130))
                 
                     .padding(.vertical, 169)
-                NavigationLink{
-                    StudyIntroView()
-                }label: {
-                    ZStack{
-                        Rectangle()
-                            .frame(width: 285, height: 68)
-                            .foregroundStyle(.indigo)
-                            .cornerRadius(20)
-                        Text("학습하기")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 24))
-                    }
-                    
-                }
-                
+                NavyNavigationLink(title: "학습하기", destination: StudyIntroView())
+                GrayNavigationLink(title: "기록보기", destination: HistoryView())
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
