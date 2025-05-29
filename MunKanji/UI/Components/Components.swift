@@ -49,3 +49,24 @@ struct GrayNavigationLink<Destination: View>:View {
         }
     }
 }
+
+struct NavyButton: View {
+    let title: String
+    let action: () -> Void
+    
+    var body: some View {
+        Button{
+            action()
+        }label: {
+            ZStack{
+                Rectangle()
+                    .frame(width: 285, height: 68)
+                    .foregroundStyle(.indigo)
+                    .cornerRadius(20)
+                Text("\(title)")
+                    .foregroundStyle(.white)
+                    .font(.system(size: 24))
+            }
+        }
+    }
+}
