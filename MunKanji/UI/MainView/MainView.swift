@@ -7,34 +7,25 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+    @State var showSheet: Bool = false
+    
     var body: some View {
         NavigationStack{
             VStack{
                 Text("206")
                     .font(.system(size: 130))
-                
                     .padding(.vertical, 169)
-                NavigationLink{
-                    StudyIntroView()
-                }label: {
-                    ZStack{
-                        Rectangle()
-                            .frame(width: 285, height: 68)
-                            .foregroundStyle(.indigo)
-                            .cornerRadius(20)
-                        Text("학습하기")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 24))
-                    }
-                    
-                }
-                
+                NavyNavigationLink(title: "학습하기", destination: StudyIntroView())
+                GrayNavigationLink(title: "기록보기", destination: HistoryView())
             }
+            .sheet(isPresented: $showSheet, content: {
+                SettingView(showSheet: $showSheet)
+            })
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
-                        //
+                        showSheet = true
                     }label: {
                         Image(systemName: "gearshape.fill")
                             .foregroundStyle(.indigo)
@@ -45,6 +36,7 @@ struct ContentView: View {
     }
 }
 
+
 #Preview {
-    ContentView()
+    MainView()
 }

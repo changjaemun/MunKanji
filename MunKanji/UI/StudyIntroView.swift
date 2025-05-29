@@ -37,19 +37,7 @@ struct StudyIntroView: View {
                         }
                     }
                     .padding(.vertical, 195)
-                    NavigationLink{
-                        //
-                    }label: {
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 285, height: 68)
-                                .foregroundStyle(.indigo)
-                                .cornerRadius(20)
-                            Text("학습하기")
-                                .foregroundStyle(.white)
-                                .font(.system(size: 24))
-                        }
-                    }
+                    NavyNavigationLink(title: "학습시작", destination: EmptyView())
                 }
             }
         }
