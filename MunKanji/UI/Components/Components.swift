@@ -19,7 +19,7 @@ struct NavyNavigationLink<Destination: View>:View {
             ZStack{
                 Rectangle()
                     .frame(width: 285, height: 68)
-                    .foregroundStyle(.indigo)
+                    .foregroundStyle(.main)
                     .cornerRadius(20)
                 Text("\(title)")
                     .foregroundStyle(.white)
@@ -61,7 +61,7 @@ struct NavyButton: View {
             ZStack{
                 Rectangle()
                     .frame(width: 285, height: 68)
-                    .foregroundStyle(.indigo)
+                    .foregroundStyle(.main)
                     .cornerRadius(20)
                 Text("\(title)")
                     .foregroundStyle(.white)
