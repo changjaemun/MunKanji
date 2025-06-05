@@ -7,6 +7,7 @@
 import Foundation
 
 struct Word: Codable {
+    
     var grade: String?
     var firstWord: String?
     var secondWord: String?

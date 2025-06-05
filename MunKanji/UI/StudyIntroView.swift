@@ -37,7 +37,7 @@ struct StudyIntroView: View {
                         }
                     }
                     .padding(.vertical, 195)
-                    NavyNavigationLink(title: "학습시작", destination: EmptyView())
+                    NavyNavigationLink(title: "학습시작", destination: LearningView())
                 }
             }
         }
