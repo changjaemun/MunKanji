@@ -54,6 +54,7 @@ struct LearningView: View {
                 
                 Spacer()
                 NavyNavigationLink(title: "퀴즈풀기", destination: EmptyView())
+                    .padding()
                 Spacer()
             }
         }
