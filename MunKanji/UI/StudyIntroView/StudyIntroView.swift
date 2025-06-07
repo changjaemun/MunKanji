@@ -11,7 +11,7 @@ struct StudyIntroView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                Color.gray
+                Color.backGround
                     .ignoresSafeArea()
                 VStack{
                     ZStack{
@@ -19,20 +19,22 @@ struct StudyIntroView: View {
                             .foregroundStyle(.white)
                             .frame(width: 331, height: 211)
                             .cornerRadius(20)
+                            .shadow(radius: 5)
                         HStack(spacing: 59) {
                             VStack{
                                 Text("외울 한자")
                                     .font(.system(size: 14))
                                 Text("8개")
                                     .padding(.vertical, 3)
-                                    .font(.system(size: 48))
+                                    .font(.system(size: 48, weight: .semibold))
                             }
                             VStack{
-                                Text("외울 한자")
+                                Text("복습할 한자")
                                     .font(.system(size: 14))
                                 Text("8개")
                                     .padding(.vertical, 3)
-                                    .font(.system(size: 48))
+                                    .foregroundStyle(.point)
+                                    .font(.system(size: 48, weight: .semibold))
                             }
                         }
                     }

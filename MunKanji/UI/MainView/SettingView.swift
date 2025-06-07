@@ -16,7 +16,7 @@ struct SettingView: View {
     
     var body: some View {
         ZStack{
-            Color.gray.opacity(0.2).ignoresSafeArea()
+            Color.backGround.ignoresSafeArea()
             VStack(spacing: 75){
                 VStack{
                     HStack{

@@ -14,7 +14,7 @@ struct MainView: View {
         NavigationStack{
             VStack{
                 Text("206")
-                    .font(.system(size: 130))
+                    .font(.system(size: 130, weight: .semibold))
                     .padding(.vertical, 169)
                 NavyNavigationLink(title: "학습하기", destination: StudyIntroView())
                 GrayNavigationLink(title: "기록보기", destination: HistoryView())
@@ -28,7 +28,7 @@ struct MainView: View {
                         showSheet = true
                     }label: {
                         Image(systemName: "gearshape.fill")
-                            .foregroundStyle(.indigo)
+                            .foregroundStyle(.main)
                     }
                 }
             }
