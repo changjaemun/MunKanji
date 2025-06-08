@@ -22,3 +22,5 @@ struct Word: Codable {
         case secondWord = "word2"
     }
 }
+
+

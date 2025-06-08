@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct QuizView: View {
+    let words:[Word]
     var body: some View {
         NavigationStack{
             ZStack{
                 Color.backGround.ignoresSafeArea()
                 VStack(spacing:64){
                     Text("1 / 10")
-                        .font(.system(size: 23, weight: .semibold))
+                        .foregroundStyle(.fontGray)
+                        .font(.system(size: 24, weight: .semibold))
                     Text("車")
                         .foregroundStyle(.main)
                         .font(.system(size: 80, weight: .semibold))
