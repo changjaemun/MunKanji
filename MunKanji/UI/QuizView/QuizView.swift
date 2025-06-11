@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct QuizView: View {
-    let words:[Word]
+    let words:[Word] = Word.allWords
+    @State var currentIndex:Int = 0
     var body: some View {
         NavigationStack{
             ZStack{
                 Color.backGround.ignoresSafeArea()
                 VStack(spacing:64){
-                    Text("1 / 10")
+                    Text("\(currentIndex + 1) / \(words.count)")
                         .foregroundStyle(.fontGray)
                         .font(.system(size: 24, weight: .semibold))
-                    Text("車")
-                        .foregroundStyle(.main)
-                        .font(.system(size: 80, weight: .semibold))
+                    if let kanji = words[currentIndex].kanji{
+                        Text(kanji)
+                            .foregroundStyle(.main)
+                            .font(.system(size: 80, weight: .semibold))
+                    }
+                    
                     QuizGridView()
                         .frame(width: 346, height: 340)
                     Spacer()

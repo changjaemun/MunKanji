@@ -28,6 +28,18 @@ struct Word: Codable {
             Word(grade: "1", firstWord: "화산", secondWord: "불꽃", kanji: "火", korean: "불 화", sound: "か", meaning: "불"),
             Word(grade: "1", firstWord: "수영", secondWord: "수도", kanji: "水", korean: "물 수", sound: "すい", meaning: "물")
         ]
+    
+    static var allWords:[Word] = {
+        guard let load = JsonManager.shared.load(fileName: "newwords") else{
+            print("load error")
+            return []
+        }
+        guard let words = JsonManager.shared.getWordsFromData(jsonWordFileData: load) else{
+            print("decode error")
+            return []
+        }
+        return words
+    }()
 }
 
 
