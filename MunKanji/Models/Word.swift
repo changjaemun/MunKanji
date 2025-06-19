@@ -21,4 +21,18 @@ struct Word: Codable {
         case firstWord = "word1"
         case secondWord = "word2"
     }
+    
+    static var allWords:[Word] = {
+        guard let load = JsonManager.shared.load(fileName: "newwords") else{
+            print("load error")
+            return []
+        }
+        guard let words = JsonManager.shared.getWordsFromData(jsonWordFileData: load) else{
+            print("decode error")
+            return []
+        }
+        return words
+    }()
 }
+
+
