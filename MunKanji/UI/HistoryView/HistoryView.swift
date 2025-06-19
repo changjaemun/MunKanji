@@ -15,7 +15,7 @@ struct HistoryView: View {
                 VStack(spacing:55){
                     Spacer()
                     NavigationLink {
-                        //
+                        HistoryDetailView(title: "외운 한자")
                     } label: {
                         ZStack{
                             Rectangle()
@@ -34,7 +34,7 @@ struct HistoryView: View {
                         }
                     }
                     NavigationLink {
-                        //
+                        HistoryDetailView(title: "못외운 한자")
                     } label: {
                         ZStack{
                             Rectangle()
