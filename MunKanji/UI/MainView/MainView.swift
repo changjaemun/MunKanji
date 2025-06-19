@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainView: View {
     @State var showSheet: Bool = false
     
+    @Query
+    private var allStudyLogs: [StudyLog]
+    
     var body: some View {
         NavigationStack{
             VStack{
-                Text("206")
+                Text("\(allStudyLogs.filter{ log in log.status == .correct}.count)")
                     .font(.system(size: 130, weight: .semibold))
                     .padding(.vertical, 169)
                 NavyNavigationLink(title: "학습하기", destination: StudyIntroView())

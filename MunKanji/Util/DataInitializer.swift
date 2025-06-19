@@ -1,7 +1,6 @@
 import Foundation
 import SwiftData
 
-// DataInitializer.swift 라는 새 파일에 만들면 깔끔합니다.
 class DataInitializer {
     
     // 이 함수를 호출하면, 필요할 때만 데이터를 넣습니다.
@@ -30,7 +29,12 @@ class DataInitializer {
             for (index, word) in words.enumerated(){
                 let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "", firstWord: word.firstWord, secondWord: word.secondWord)
                 modelContext.insert(newKanji)
+                
+                //newKanji와 짝이 될 StudyLog 객체 생성 및 저장
+                let newStudyLog = StudyLog(kanjiID: index)
+                modelContext.insert(newStudyLog)
             }
+            
             
             print("초기 데이터 로딩 완료!")
             
