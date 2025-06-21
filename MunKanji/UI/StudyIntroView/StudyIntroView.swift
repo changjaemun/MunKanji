@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct StudyIntroView: View {
+    
+    let kanjiCount:Int = 10
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -27,11 +30,12 @@ struct StudyIntroView: View {
                                 Text("8개")
                                     .padding(.vertical, 3)
                                     .font(.system(size: 48, weight: .semibold))
+                                //unseen보다 틀린 한자 부터 쭉 찾아야겠지?
                             }
                             VStack{
-                                Text("복습할 한자")
+                                Text("틀렸던 한자")
                                     .font(.system(size: 14))
-                                Text("8개")
+                                Text("2개")
                                     .padding(.vertical, 3)
                                     .foregroundStyle(.point)
                                     .font(.system(size: 48, weight: .semibold))
