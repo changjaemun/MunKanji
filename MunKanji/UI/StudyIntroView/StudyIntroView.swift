@@ -6,10 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct StudyIntroView: View {
     
     let kanjiCount:Int = 10
+    
+    @Query
+    var studyLogs: [StudyLog]
+    
+    var learningStudyLogs:[StudyLog]{
+        Array(studyLogs.filter{$0.status != .correct}.sorted(){$0.kanjiID < $1.kanjiID}.prefix(kanjiCount))
+    }
+    
+    var inCorrectKanjisCount:Int{
+        learningStudyLogs.filter{$0.status == .incorrect}.count
+    }
+    
+    var unseenKanjisCount:Int{
+        kanjiCount - inCorrectKanjisCount
+    }
     
     var body: some View {
         NavigationStack{
@@ -27,7 +43,7 @@ struct StudyIntroView: View {
                             VStack{
                                 Text("외울 한자")
                                     .font(.system(size: 14))
-                                Text("8개")
+                                Text("\(unseenKanjisCount)개")
                                     .padding(.vertical, 3)
                                     .font(.system(size: 48, weight: .semibold))
                                 //unseen보다 틀린 한자 부터 쭉 찾아야겠지?
@@ -35,7 +51,7 @@ struct StudyIntroView: View {
                             VStack{
                                 Text("틀렸던 한자")
                                     .font(.system(size: 14))
-                                Text("2개")
+                                Text("\(inCorrectKanjisCount)개")
                                     .padding(.vertical, 3)
                                     .foregroundStyle(.point)
                                     .font(.system(size: 48, weight: .semibold))
@@ -43,7 +59,7 @@ struct StudyIntroView: View {
                         }
                     }
                     .padding(.vertical, 195)
-                    NavyNavigationLink(title: "학습시작", destination: LearningView())
+                    NavyNavigationLink(title: "학습시작", destination: LearningView(learningStudyLogs: learningStudyLogs))
                 }
             }
         }

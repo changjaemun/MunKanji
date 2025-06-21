@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct LearningView: View {
     @State private var currentIndex: Int = 0
+    
+    @Query
+    var kanjis: [Kanji]
+    
+    let learningStudyLogs: [StudyLog]
+    
     
     var body: some View {
         NavigationStack {
@@ -20,8 +27,8 @@ struct LearningView: View {
                             // 양쪽 여백 줘서 중앙 정렬
                             Spacer().frame(width: (UIScreen.main.bounds.width - 360) / 2)
                             
-                            ForEach(0..<3, id: \.self) { index in
-                                KanjiCardView()
+                            ForEach(0..<learningStudyLogs.count, id: \.self) { index in
+                                KanjiCardView(kanji: kanjis.filter{$0.id == index}.first ?? Dummy.kanji)
                                     .scaleEffect(index == currentIndex ? 1.0 : 0.95)
                                     .opacity(index == currentIndex ? 1.0 : 0.6)
                                     .animation(.easeInOut(duration: 0.3), value: currentIndex)
@@ -44,7 +51,7 @@ struct LearningView: View {
                                 withAnimation(.easeInOut(duration: 0.3)) {
                                     if value.translation.width > threshold && currentIndex > 0 {
                                         currentIndex -= 1
-                                    } else if value.translation.width < -threshold && currentIndex < 2 {
+                                    } else if value.translation.width < -threshold && currentIndex < learningStudyLogs.count - 1 {
                                         currentIndex += 1
                                     }
                                 }
@@ -53,7 +60,7 @@ struct LearningView: View {
                 }
                 
                 Spacer()
-                NavyNavigationLink(title: "퀴즈풀기", destination: QuizView())
+                NavyNavigationLink(title: "퀴즈풀기", destination: QuizView(learningStudyLogs: learningStudyLogs))
                     .padding()
                 Spacer()
             }
@@ -62,5 +69,5 @@ struct LearningView: View {
 }
 
 #Preview {
-    LearningView()
+    LearningView(learningStudyLogs: Dummy.studylog)
 }
