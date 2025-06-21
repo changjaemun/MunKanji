@@ -6,8 +6,27 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct StudyIntroView: View {
+    
+    let kanjiCount:Int = 10
+    
+    @Query
+    var studyLogs: [StudyLog]
+    
+    var learningStudyLogs:[StudyLog]{
+        Array(studyLogs.filter{$0.status != .correct}.sorted(){$0.kanjiID < $1.kanjiID}.prefix(kanjiCount))
+    }
+    
+    var inCorrectKanjisCount:Int{
+        learningStudyLogs.filter{$0.status == .incorrect}.count
+    }
+    
+    var unseenKanjisCount:Int{
+        kanjiCount - inCorrectKanjisCount
+    }
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -23,15 +42,16 @@ struct StudyIntroView: View {
                         HStack(spacing: 59) {
                             VStack{
                                 Text("외울 한자")
-                                    .font(.pretendardRegular(size: 14))
-                                Text("8개")
+                                    .font(.system(size: 14))
+                                Text("\(unseenKanjisCount)개")
                                     .padding(.vertical, 3)
-                                    .font(.pretendardSemiBold(size: 48))
+                                    .font(.system(size: 48, weight: .semibold))
+                                //unseen보다 틀린 한자 부터 쭉 찾아야겠지?
                             }
                             VStack{
-                                Text("복습할 한자")
-                                    .font(.pretendardRegular(size: 14))
-                                Text("8개")
+                                Text("틀렸던 한자")
+                                    .font(.system(size: 14))
+                                Text("\(inCorrectKanjisCount)개")
                                     .padding(.vertical, 3)
                                     .foregroundStyle(.point)
                                     .font(.pretendardSemiBold(size: 48))
@@ -39,7 +59,7 @@ struct StudyIntroView: View {
                         }
                     }
                     .padding(.vertical, 195)
-                    NavyNavigationLink(title: "학습시작", destination: LearningView())
+                    NavyNavigationLink(title: "학습시작", destination: LearningView(learningStudyLogs: learningStudyLogs))
                 }
             }
         }

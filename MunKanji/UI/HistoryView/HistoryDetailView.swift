@@ -34,7 +34,7 @@ struct HistoryDetailView: View {
                 }.padding()
             }.navigationTitle(title)
                 .sheet(isPresented: $isPresented) {
-                    KanjiCardView()
+                    //KanjiCardView()
                 }
         }
     }
