@@ -22,6 +22,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A1412BD12E0703CD00811F86 /* Exceptions for "MunKanji" folder in "MunKanji" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A18F65232D93D4A2003C5C6E /* MunKanji */;
+		};
 		A1BE55AF2D9AD58800DE62D6 /* Exceptions for "MunKanji" folder in "MunKanjiTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -36,6 +43,7 @@
 		A18F65262D93D4A2003C5C6E /* MunKanji */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				A1412BD12E0703CD00811F86 /* Exceptions for "MunKanji" folder in "MunKanji" target */,
 				A1BE55AF2D9AD58800DE62D6 /* Exceptions for "MunKanji" folder in "MunKanjiTests" target */,
 			);
 			path = MunKanji;
@@ -344,6 +352,7 @@
 				DEVELOPMENT_TEAM = 8FKM9FB4PH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MunKanji/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -373,6 +382,7 @@
 				DEVELOPMENT_TEAM = 8FKM9FB4PH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MunKanji/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -24,7 +24,7 @@ struct QuizCardView: View {
                   .cornerRadius(20)
                   .shadow(radius: 5)
                 Text(korean)
-                    .font(.system(size: 24, weight: .semibold))
+                    .font(.pretendardSemiBold(size: 24))
                     .foregroundStyle(touched ? .miniCard : .main)
             }
         }.buttonStyle(.plain)

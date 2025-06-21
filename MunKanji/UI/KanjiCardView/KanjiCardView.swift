@@ -21,10 +21,10 @@ struct KanjiCardView: View {
                         VStack{
                             Text(word.kanji!)
                                 .foregroundStyle(.main)
-                                .font(.system(size: 80, weight: .bold))
+                                .font(.pretendardBold(size: 80))
                             Text(word.korean!)
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                         }.frame(width: 338)
                             .padding(.bottom)
                         Divider()
@@ -32,11 +32,11 @@ struct KanjiCardView: View {
                         VStack(alignment:.leading){
                             Text("음: \(word.sound!)")
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                                 .padding(10)
                             Text("훈: \(word.meaning!)")
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                                 .padding(10)
                         }.padding()
                         
@@ -46,11 +46,11 @@ struct KanjiCardView: View {
                         VStack(alignment:.leading){
                             Text(word.firstWord!)
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                                 .padding(10)
                             Text(word.secondWord!)
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                                 .padding(10)
                         }.padding()
                         

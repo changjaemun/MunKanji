@@ -45,7 +45,7 @@ struct SettingView: View {
                         .padding(.horizontal)
                     HStack{
                         Text(reviewCycleExplain)
-                            .font(.system(size:12))
+                            .font(.pretendardRegular(size:12))
                             .foregroundStyle(.gray)
                             .padding(.horizontal)
                     }
