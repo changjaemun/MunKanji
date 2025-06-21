@@ -16,7 +16,7 @@ struct KanjiCardView: View {
                         .foregroundStyle(.white)
                       .frame(width: 338, height: 521)
                       .cornerRadius(20)
-                      .shadow(radius: 20)
+                      .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                     VStack(alignment:.leading){
                         VStack{
                             Text(word.kanji!)

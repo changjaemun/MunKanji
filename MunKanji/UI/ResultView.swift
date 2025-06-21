@@ -23,7 +23,7 @@ struct ResultView: View {
                             .foregroundColor(.white)
                           .frame(width: 331, height: 185)
                           .cornerRadius(20)
-                          .shadow(radius: 5)
+                          .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                         VStack(spacing: 20){
                             HStack{
                                 Spacer()
