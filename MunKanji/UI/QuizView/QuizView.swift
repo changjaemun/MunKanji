@@ -17,11 +17,11 @@ struct QuizView: View {
                 VStack(spacing:64){
                     Text("\(currentIndex + 1) / \(words.count)")
                         .foregroundStyle(.fontGray)
-                        .font(.system(size: 24, weight: .semibold))
+                        .font(.pretendardSemiBold(size: 24))
                     if let kanji = words[currentIndex].kanji{
                         Text(kanji)
                             .foregroundStyle(.main)
-                            .font(.system(size: 80, weight: .semibold))
+                            .font(.pretendardSemiBold(size: 80))
                     }
                     
                     QuizGridView()

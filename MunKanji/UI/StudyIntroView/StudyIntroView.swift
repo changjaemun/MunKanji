@@ -23,18 +23,18 @@ struct StudyIntroView: View {
                         HStack(spacing: 59) {
                             VStack{
                                 Text("외울 한자")
-                                    .font(.system(size: 14))
+                                    .font(.pretendardRegular(size: 14))
                                 Text("8개")
                                     .padding(.vertical, 3)
-                                    .font(.system(size: 48, weight: .semibold))
+                                    .font(.pretendardSemiBold(size: 48))
                             }
                             VStack{
                                 Text("복습할 한자")
-                                    .font(.system(size: 14))
+                                    .font(.pretendardRegular(size: 14))
                                 Text("8개")
                                     .padding(.vertical, 3)
                                     .foregroundStyle(.point)
-                                    .font(.system(size: 48, weight: .semibold))
+                                    .font(.pretendardSemiBold(size: 48))
                             }
                         }
                     }

@@ -24,7 +24,7 @@ struct NavyNavigationLink<Destination: View>:View {
                     .shadow(radius: 5)
                 Text("\(title)")
                     .foregroundStyle(.white)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
@@ -46,7 +46,7 @@ struct GrayNavigationLink<Destination: View>:View {
                     .shadow(radius: 5)
                 Text("\(title)")
                     .foregroundStyle(.black)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
@@ -68,8 +68,12 @@ struct NavyButton: View {
                     .shadow(radius: 5)
                 Text("\(title)")
                     .foregroundStyle(.white)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
 }
+
+#Preview(body: {
+    NavyNavigationLink(title: "테스트 버튼", destination: EmptyView())
+})

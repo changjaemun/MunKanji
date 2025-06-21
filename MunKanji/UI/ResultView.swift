@@ -15,7 +15,7 @@ struct ResultView: View {
                 VStack{
                     Text("학습결과")
                         .foregroundStyle(.main)
-                        .font(.system(size: 28, weight: .bold))
+                        .font(.pretendardBold(size: 28))
                         .padding(.top, 116)
                     
                     ZStack{
@@ -29,23 +29,23 @@ struct ResultView: View {
                                 Spacer()
                                 Text("맞힌 한자")
                                     .foregroundStyle(.main)
-                                    .font(.system(size: 28))
+                                    .font(.pretendardRegular(size: 28))
                                 Spacer()
                                 Text("8개")
                                     .foregroundStyle(.main)
-                                    .font(.system(size: 28, weight: .bold))
+                                    .font(.pretendardBold(size: 28))
                                 Spacer()
                             }
                             HStack{
                                 Spacer()
                                 Text("틀린 한자")
                                     .foregroundStyle(.main)
-                                    .font(.system(size: 28))
+                                    .font(.pretendardRegular(size: 28))
                                 Spacer()
                                 Text("8개")
                                     .foregroundStyle(.red)
                                 //바꿀예정
-                                    .font(.system(size: 28, weight: .bold))
+                                    .font(.pretendardBold(size: 28))
                                 Spacer()
                             }
                         }

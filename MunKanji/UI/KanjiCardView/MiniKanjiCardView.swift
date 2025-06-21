@@ -18,7 +18,7 @@ struct MiniKanjiCardView: View {
               .cornerRadius(20)
               .shadow(radius: 5)
             Text(word)
-                .font(.system(size: 40))
+                .font(.pretendardRegular(size: 40))
         }
         
     }
