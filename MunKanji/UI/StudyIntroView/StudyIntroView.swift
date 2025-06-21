@@ -38,7 +38,7 @@ struct StudyIntroView: View {
                             .foregroundStyle(.white)
                             .frame(width: 331, height: 211)
                             .cornerRadius(20)
-                            .shadow(radius: 5)
+                            .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                         HStack(spacing: 59) {
                             VStack{
                                 Text("외울 한자")
@@ -54,7 +54,7 @@ struct StudyIntroView: View {
                                 Text("\(inCorrectKanjisCount)개")
                                     .padding(.vertical, 3)
                                     .foregroundStyle(.point)
-                                    .font(.system(size: 48, weight: .semibold))
+                                    .font(.pretendardSemiBold(size: 48))
                             }
                         }
                     }

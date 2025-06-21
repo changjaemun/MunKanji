@@ -30,10 +30,11 @@ struct QuizCardView: View {
                     .foregroundStyle(isCorrected == .unseen ? .miniCard : isCorrected == .correct ? .accent : .red)
                   .frame(width: 160, height: 160)
                   .cornerRadius(20)
-                  .shadow(radius: 5)
+                  .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                 Text(korean)
-                    .font(.system(size: 24, weight: .semibold))
-                    .foregroundStyle(.main)
+
+                    .font(.pretendardSemiBold(size: 24))
+                                  .foregroundStyle(.main)
             }
         }.buttonStyle(.plain)
         

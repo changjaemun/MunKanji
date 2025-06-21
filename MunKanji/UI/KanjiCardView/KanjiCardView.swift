@@ -18,15 +18,15 @@ struct KanjiCardView: View {
                         .foregroundStyle(.white)
                       .frame(width: 338, height: 521)
                       .cornerRadius(20)
-                      .shadow(radius: 20)
+                      .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                     VStack(alignment:.leading){
                         VStack{
                             Text(kanji.kanji)
                                 .foregroundStyle(.main)
-                                .font(.system(size: 80, weight: .bold))
-                            Text(kanji.korean)
+                                .font(.pretendardBold(size: 80))
+                            Text(word.korean)
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                         }.frame(width: 338)
                             .padding(.bottom)
                         Divider()
@@ -34,11 +34,11 @@ struct KanjiCardView: View {
                         VStack(alignment:.leading){
                             Text("음: \(kanji.sound)")
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                                 .padding(10)
                             Text("훈: \(kanji.meaning)")
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                                 .padding(10)
                         }.padding()
                         
@@ -48,11 +48,11 @@ struct KanjiCardView: View {
                         VStack(alignment:.leading){
                             Text(kanji.firstWord ?? "")
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                                 .padding(10)
                             Text(kanji.secondWord ?? "")
                                 .foregroundStyle(.main)
-                                .font(.system(size: 24))
+                                .font(.pretendardRegular(size: 24))
                                 .padding(10)
                         }.padding()
                         

@@ -21,10 +21,10 @@ struct NavyNavigationLink<Destination: View>:View {
                     .frame(width: 285, height: 68)
                     .foregroundStyle(.main)
                     .cornerRadius(20)
-                    .shadow(radius: 5)
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                 Text("\(title)")
                     .foregroundStyle(.white)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
@@ -43,10 +43,10 @@ struct GrayNavigationLink<Destination: View>:View {
                     .frame(width: 285, height: 60)
                     .foregroundStyle(.backGround)
                     .cornerRadius(20)
-                    .shadow(radius: 5)
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                 Text("\(title)")
                     .foregroundStyle(.black)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
@@ -65,11 +65,15 @@ struct NavyButton: View {
                     .frame(width: 285, height: 68)
                     .foregroundStyle(.main)
                     .cornerRadius(20)
-                    .shadow(radius: 5)
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                 Text("\(title)")
                     .foregroundStyle(.white)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
 }
+
+#Preview(body: {
+    NavyNavigationLink(title: "테스트 버튼", destination: EmptyView())
+})

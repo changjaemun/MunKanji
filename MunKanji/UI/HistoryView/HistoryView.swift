@@ -22,14 +22,14 @@ struct HistoryView: View {
                                 .foregroundColor(.white)
                               .frame(width: 362, height: 190)
                               .cornerRadius(20)
-                              .shadow(radius: 5)
+                              .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                             VStack(spacing: 10){
                                 Text("206")
                                     .foregroundStyle(.main)
-                                    .font(.system(size: 60, weight: .bold))
+                                    .font(.pretendardBold(size: 60))
                                 Text("외운 한자")
                                     .foregroundStyle(.main)
-                                    .font(.system(size: 20))
+                                    .font(.pretendardRegular(size: 20))
                             }
                         }
                     }
@@ -41,14 +41,14 @@ struct HistoryView: View {
                                 .foregroundColor(.white)
                               .frame(width: 362, height: 190)
                               .cornerRadius(20)
-                              .shadow(radius: 5)
+                              .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                             VStack(spacing: 10){
                                 Text("820")
                                     .foregroundStyle(.point)
-                                    .font(.system(size: 60, weight: .bold))
+                                    .font(.pretendardBold(size: 60))
                                 Text("못외운 한자")
                                     .foregroundStyle(.main)
-                                    .font(.system(size: 20))
+                                    .font(.pretendardRegular(size: 20))
                             }
                         }
                     }

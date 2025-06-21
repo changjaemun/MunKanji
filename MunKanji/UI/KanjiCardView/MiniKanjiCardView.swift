@@ -16,9 +16,9 @@ struct MiniKanjiCardView: View {
                 .foregroundColor(.white)
               .frame(width: 105, height: 97)
               .cornerRadius(20)
-              .shadow(radius: 5)
+              .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
             Text(word)
-                .font(.system(size: 40))
+                .font(.pretendardRegular(size: 40))
         }
         
     }
