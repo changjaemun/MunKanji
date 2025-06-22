@@ -36,7 +36,8 @@ struct SettingView: View {
                 }
                 VStack {
                     HStack {
-                        Text("복습 주기")
+                        Text("복습 주기 : 현재 지원하지 않는 기능입니다.")
+                            .foregroundStyle(.fontGray)
                             .padding()
                         Spacer()
                     }
@@ -45,6 +46,7 @@ struct SettingView: View {
                         Text("3").tag(3)
                         Text("4").tag(4)
                     }
+                    .disabled(true)
                     .pickerStyle(.segmented)
                     .padding(.horizontal)
                     HStack {
