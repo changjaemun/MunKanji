@@ -49,7 +49,12 @@ struct HistoryDetailView: View {
         
         .navigationTitle(title)
         .sheet(item: $selectedKanji) { kanji in
-            KanjiCardView(kanji: kanji)
+            ZStack{
+                Color.backGround
+                    .ignoresSafeArea()
+                KanjiCardView(kanji: kanji)
+            }
+            
         }
     }
 }
