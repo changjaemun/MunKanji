@@ -8,10 +8,7 @@ import SwiftUI
 import SwiftData
 
 struct QuizGridView: View {
-    @Query
-    var kanjis: [Kanji]
-    
-    let koreans = ["수레 차", "불 화", "물 수", "산 산"]
+    @ObservedObject var viewModel: QuizViewModel
 
     let columns = [
         GridItem(.flexible()),
@@ -20,8 +17,11 @@ struct QuizGridView: View {
 
     var body: some View {
         LazyVGrid(columns: columns, spacing: 20) {
-            ForEach(koreans, id: \.self) { korean in
-                QuizCardView(answer: "수레 차",korean: korean)
+            ForEach(viewModel.choices, id: \.self) { choice in
+                QuizCardView(
+                    korean: choice,
+                    viewModel: viewModel
+                )
             }
         }
     }

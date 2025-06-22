@@ -13,6 +13,7 @@ struct QuizView: View {
     @Query
     var kanjis:[Kanji]
     
+    @Binding var path: NavigationPath
     let learningStudyLogs: [StudyLog]
     
     @Environment(\.modelContext) private var modelContext
@@ -27,39 +28,47 @@ struct QuizView: View {
         return tray
     }
     
-    @State var currentIndex:Int = 0
-    
     var body: some View {
-        NavigationStack{
-            ZStack{
-                Color.backGround.ignoresSafeArea()
-                if viewModel.learningKanjis.isEmpty {
-                    ProgressView()
-                        .scaleEffect(2)
-                }else{
-                    VStack(spacing:64){
-                        Text("\(viewModel.currentIndex + 1) / \(learningStudyLogs.count)")
-                            .foregroundStyle(.fontGray)
-                            .font(.system(size: 24, weight: .semibold))
-                        Text(viewModel.learningKanjis[viewModel.currentIndex].kanji)
-                                .foregroundStyle(.main)
-                                .font(.system(size: 80, weight: .semibold))
-                        
-                        QuizGridView()
-                            .frame(width: 346, height: 340)
-                        Spacer()
-                    }.padding()
+        ZStack{
+            Color.backGround.ignoresSafeArea()
+            
+            if learningKanjis.isEmpty {
+                ProgressView()
+                    .scaleEffect(2)
+            } else if viewModel.isFinished {
+                // 퀴즈 완료 화면
+                ResultView(path: $path, results: viewModel.results, learningKanjis: learningKanjis)
+            } else {
+                // 퀴즈 진행 화면
+                VStack(spacing: 64){
+                    // 진행률 표시
+                    Text("\(viewModel.currentIndex + 1) / \(viewModel.learningKanjis.count)")
+                        .foregroundStyle(.fontGray)
+                        .font(.system(size: 24, weight: .semibold))
+                    
+                    // 현재 한자 표시
+                    Text(viewModel.currentKanji)
+                        .foregroundStyle(.main)
+                        .font(.system(size: 80, weight: .semibold))
+                    
+                    // 보기 그리드
+                    QuizGridView(viewModel: viewModel)
+                        .frame(width: 346, height: 340)
+                    
+                    Spacer()
                 }
-            }.navigationTitle("1회차")
-                .navigationBarTitleDisplayMode(.inline)
-                .onAppear {
-                    viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext)
-                }
+                .padding()
+            }
+        }
+        .navigationTitle("1회차")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext)
         }
     }
 }
 
 #Preview {
-    
-    QuizView(learningStudyLogs: Dummy.studylog)
+    @State var path = NavigationPath()
+    return QuizView(path: $path, learningStudyLogs: Dummy.studylog)
 }

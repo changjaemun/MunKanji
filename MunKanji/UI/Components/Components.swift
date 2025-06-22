@@ -8,21 +8,19 @@
 import SwiftUI
 
 
-struct NavyNavigationLink<Destination: View>:View {
+struct NavyNavigationLink<Value: Hashable>: View {
     let title: String
-    let destination: Destination
+    let value: Value
     
     var body: some View {
-        NavigationLink {
-            destination
-        } label: {
+        NavigationLink(value: value) {
             ZStack{
                 Rectangle()
                     .frame(width: 285, height: 68)
                     .foregroundStyle(.main)
                     .cornerRadius(20)
                     .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-                Text("\(title)")
+                Text(title)
                     .foregroundStyle(.white)
                     .font(.pretendardRegular(size: 24))
             }
@@ -30,21 +28,19 @@ struct NavyNavigationLink<Destination: View>:View {
     }
 }
 
-struct GrayNavigationLink<Destination: View>:View {
+struct GrayNavigationLink<Value: Hashable>: View {
     let title: String
-    let destination: Destination
+    let value: Value
     
     var body: some View {
-        NavigationLink {
-            destination
-        } label: {
+        NavigationLink(value: value) {
             ZStack{
                 Rectangle()
                     .frame(width: 285, height: 60)
                     .foregroundStyle(.backGround)
                     .cornerRadius(20)
                     .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-                Text("\(title)")
+                Text(title)
                     .foregroundStyle(.black)
                     .font(.pretendardRegular(size: 24))
             }
@@ -57,16 +53,14 @@ struct NavyButton: View {
     let action: () -> Void
     
     var body: some View {
-        Button{
-            action()
-        }label: {
+        Button(action: action) {
             ZStack{
                 Rectangle()
                     .frame(width: 285, height: 68)
                     .foregroundStyle(.main)
                     .cornerRadius(20)
                     .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-                Text("\(title)")
+                Text(title)
                     .foregroundStyle(.white)
                     .font(.pretendardRegular(size: 24))
             }
@@ -75,5 +69,5 @@ struct NavyButton: View {
 }
 
 #Preview(body: {
-    NavyNavigationLink(title: "테스트 버튼", destination: EmptyView())
+    NavyNavigationLink(title: "테스트 버튼", value: "test")
 })
