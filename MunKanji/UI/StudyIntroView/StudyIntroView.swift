@@ -10,22 +10,23 @@ import SwiftData
 
 struct StudyIntroView: View {
     
-    let kanjiCount:Int = 10
+    @EnvironmentObject var userSettings: UserSettings
     @Binding var path: NavigationPath
     
     @Query
     var studyLogs: [StudyLog]
     
-    var learningStudyLogs:[StudyLog]{
-        Array(studyLogs.filter{$0.status != .correct}.sorted(){$0.kanjiID < $1.kanjiID}.prefix(kanjiCount))
+    private var learningStudyLogs:[StudyLog]{
+        Array(studyLogs.filter{$0.status != .correct}.sorted(){$0.kanjiID < $1.kanjiID}.prefix(userSettings.kanjiCountPerSession))
     }
     
-    var inCorrectKanjisCount:Int{
+    private var inCorrectKanjisCount:Int{
         learningStudyLogs.filter{$0.status == .incorrect}.count
     }
     
-    var unseenKanjisCount:Int{
-        kanjiCount - inCorrectKanjisCount
+    private var unseenKanjisCount:Int{
+        // prefix로 잘린 learningStudyLogs의 실제 개수에서 틀린 개수를 빼야 합니다.
+        learningStudyLogs.count - inCorrectKanjisCount
     }
     
     var body: some View {
@@ -68,4 +69,5 @@ struct StudyIntroView: View {
 #Preview {
     @State var path = NavigationPath()
     return StudyIntroView(path: $path)
+        .environmentObject(UserSettings())
 }

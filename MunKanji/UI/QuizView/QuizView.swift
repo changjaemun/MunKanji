@@ -44,12 +44,12 @@ struct QuizView: View {
                     // 진행률 표시
                     Text("\(viewModel.currentIndex + 1) / \(viewModel.learningKanjis.count)")
                         .foregroundStyle(.fontGray)
-                        .font(.system(size: 24, weight: .semibold))
+                        .font(.pretendardSemiBold(size: 24))
                     
                     // 현재 한자 표시
                     Text(viewModel.currentKanji)
                         .foregroundStyle(.main)
-                        .font(.system(size: 80, weight: .semibold))
+                        .font(.pretendardSemiBold(size: 80))
                     
                     // 보기 그리드
                     QuizGridView(viewModel: viewModel)

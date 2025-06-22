@@ -20,9 +20,6 @@ class QuizViewModel: ObservableObject {
     var learningKanjis: [Kanji] = []
     private var modelContext: ModelContext?
     
-    // 퀴즈 설정
-    let quizCount: Int = 10
-    
     init() {
     }
     
@@ -31,11 +28,6 @@ class QuizViewModel: ObservableObject {
         self.allKanjis = allKanjis
         self.modelContext = modelContext
         self.learningKanjis = learningKanjis
-        
-        // 10개 퀴즈로 제한
-        if learningKanjis.count > quizCount {
-            self.learningKanjis = Array(learningKanjis.prefix(quizCount))
-        }
         
         // 첫 문제의 보기 생성
         generateChoices()
