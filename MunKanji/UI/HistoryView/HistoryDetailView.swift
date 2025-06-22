@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HistoryDetailView: View {
     let title: String
-    let kanjis = ["車", "犬", "見", "ㄱ", "ㄴ", "ㄷ", "ㄴ"]
+    let statusFilter: [StudyStatus]
+    
+    @Query private var allKanjis: [Kanji]
+    @Query private var allStudyLogs: [StudyLog]
+    
+    @State private var selectedKanji: Kanji?
+    
+    private var filteredKanjis: [Kanji] {
+        let targetLogIDs = allStudyLogs.filter { statusFilter.contains($0.status) }.map { $0.kanjiID }
+        return allKanjis.filter { targetLogIDs.contains($0.id) }
+    }
     
     let columns = [
         GridItem(.flexible()),
@@ -17,29 +28,27 @@ struct HistoryDetailView: View {
         GridItem(.flexible())
     ]
     
-    @State var isPresented: Bool = false
-    
     var body: some View {
-        NavigationStack{
-            ScrollView{
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(kanjis, id: \.self) { kanji in
-                        Button{
-                            isPresented = true
-                        }label: {
-                            MiniKanjiCardView(word: kanji)
-                        }.buttonStyle(.plain)
-                        
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(filteredKanjis, id: \.self) { kanji in
+                    Button {
+                        selectedKanji = kanji
+                    } label: {
+                        MiniKanjiCardView(kanji: kanji)
                     }
-                }.padding()
-            }.navigationTitle(title)
-                .sheet(isPresented: $isPresented) {
-                    //KanjiCardView()
+                    .buttonStyle(.plain)
                 }
+            }
+            .padding()
+        }
+        .navigationTitle(title)
+        .sheet(item: $selectedKanji) { kanji in
+            KanjiCardView(kanji: kanji)
         }
     }
 }
 
 #Preview {
-    HistoryDetailView(title: "외운 한자")
+    HistoryDetailView(title: "외운 한자", statusFilter: [.correct])
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MiniKanjiCardView: View {
-    let word: String
+    let kanji: Kanji
     
     var body: some View {
         ZStack{
@@ -17,9 +17,12 @@ struct MiniKanjiCardView: View {
               .frame(width: 105, height: 97)
               .cornerRadius(20)
               .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-            Text(word)
+            Text(kanji.kanji)
                 .font(.pretendardRegular(size: 40))
         }
-        
     }
+}
+
+#Preview {
+    MiniKanjiCardView(kanji: Dummy.kanji)
 }

@@ -24,7 +24,7 @@ struct KanjiCardView: View {
                             Text(kanji.kanji)
                                 .foregroundStyle(.main)
                                 .font(.pretendardBold(size: 80))
-                            Text(word.korean)
+                            Text(kanji.korean)
                                 .foregroundStyle(.main)
                                 .font(.pretendardRegular(size: 24))
                         }.frame(width: 338)
