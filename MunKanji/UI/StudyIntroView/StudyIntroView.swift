@@ -42,15 +42,15 @@ struct StudyIntroView: View {
                     HStack(spacing: 59) {
                         VStack{
                             Text("외울 한자")
-                                .font(.system(size: 14))
+                                .font(.pretendardRegular(size: 14))
                             Text("\(unseenKanjisCount)개")
                                 .padding(.vertical, 3)
-                                .font(.system(size: 48, weight: .semibold))
+                                .font(.pretendardSemiBold(size: 48))
                             //unseen보다 틀린 한자 부터 쭉 찾아야겠지?
                         }
                         VStack{
                             Text("틀렸던 한자")
-                                .font(.system(size: 14))
+                                .font(.pretendardRegular(size: 14))
                             Text("\(inCorrectKanjisCount)개")
                                 .padding(.vertical, 3)
                                 .foregroundStyle(.point)

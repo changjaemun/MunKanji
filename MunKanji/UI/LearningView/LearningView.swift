@@ -29,52 +29,57 @@ struct LearningView: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            ScrollViewReader { proxy in
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 10) {
-                        // 양쪽 여백 줘서 중앙 정렬
-                        Spacer().frame(width: (UIScreen.main.bounds.width - 360) / 2)
-                        
-                        ForEach(learningKanjis, id: \.id) { kanji in
-                            KanjiCardView(kanji: kanji)
-                                .scaleEffect(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.95)
-                                .opacity(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.6)
-                                .animation(.easeInOut(duration: 0.3), value: currentIndex)
-                                .id(kanji.id)
+        ZStack{
+            Color.backGround
+                .ignoresSafeArea()
+            VStack {
+                Spacer()
+                ScrollViewReader { proxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 10) {
+                            // 양쪽 여백 줘서 중앙 정렬
+                            Spacer().frame(width: (UIScreen.main.bounds.width - 360) / 2)
+                            
+                            ForEach(learningKanjis, id: \.id) { kanji in
+                                KanjiCardView(kanji: kanji)
+                                    .scaleEffect(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.95)
+                                    .opacity(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.6)
+                                    .animation(.easeInOut(duration: 0.3), value: currentIndex)
+                                    .id(kanji.id)
+                            }
+                            
+                            Spacer().frame(width: (UIScreen.main.bounds.width - 338) / 2)
                         }
-                        
-                        Spacer().frame(width: (UIScreen.main.bounds.width - 338) / 2)
                     }
-                }
-                .scrollDisabled(true)
-                .onChange(of: currentIndex) { _, newValue in
-                    withAnimation {
-                        // learningKanjis의 id를 사용하여 스크롤합니다.
-                        proxy.scrollTo(learningKanjis[newValue].id, anchor: .center)
+                    .scrollDisabled(true)
+                    .onChange(of: currentIndex) { _, newValue in
+                        withAnimation {
+                            // learningKanjis의 id를 사용하여 스크롤합니다.
+                            proxy.scrollTo(learningKanjis[newValue].id, anchor: .center)
+                        }
                     }
-                }
-                .gesture(
-                    DragGesture()
-                        .onEnded { value in
-                            let threshold: CGFloat = 50
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                if value.translation.width > threshold && currentIndex > 0 {
-                                    currentIndex -= 1
-                                } else if value.translation.width < -threshold && currentIndex < learningKanjis.count - 1 {
-                                    currentIndex += 1
+                    .gesture(
+                        DragGesture()
+                            .onEnded { value in
+                                let threshold: CGFloat = 50
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    if value.translation.width > threshold && currentIndex > 0 {
+                                        currentIndex -= 1
+                                    } else if value.translation.width < -threshold && currentIndex < learningKanjis.count - 1 {
+                                        currentIndex += 1
+                                    }
                                 }
                             }
-                        }
-                )
+                    )
+                }
+                
+                Spacer()
+                NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
+                    .padding()
+                Spacer()
             }
-            
-            Spacer()
-            NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
-                .padding()
-            Spacer()
         }
+        
     }
 }
 

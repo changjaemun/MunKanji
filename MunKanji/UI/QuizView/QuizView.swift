@@ -60,7 +60,6 @@ struct QuizView: View {
                 .padding()
             }
         }
-        .navigationTitle("1회차")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext)

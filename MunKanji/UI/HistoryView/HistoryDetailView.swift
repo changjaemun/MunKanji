@@ -29,19 +29,24 @@ struct HistoryDetailView: View {
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(filteredKanjis, id: \.self) { kanji in
-                    Button {
-                        selectedKanji = kanji
-                    } label: {
-                        MiniKanjiCardView(kanji: kanji)
+        ZStack{
+            Color.backGround
+                .ignoresSafeArea()
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(filteredKanjis, id: \.self) { kanji in
+                        Button {
+                            selectedKanji = kanji
+                        } label: {
+                            MiniKanjiCardView(kanji: kanji)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
+                .padding()
             }
-            .padding()
         }
+        
         .navigationTitle(title)
         .sheet(item: $selectedKanji) { kanji in
             KanjiCardView(kanji: kanji)
