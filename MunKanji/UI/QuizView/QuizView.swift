@@ -30,7 +30,7 @@ struct QuizView: View {
     
     var body: some View {
         ZStack{
-            Color.backGround.ignoresSafeArea()
+            //Color.backGround.ignoresSafeArea()
             
             if learningKanjis.isEmpty {
                 ProgressView()
@@ -44,12 +44,12 @@ struct QuizView: View {
                     // 진행률 표시
                     Text("\(viewModel.currentIndex + 1) / \(viewModel.learningKanjis.count)")
                         .foregroundStyle(.fontGray)
-                        .font(.system(size: 24, weight: .semibold))
+                        .font(.pretendardSemiBold(size: 24))
                     
                     // 현재 한자 표시
                     Text(viewModel.currentKanji)
                         .foregroundStyle(.main)
-                        .font(.system(size: 80, weight: .semibold))
+                        .font(.pretendardSemiBold(size: 80))
                     
                     // 보기 그리드
                     QuizGridView(viewModel: viewModel)
@@ -60,7 +60,6 @@ struct QuizView: View {
                 .padding()
             }
         }
-        .navigationTitle("1회차")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext)

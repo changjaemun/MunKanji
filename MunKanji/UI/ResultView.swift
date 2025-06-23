@@ -33,7 +33,7 @@ struct ResultView: View {
                 ZStack{
                     Rectangle()
                         .foregroundColor(.white)
-                      .frame(width: 331, height: 185)
+                      .frame(width: 331, height: 211)
                       .cornerRadius(20)
                       .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                     VStack(spacing: 20){
@@ -70,7 +70,6 @@ struct ResultView: View {
                 }
                 .padding(.bottom, 84)
             }
-            .navigationTitle("1회차")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
         }

@@ -60,6 +60,7 @@ struct MainView: View {
             VStack{
                 Text("\(allStudyLogs.filter{ log in log.status == .correct}.count)")
                     .font(.pretendardBold(size: 130))
+                    .foregroundStyle(.main)
                     .padding(.vertical, 169)
                 NavyNavigationLink(title: "학습하기", value: NavigationTarget.studyIntro)
                 GrayNavigationLink(title: "기록보기", value: NavigationTarget.history)

@@ -48,11 +48,11 @@ struct KanjiCardView: View {
                         VStack(alignment:.leading){
                             Text(kanji.firstWord ?? "")
                                 .foregroundStyle(.main)
-                                .font(.pretendardRegular(size: 24))
+                                .font(.pretendardRegular(size: 20))
                                 .padding(10)
                             Text(kanji.secondWord ?? "")
                                 .foregroundStyle(.main)
-                                .font(.pretendardRegular(size: 24))
+                                .font(.pretendardRegular(size: 20))
                                 .padding(10)
                         }.padding()
                         
