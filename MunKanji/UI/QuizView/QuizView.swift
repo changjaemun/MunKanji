@@ -30,7 +30,7 @@ struct QuizView: View {
     
     var body: some View {
         ZStack{
-            Color.backGround.ignoresSafeArea()
+            //Color.backGround.ignoresSafeArea()
             
             if learningKanjis.isEmpty {
                 ProgressView()
