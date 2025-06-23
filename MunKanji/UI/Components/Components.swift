@@ -8,43 +8,41 @@
 import SwiftUI
 
 
-struct NavyNavigationLink<Destination: View>:View {
+struct NavyNavigationLink<Value: Hashable>: View {
     let title: String
-    let destination: Destination
+    let value: Value
     
     var body: some View {
-        NavigationLink {
-            destination
-        } label: {
+        NavigationLink(value: value) {
             ZStack{
                 Rectangle()
                     .frame(width: 285, height: 68)
-                    .foregroundStyle(.indigo)
+                    .foregroundStyle(.main)
                     .cornerRadius(20)
-                Text("\(title)")
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                Text(title)
                     .foregroundStyle(.white)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
 }
 
-struct GrayNavigationLink<Destination: View>:View {
+struct GrayNavigationLink<Value: Hashable>: View {
     let title: String
-    let destination: Destination
+    let value: Value
     
     var body: some View {
-        NavigationLink {
-            destination
-        } label: {
+        NavigationLink(value: value) {
             ZStack{
                 Rectangle()
                     .frame(width: 285, height: 60)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.backGround)
                     .cornerRadius(20)
-                Text("\(title)")
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                Text(title)
                     .foregroundStyle(.black)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
@@ -55,18 +53,21 @@ struct NavyButton: View {
     let action: () -> Void
     
     var body: some View {
-        Button{
-            action()
-        }label: {
+        Button(action: action) {
             ZStack{
                 Rectangle()
                     .frame(width: 285, height: 68)
-                    .foregroundStyle(.indigo)
+                    .foregroundStyle(.main)
                     .cornerRadius(20)
-                Text("\(title)")
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                Text(title)
                     .foregroundStyle(.white)
-                    .font(.system(size: 24))
+                    .font(.pretendardRegular(size: 24))
             }
         }
     }
 }
+
+#Preview(body: {
+    NavyNavigationLink(title: "테스트 버튼", value: "test")
+})
