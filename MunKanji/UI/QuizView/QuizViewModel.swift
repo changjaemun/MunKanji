@@ -69,7 +69,7 @@ class QuizViewModel: ObservableObject {
         self.isCorrect = status
         
         // 다음 문제로 이동 또는 퀴즈 완료
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.moveToNextQuestion()
         }
     }

@@ -44,7 +44,7 @@ struct LearningView: View {
                                 KanjiCardView(kanji: kanji)
                                     .scaleEffect(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.95)
                                     .opacity(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.6)
-                                    .animation(.easeInOut(duration: 0.3), value: currentIndex)
+                                    .animation(.easeInOut(duration: 0.1), value: currentIndex)
                                     .id(kanji.id)
                             }
                             
@@ -62,7 +62,7 @@ struct LearningView: View {
                         DragGesture()
                             .onEnded { value in
                                 let threshold: CGFloat = 50
-                                withAnimation(.easeInOut(duration: 0.3)) {
+                                withAnimation(.easeInOut(duration: 0.1)) {
                                     if value.translation.width > threshold && currentIndex > 0 {
                                         currentIndex -= 1
                                     } else if value.translation.width < -threshold && currentIndex < learningKanjis.count - 1 {
