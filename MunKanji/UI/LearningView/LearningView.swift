@@ -11,6 +11,7 @@ import SwiftData
 struct LearningView: View {
     @State private var currentIndex: Int = 0
     @Binding var path: NavigationPath
+    @Environment(\.dismiss) private var dismiss
     
     @Query
     private var kanjis: [Kanji]
@@ -77,6 +78,12 @@ struct LearningView: View {
                 NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
                     .padding()
                 Spacer()
+            }
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    backButton(action: {dismiss()})
+                }
             }
         }
         

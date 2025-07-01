@@ -12,6 +12,7 @@ struct HistoryDetailView: View {
     let title: String
     let statusFilter: [StudyStatus]
     
+    @Environment(\.dismiss) private var dismiss
     @Query private var allKanjis: [Kanji]
     @Query private var allStudyLogs: [StudyLog]
     
@@ -48,6 +49,12 @@ struct HistoryDetailView: View {
         }
         
         .navigationTitle(title)
+        .navigationBarBackButtonHidden()
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarLeading) {
+                backButton(action: {dismiss()})
+            }
+        })
         .sheet(item: $selectedKanji) { kanji in
             ZStack{
                 Color.backGround
