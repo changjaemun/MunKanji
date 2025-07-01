@@ -11,6 +11,7 @@ import SwiftData
 struct LearningView: View {
     @State private var currentIndex: Int = 0
     @Binding var path: NavigationPath
+    @Environment(\.dismiss) private var dismiss
     
     @Query
     private var kanjis: [Kanji]
@@ -44,7 +45,7 @@ struct LearningView: View {
                                 KanjiCardView(kanji: kanji)
                                     .scaleEffect(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.95)
                                     .opacity(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.6)
-                                    .animation(.easeInOut(duration: 0.3), value: currentIndex)
+                                    .animation(.easeInOut(duration: 0.1), value: currentIndex)
                                     .id(kanji.id)
                             }
                             
@@ -62,7 +63,7 @@ struct LearningView: View {
                         DragGesture()
                             .onEnded { value in
                                 let threshold: CGFloat = 50
-                                withAnimation(.easeInOut(duration: 0.3)) {
+                                withAnimation(.easeInOut(duration: 0.1)) {
                                     if value.translation.width > threshold && currentIndex > 0 {
                                         currentIndex -= 1
                                     } else if value.translation.width < -threshold && currentIndex < learningKanjis.count - 1 {
@@ -77,6 +78,12 @@ struct LearningView: View {
                 NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
                     .padding()
                 Spacer()
+            }
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    backButton(action: {dismiss()})
+                }
             }
         }
         

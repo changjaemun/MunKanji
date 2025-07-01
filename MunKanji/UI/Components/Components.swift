@@ -68,6 +68,20 @@ struct NavyButton: View {
     }
 }
 
+struct backButton: View {
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action){
+            Image(systemName: "chevron.left")
+                .resizable()
+                .foregroundStyle(.accent)
+        }
+    }
+}
+func test() -> Void{
+    //
+}
 #Preview(body: {
-    NavyNavigationLink(title: "테스트 버튼", value: "test")
+    backButton(action: test)
 })
