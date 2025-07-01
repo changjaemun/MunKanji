@@ -11,6 +11,7 @@ import SwiftData
 struct HistoryView: View {
     
     @Query private var allStudyLogs: [StudyLog]
+    @Environment(\.dismiss) private var dismiss
     
     private var correctCount: Int {
         allStudyLogs.filter { $0.status == .correct }.count
@@ -66,7 +67,12 @@ struct HistoryView: View {
                 .padding(.bottom, 160)
             }
         }
-        
+        .navigationBarBackButtonHidden()
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarLeading) {
+                backButton(action: {dismiss()})
+            }
+        })
         .navigationTitle("기록")
     }
 }

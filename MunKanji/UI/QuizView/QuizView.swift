@@ -16,6 +16,7 @@ struct QuizView: View {
     @Binding var path: NavigationPath
     let learningStudyLogs: [StudyLog]
     
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel: QuizViewModel = QuizViewModel()
     
@@ -61,6 +62,14 @@ struct QuizView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar(content: {
+            if !viewModel.isFinished {
+                ToolbarItem(placement: .topBarLeading) {
+                    backButton(action: {dismiss()})
+                }
+            }
+        })
         .onAppear {
             viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext)
         }

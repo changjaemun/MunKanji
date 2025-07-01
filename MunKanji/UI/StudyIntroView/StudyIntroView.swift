@@ -12,6 +12,7 @@ struct StudyIntroView: View {
     
     @EnvironmentObject var userSettings: UserSettings
     @Binding var path: NavigationPath
+    @Environment(\.dismiss) private var dismiss
     
     @Query
     var studyLogs: [StudyLog]
@@ -61,6 +62,11 @@ struct StudyIntroView: View {
                 }
                 .padding(.vertical, 195)
                 NavyNavigationLink(title: "학습시작", value: NavigationTarget.learning(learningStudyLogs))
+            }.navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    backButton(action: { dismiss() })
+                }
             }
         }
     }
