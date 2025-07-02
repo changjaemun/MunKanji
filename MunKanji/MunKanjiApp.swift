@@ -17,6 +17,9 @@ struct MunKanjiApp: App {
     
     // 3. 앱이 시작될 때 '데이터 도서관'을 설정하는 초기화 코드를 작성합니다.
     init() {
+        
+        UIView.appearance().overrideUserInterfaceStyle = .light //라이트모드 고정
+        
         do {
             // 우리 앱이 관리할 데이터 모델들의 목록(Schema)을 정의합니다.
             let schema = Schema([
