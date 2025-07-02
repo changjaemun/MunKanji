@@ -73,9 +73,14 @@ struct backButton: View {
     
     var body: some View {
         Button(action: action){
-            Image(systemName: "chevron.left")
-                .resizable()
-                .foregroundStyle(.accent)
+            ZStack{
+                Rectangle()
+                    .foregroundStyle(.clear)
+                Image(systemName: "chevron.left")
+                    .resizable()
+                    .foregroundStyle(.accent)
+            }
+            
         }
     }
 }
