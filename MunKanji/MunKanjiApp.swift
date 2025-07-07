@@ -44,6 +44,7 @@ struct MunKanjiApp: App {
             MainView()
                 .environmentObject(userSettings)
                 .onAppear {
+                    DataInitializer.migrateToNewKanjiDataIfNeeded(modelContext: container.mainContext)
                     DataInitializer.seedInitialData(modelContext: container.mainContext)
                 }
         }.modelContainer(container)
