@@ -35,49 +35,23 @@ struct LearningView: View {
                 .ignoresSafeArea()
             VStack {
                 Spacer()
-                ScrollViewReader { proxy in
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack(spacing: 10) {
-                            // 양쪽 여백 줘서 중앙 정렬
-                            Spacer().frame(width: (UIScreen.main.bounds.width - 360) / 2)
-                            
-                            ForEach(learningKanjis, id: \.id) { kanji in
-                                KanjiCardView(kanji: kanji)
-                                    .scaleEffect(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.95)
-                                    .opacity(learningKanjis.firstIndex(of: kanji) == currentIndex ? 1.0 : 0.6)
-                                    .animation(.easeInOut(duration: 0.1), value: currentIndex)
-                                    .id(kanji.id)
-                            }
-                            
-                            Spacer().frame(width: (UIScreen.main.bounds.width - 338) / 2)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        Spacer().frame(width: 20)
+                        ForEach(learningKanjis, id: \.id) { kanji in
+                            KanjiCardView(kanji: kanji)
+                                .id(kanji.id)
                         }
+                        Spacer().frame(width: 20)
                     }
-                    .scrollDisabled(true)
-                    .onChange(of: currentIndex) { _, newValue in
-                        withAnimation {
-                            // learningKanjis의 id를 사용하여 스크롤합니다.
-                            proxy.scrollTo(learningKanjis[newValue].id, anchor: .center)
-                        }
-                    }
-                    .gesture(
-                        DragGesture()
-                            .onEnded { value in
-                                let threshold: CGFloat = 50
-                                withAnimation(.easeInOut(duration: 0.1)) {
-                                    if value.translation.width > threshold && currentIndex > 0 {
-                                        currentIndex -= 1
-                                    } else if value.translation.width < -threshold && currentIndex < learningKanjis.count - 1 {
-                                        currentIndex += 1
-                                    }
-                                }
-                            }
-                    )
+                    .padding()
+                    .scrollTargetLayout()
                 }
-                
+                .scrollTargetBehavior(.viewAligned)
                 Spacer()
                 NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
                     .padding()
-                Spacer()
+                    .padding(.bottom, 20)
             }
             .navigationBarBackButtonHidden()
             .toolbar {
@@ -88,9 +62,4 @@ struct LearningView: View {
         }
         
     }
-}
-
-#Preview {
-    @State var path = NavigationPath()
-    return LearningView(path: $path, learningStudyLogs: Dummy.studylog)
 }

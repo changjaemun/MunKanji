@@ -9,8 +9,6 @@ import Foundation
 struct Word: Codable {
     
     var grade: String?
-    var firstWord: String?
-    var secondWord: String?
     var kanji: String?
     var korean: String?
     var sound: String?
@@ -18,12 +16,10 @@ struct Word: Codable {
     
     enum CodingKeys: String, CodingKey {
         case grade, kanji, korean, sound, meaning
-        case firstWord = "word1"
-        case secondWord = "word2"
     }
     
     static var allWords:[Word] = {
-        guard let load = JsonManager.shared.load(fileName: "newwords") else{
+        guard let load = JsonManager.shared.load(fileName: "kanji_2136") else{
             print("load error")
             return []
         }
