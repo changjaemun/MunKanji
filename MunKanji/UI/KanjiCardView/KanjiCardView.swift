@@ -7,7 +7,7 @@ struct KanjiCardView: View {
                 ZStack{
                     Rectangle()
                         .foregroundStyle(.white)
-                      .frame(width: 338, height: 400)
+                      .frame(width: 338, height: 360)
                       .cornerRadius(20)
                       .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                     VStack{
@@ -23,20 +23,18 @@ struct KanjiCardView: View {
                         Divider()
                             .frame(width: 310)
                         HStack{
-                            VStack(alignment:.leading){
+                            VStack(alignment:.leading, spacing: 20){
                                 Text("음: \(kanji.sound)")
                                     .foregroundStyle(.main)
                                     .font(.pretendardRegular(size: 24))
-                                    .padding(10)
                                 Text("훈: \(kanji.meaning)")
                                     .foregroundStyle(.main)
                                     .font(.pretendardRegular(size: 24))
-                                    .padding(10)
                             }.padding()
                             Spacer()
-                        }
+                        }.padding()
                         
-                    }.frame(width: 338, height: 400)
+                    }.frame(width: 338, height: 388)
                     
                 }
         }
