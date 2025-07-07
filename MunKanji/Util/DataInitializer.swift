@@ -27,7 +27,7 @@ class DataInitializer {
             let words: [Word] = Word.allWords
             // 변환 및 저장
             for (index, word) in words.enumerated(){
-                let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "", firstWord: word.firstWord, secondWord: word.secondWord)
+                let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "")
                 modelContext.insert(newKanji)
                 
                 //newKanji와 짝이 될 StudyLog 객체 생성 및 저장
