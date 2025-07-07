@@ -32,7 +32,7 @@
 		A1BE55AF2D9AD58800DE62D6 /* Exceptions for "MunKanji" folder in "MunKanjiTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Json/excharacters.json,
+				Json/kanji_2136.json,
 				Json/newwords.json,
 			);
 			target = A1BE559F2D9AB26A00DE62D6 /* MunKanjiTests */;
