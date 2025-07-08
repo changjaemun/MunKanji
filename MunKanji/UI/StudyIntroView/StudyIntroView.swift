@@ -11,6 +11,8 @@ import SwiftData
 struct StudyIntroView: View {
     
     @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject var userCurrentSession: UserCurrentSession
+    
     @Binding var path: NavigationPath
     @Environment(\.dismiss) private var dismiss
     
@@ -63,6 +65,7 @@ struct StudyIntroView: View {
                 .padding(.vertical, 195)
                 NavyNavigationLink(title: "학습시작", value: NavigationTarget.learning(learningStudyLogs))
             }.navigationBarBackButtonHidden()
+                .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     backButton(action: { dismiss() })
@@ -76,4 +79,5 @@ struct StudyIntroView: View {
     @State var path = NavigationPath()
     return StudyIntroView(path: $path)
         .environmentObject(UserSettings())
+        .environmentObject(UserCurrentSession())
 }
