@@ -18,6 +18,7 @@ struct QuizView: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject var userCurrentSession: UserCurrentSession
     @StateObject private var viewModel: QuizViewModel = QuizViewModel()
     
     var learningKanjis:[Kanji]{

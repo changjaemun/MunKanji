@@ -5,6 +5,7 @@ import SwiftData
 struct QuizResult {
     let kanjiID: Int
     let newStatus: StudyStatus
+    let currentSession: Int
 }
 
 class QuizViewModel: ObservableObject {
@@ -15,6 +16,7 @@ class QuizViewModel: ObservableObject {
     @Published var choices: [String] = []
     @Published var showResult: Bool = false
     @Published var selectedAnswer: String = "" // 선택된 답안 추적
+    @Published var currentSession: Int = 0
     
     var allKanjis: [Kanji] = []
     var learningKanjis: [Kanji] = []
@@ -62,7 +64,7 @@ class QuizViewModel: ObservableObject {
         let status: StudyStatus = isCorrect ? .correct : .incorrect
         
         // 결과 저장
-        let result = QuizResult(kanjiID: learningKanjis[currentIndex].id, newStatus: status)
+        let result = QuizResult(kanjiID: learningKanjis[currentIndex].id, newStatus: status, currentSession: currentSession)
         results.append(result)
         
         // UI 상태 업데이트
@@ -105,33 +107,48 @@ class QuizViewModel: ObservableObject {
             let descriptor = FetchDescriptor<StudyLog>(
                 predicate: #Predicate<StudyLog> { $0.kanjiID == idToFind }
             )
-            
             do {
                 let existingLogs = try modelContext.fetch(descriptor)
-                
                 if let existingLog = existingLogs.first {
                     // 기존 로그 업데이트
                     existingLog.status = result.newStatus
                     existingLog.lastStudiedDate = Date()
+                    existingLog.lastStudiedSession = currentSession
+                    if result.newStatus == .correct {
+                        let reviewSession = calReviewSession(lastStudiedSession: currentSession, reviewCount: existingLog.reviewCount)
+                        existingLog.nextReviewSession = reviewSession
+                    }
                 } else {
                     // 새 로그 생성
                     let newLog = StudyLog(kanjiID: result.kanjiID)
                     newLog.status = result.newStatus
                     newLog.lastStudiedDate = Date()
                     modelContext.insert(newLog)
+                    print("주의: 기존 study로그가 없어 새로 생성했습니다.")
                 }
             } catch {
                 print("Error saving quiz results: \(error)")
             }
         }
-        
-        // 변경사항 저장
         do {
             try modelContext.save()
             print("Quiz results saved successfully")
         } catch {
             print("Error saving context: \(error)")
         }
+    }
+    
+    func calReviewSession(lastStudiedSession:Int ,reviewCount: Int) -> Int{
+        var reviewSession:Int{
+            switch reviewCount {
+            case 0: return lastStudiedSession + 3
+            case 1: return lastStudiedSession + 5
+            case 2: return lastStudiedSession + 7
+            default:
+                return 0 //더이상 복습할 필요 없음
+            }
+        }
+        return reviewSession
     }
     
     // 현재 문제의 정답 반환
