@@ -59,9 +59,8 @@ struct HistoryDetailView: View {
             ZStack{
                 Color.backGround
                     .ignoresSafeArea()
-                KanjiCardView(kanji: kanji)
+                KanjiCardView(kanji: kanji, studyLog: allStudyLogs.first { $0.kanjiID == kanji.id } ?? StudyLog(kanjiID: kanji.id))
             }
-            
         }
     }
 }

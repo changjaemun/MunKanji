@@ -40,7 +40,7 @@ struct LearningView: View {
                     HStack {
                         Spacer().frame(width: 20)
                         ForEach(learningKanjis, id: \.id) { kanji in
-                            KanjiCardView(kanji: kanji)
+                            KanjiCardView(kanji: kanji, studyLog: learningStudyLogs.filter{$0.kanjiID == kanji.id}.first!)
                                 .id(kanji.id)
                         }
                         Spacer().frame(width: 20)

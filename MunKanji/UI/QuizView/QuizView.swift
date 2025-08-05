@@ -72,12 +72,12 @@ struct QuizView: View {
             }
         })
         .onAppear {
-            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext)
+            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext, currentSession: userCurrentSession.currentSessionNumber)
         }
     }
 }
 
 #Preview {
     @State var path = NavigationPath()
-    return QuizView(path: $path, learningStudyLogs: Dummy.studylog)
+    return QuizView(path: $path, learningStudyLogs: Dummy.studylog).environmentObject(UserCurrentSession())
 }

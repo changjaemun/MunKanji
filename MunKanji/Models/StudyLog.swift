@@ -19,14 +19,25 @@ final class StudyLog {
     // 마지막으로 퀴즈를 푼 날짜
     var lastStudiedDate: Date?
     
-    // 마지막으로 퀴즈를 푼 세션
-    var lastStudiedSession: Int?
-    
     // 복습 단계를 관리하는 카운트
     var reviewCount: Int = 0
     
-    // 다음 복습이 예정된 세션 번호
-    var nextReviewSession: Int?
+    // 다음 리뷰에 나올 날짜
+    var nextReviewDate: Date? {
+        guard let base = lastStudiedDate else { return nil } // 마지막으로 퀴즈 푼 날짜 기준
+        
+        // 몇 번 풀었는지에 따라 날짜 더하는 로직
+        let daysToAdd: Int
+        switch reviewCount {
+        case 0: daysToAdd = 0
+        case 1: daysToAdd = 1
+        case 2: daysToAdd = 3
+        case 3: daysToAdd = 7
+        default: daysToAdd = 14
+        }
+        
+        return Calendar.current.date(byAdding: .day, value: daysToAdd, to: base)
+    }
     
     
     init(kanjiID: Int) {

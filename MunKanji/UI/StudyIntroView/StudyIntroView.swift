@@ -20,16 +20,45 @@ struct StudyIntroView: View {
     var studyLogs: [StudyLog]
     
     private var learningStudyLogs:[StudyLog]{
-        Array(studyLogs.filter{$0.status != .correct}.sorted(){$0.kanjiID < $1.kanjiID}.prefix(userSettings.kanjiCountPerSession))
+        
+        let incorrectStudyLogs: [StudyLog] = {
+            return studyLogs
+                .filter { $0.status == .incorrect }
+                .sorted { $0.kanjiID < $1.kanjiID }
+        }()
+        
+        let reviewStudyLogs: [StudyLog] = {
+            return studyLogs
+                .filter {
+                    if let nextReviewDate = $0.nextReviewDate {
+                        return nextReviewDate <= Date()
+                    }
+                    return false
+                }
+                .sorted { $0.kanjiID < $1.kanjiID }
+        }()
+        
+        let unseenStudyLogs: [StudyLog] = {
+            return studyLogs
+                .filter { $0.status == .unseen}
+                .sorted { $0.kanjiID < $1.kanjiID }
+        }()
+        
+        let tray = Array(incorrectStudyLogs + reviewStudyLogs + unseenStudyLogs).prefix(userSettings.kanjiCountPerSession)
+        
+        return Array(tray)
     }
     
     private var inCorrectKanjisCount:Int{
         learningStudyLogs.filter{$0.status == .incorrect}.count
     }
     
+    private var reviewKanjisCount:Int{
+        learningStudyLogs.filter{ if $0.nextReviewDate != nil {return true} else {return false}}.count
+    }
+    
     private var unseenKanjisCount:Int{
-        // prefix로 잘린 learningStudyLogs의 실제 개수에서 틀린 개수를 빼야 합니다.
-        learningStudyLogs.count - inCorrectKanjisCount
+        learningStudyLogs.filter{$0.status == .unseen}.count
     }
     
     var body: some View {
@@ -56,6 +85,15 @@ struct StudyIntroView: View {
                             Text("틀렸던 한자")
                                 .font(.pretendardRegular(size: 14))
                             Text("\(inCorrectKanjisCount)개")
+                                .padding(.vertical, 3)
+                                .foregroundStyle(.point)
+                                .font(.pretendardSemiBold(size: 48))
+                        }
+                        
+                        VStack{
+                            Text("리뷰 한자")
+                                .font(.pretendardRegular(size: 14))
+                            Text("\(reviewKanjisCount)개")
                                 .padding(.vertical, 3)
                                 .foregroundStyle(.point)
                                 .font(.pretendardSemiBold(size: 48))
