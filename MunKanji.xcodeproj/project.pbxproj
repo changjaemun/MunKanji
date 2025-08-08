@@ -243,14 +243,13 @@
 		A138209B2E45CB58000D1EF9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A13820872E45CB58000D1EF9 /* Components */,
-				A138208A2E45CB58000D1EF9 /* HistoryView */,
-				A138208D2E45CB58000D1EF9 /* KanjiCardView */,
-				A138208F2E45CB58000D1EF9 /* LearningView */,
+				A13820CB2E45CBEE000D1EF9 /* SubView */,
 				A13820922E45CB58000D1EF9 /* MainView */,
-				A13820972E45CB58000D1EF9 /* QuizView */,
 				A13820992E45CB58000D1EF9 /* StudyIntroView */,
-				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
+				A138208F2E45CB58000D1EF9 /* LearningView */,
+				A13820972E45CB58000D1EF9 /* QuizView */,
+				A13820CC2E45CC05000D1EF9 /* ResultView */,
+				A138208A2E45CB58000D1EF9 /* HistoryView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -271,14 +270,31 @@
 				A138207B2E45CB58000D1EF9 /* Font */,
 				A138207E2E45CB58000D1EF9 /* Json */,
 				A13820832E45CB58000D1EF9 /* Models */,
-				A13820852E45CB58000D1EF9 /* Preview Content */,
 				A138209B2E45CB58000D1EF9 /* UI */,
 				A138209F2E45CB58000D1EF9 /* Util */,
+				A13820852E45CB58000D1EF9 /* Preview Content */,
 				A13820A02E45CB58000D1EF9 /* Assets.xcassets */,
 				A13820A12E45CB58000D1EF9 /* Info.plist */,
 				A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */,
 			);
 			path = MunKanji;
+			sourceTree = "<group>";
+		};
+		A13820CB2E45CBEE000D1EF9 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A13820872E45CB58000D1EF9 /* Components */,
+				A138208D2E45CB58000D1EF9 /* KanjiCardView */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A13820CC2E45CC05000D1EF9 /* ResultView */ = {
+			isa = PBXGroup;
+			children = (
+				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
+			);
+			path = ResultView;
 			sourceTree = "<group>";
 		};
 		A18F651B2D93D4A2003C5C6E = {
