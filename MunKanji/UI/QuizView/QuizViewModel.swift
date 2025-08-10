@@ -15,6 +15,7 @@ class QuizViewModel: ObservableObject {
     @Published var choices: [String] = []
     @Published var showResult: Bool = false
     @Published var selectedAnswer: String = "" // 선택된 답안 추적
+    @Published var currentSession: Int = 0
     
     var allKanjis: [Kanji] = []
     var learningKanjis: [Kanji] = []
@@ -24,11 +25,11 @@ class QuizViewModel: ObservableObject {
     }
     
     // 초기화 및 퀴즈 설정
-    func setup(learningKanjis: [Kanji], allKanjis: [Kanji], modelContext: ModelContext) {
+    func setup(learningKanjis: [Kanji], allKanjis: [Kanji], modelContext: ModelContext, currentSession: Int) {
         self.allKanjis = allKanjis
         self.modelContext = modelContext
         self.learningKanjis = learningKanjis
-        
+        self.currentSession = currentSession
         // 첫 문제의 보기 생성
         generateChoices()
     }
@@ -55,7 +56,7 @@ class QuizViewModel: ObservableObject {
         choices.shuffle()
     }
     
-    // 답안 선택 시 호출
+    //MARK: --  답안 선택 시 호출
     func selectAnswer(selectedAnswer: String) {
         self.selectedAnswer = selectedAnswer
         var isCorrect = selectedAnswer == learningKanjis[currentIndex].korean
@@ -97,40 +98,43 @@ class QuizViewModel: ObservableObject {
     
     // SwiftData에 결과 저장
     func saveResultsToSwiftData() {
-        guard let modelContext = modelContext else { return }
-        
-        for result in results {
-            let idToFind = result.kanjiID
-            // 기존 StudyLog 찾기
-            let descriptor = FetchDescriptor<StudyLog>(
-                predicate: #Predicate<StudyLog> { $0.kanjiID == idToFind }
-            )
+        guard let context = modelContext else { return }
             
-            do {
-                let existingLogs = try modelContext.fetch(descriptor)
-                
-                if let existingLog = existingLogs.first {
-                    // 기존 로그 업데이트
-                    existingLog.status = result.newStatus
-                    existingLog.lastStudiedDate = Date()
-                } else {
-                    // 새 로그 생성
-                    let newLog = StudyLog(kanjiID: result.kanjiID)
-                    newLog.status = result.newStatus
-                    newLog.lastStudiedDate = Date()
-                    modelContext.insert(newLog)
-                }
-            } catch {
-                print("Error saving quiz results: \(error)")
+            for result in results {
+                updateStudyLog(result: result, context: context)
             }
-        }
-        
-        // 변경사항 저장
+            do {
+                try context.save()
+                print("✅ Quiz results saved")
+            } catch {
+                print("❌ Context save error: \(error)")
+            }
+    }
+    
+    //MARK: -- result 결과에 따라 StudyLog를 업데이트 하는 함수
+    func updateStudyLog(result: QuizResult, context: ModelContext){
+        let idToFind = result.kanjiID
+        let descriptor = FetchDescriptor<StudyLog>(
+            predicate: #Predicate { $0.kanjiID == idToFind }
+        )
         do {
-            try modelContext.save()
-            print("Quiz results saved successfully")
+            let studyLogs = try context.fetch(descriptor)
+            let studyLog = studyLogs.first ?? StudyLog(kanjiID: idToFind)
+            
+            studyLog.status = result.newStatus
+            
+            if result.newStatus == .correct {
+                studyLog.reviewCount += 1
+                studyLog.lastStudiedDate = Date()
+            } else {
+                studyLog.lastStudiedDate = nil
+                if studyLog.reviewCount > 0 {
+                    studyLog.reviewCount -= 1
+                }
+            }
+            
         } catch {
-            print("Error saving context: \(error)")
+            print("❌ StudyLog 업데이트 실패: \(error)")
         }
     }
     

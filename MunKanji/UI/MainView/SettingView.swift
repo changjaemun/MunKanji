@@ -34,28 +34,6 @@ struct SettingView: View {
                     .pickerStyle(.segmented)
                     .padding(.horizontal)
                 }
-                VStack {
-                    HStack {
-                        Text("복습 주기 : 현재 지원하지 않는 기능입니다.")
-                            .foregroundStyle(.fontGray)
-                            .padding()
-                        Spacer()
-                    }
-                    Picker(selection: $selectedReviewCycleCount, label: Text("복습주기")) {
-                        Text("2").tag(2)
-                        Text("3").tag(3)
-                        Text("4").tag(4)
-                    }
-                    .disabled(true)
-                    .pickerStyle(.segmented)
-                    .padding(.horizontal)
-                    HStack {
-                        Text(reviewCycleExplain)
-                            .font(.pretendardRegular(size: 12))
-                            .foregroundStyle(.gray)
-                            .padding(.horizontal)
-                    }
-                }
                 Spacer()
                 NavyButton(title: "설정완료") {
                     showSheet = false

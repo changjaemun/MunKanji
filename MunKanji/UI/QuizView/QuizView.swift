@@ -18,6 +18,7 @@ struct QuizView: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject var userCurrentSession: UserCurrentSession
     @StateObject private var viewModel: QuizViewModel = QuizViewModel()
     
     var learningKanjis:[Kanji]{
@@ -71,12 +72,12 @@ struct QuizView: View {
             }
         })
         .onAppear {
-            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext)
+            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext, currentSession: userCurrentSession.currentSessionNumber)
         }
     }
 }
 
 #Preview {
     @State var path = NavigationPath()
-    return QuizView(path: $path, learningStudyLogs: Dummy.studylog)
+    return QuizView(path: $path, learningStudyLogs: Dummy.studylog).environmentObject(UserCurrentSession())
 }

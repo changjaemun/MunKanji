@@ -6,6 +6,47 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A13820A42E45CB58000D1EF9 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138207A2E45CB58000D1EF9 /* Font.swift */; };
+		A13820A52E45CB58000D1EF9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138207F2E45CB58000D1EF9 /* Dummy.swift */; };
+		A13820A62E45CB58000D1EF9 /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820802E45CB58000D1EF9 /* Kanji.swift */; };
+		A13820A72E45CB58000D1EF9 /* StudyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820812E45CB58000D1EF9 /* StudyLog.swift */; };
+		A13820A82E45CB58000D1EF9 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820822E45CB58000D1EF9 /* Word.swift */; };
+		A13820A92E45CB58000D1EF9 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820862E45CB58000D1EF9 /* Components.swift */; };
+		A13820AA2E45CB58000D1EF9 /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */; };
+		A13820AB2E45CB58000D1EF9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820892E45CB58000D1EF9 /* HistoryView.swift */; };
+		A13820AC2E45CB58000D1EF9 /* KanjiCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138208B2E45CB58000D1EF9 /* KanjiCardView.swift */; };
+		A13820AD2E45CB58000D1EF9 /* MiniKanjiCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138208C2E45CB58000D1EF9 /* MiniKanjiCardView.swift */; };
+		A13820AE2E45CB58000D1EF9 /* LearningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138208E2E45CB58000D1EF9 /* LearningView.swift */; };
+		A13820AF2E45CB58000D1EF9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820902E45CB58000D1EF9 /* MainView.swift */; };
+		A13820B02E45CB58000D1EF9 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820912E45CB58000D1EF9 /* SettingView.swift */; };
+		A13820B12E45CB58000D1EF9 /* QuizCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820932E45CB58000D1EF9 /* QuizCardView.swift */; };
+		A13820B22E45CB58000D1EF9 /* QuizGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820942E45CB58000D1EF9 /* QuizGridView.swift */; };
+		A13820B32E45CB58000D1EF9 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820952E45CB58000D1EF9 /* QuizView.swift */; };
+		A13820B42E45CB58000D1EF9 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820962E45CB58000D1EF9 /* QuizViewModel.swift */; };
+		A13820B52E45CB58000D1EF9 /* StudyIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820982E45CB58000D1EF9 /* StudyIntroView.swift */; };
+		A13820B62E45CB58000D1EF9 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138209A2E45CB58000D1EF9 /* ResultView.swift */; };
+		A13820B72E45CB58000D1EF9 /* DataInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138209C2E45CB58000D1EF9 /* DataInitializer.swift */; };
+		A13820B82E45CB58000D1EF9 /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138209D2E45CB58000D1EF9 /* JsonManager.swift */; };
+		A13820B92E45CB58000D1EF9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138209E2E45CB58000D1EF9 /* UserInfo.swift */; };
+		A13820BA2E45CB58000D1EF9 /* MunKanjiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */; };
+		A13820BB2E45CB58000D1EF9 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820702E45CB58000D1EF9 /* Pretendard-Black.otf */; };
+		A13820BC2E45CB58000D1EF9 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820712E45CB58000D1EF9 /* Pretendard-Bold.otf */; };
+		A13820BD2E45CB58000D1EF9 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820722E45CB58000D1EF9 /* Pretendard-ExtraBold.otf */; };
+		A13820BE2E45CB58000D1EF9 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820732E45CB58000D1EF9 /* Pretendard-ExtraLight.otf */; };
+		A13820BF2E45CB58000D1EF9 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820742E45CB58000D1EF9 /* Pretendard-Light.otf */; };
+		A13820C02E45CB58000D1EF9 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820752E45CB58000D1EF9 /* Pretendard-Medium.otf */; };
+		A13820C12E45CB58000D1EF9 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820762E45CB58000D1EF9 /* Pretendard-Regular.otf */; };
+		A13820C22E45CB58000D1EF9 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820772E45CB58000D1EF9 /* Pretendard-SemiBold.otf */; };
+		A13820C32E45CB58000D1EF9 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820782E45CB58000D1EF9 /* Pretendard-Thin.otf */; };
+		A13820C42E45CB58000D1EF9 /* kanji_2136.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207C2E45CB58000D1EF9 /* kanji_2136.json */; };
+		A13820C52E45CB58000D1EF9 /* newwords.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207D2E45CB58000D1EF9 /* newwords.json */; };
+		A13820C62E45CB58000D1EF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13820842E45CB58000D1EF9 /* Preview Assets.xcassets */; };
+		A13820C72E45CB58000D1EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13820A02E45CB58000D1EF9 /* Assets.xcassets */; };
+		A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207C2E45CB58000D1EF9 /* kanji_2136.json */; };
+		A13820CA2E45CB58000D1EF9 /* newwords.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207D2E45CB58000D1EF9 /* newwords.json */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A1BE55A42D9AB26A00DE62D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -17,38 +58,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A13820702E45CB58000D1EF9 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		A13820712E45CB58000D1EF9 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		A13820722E45CB58000D1EF9 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		A13820732E45CB58000D1EF9 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		A13820742E45CB58000D1EF9 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		A13820752E45CB58000D1EF9 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		A13820762E45CB58000D1EF9 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		A13820772E45CB58000D1EF9 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		A13820782E45CB58000D1EF9 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		A138207A2E45CB58000D1EF9 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		A138207C2E45CB58000D1EF9 /* kanji_2136.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kanji_2136.json; sourceTree = "<group>"; };
+		A138207D2E45CB58000D1EF9 /* newwords.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = newwords.json; sourceTree = "<group>"; };
+		A138207F2E45CB58000D1EF9 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
+		A13820802E45CB58000D1EF9 /* Kanji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kanji.swift; sourceTree = "<group>"; };
+		A13820812E45CB58000D1EF9 /* StudyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyLog.swift; sourceTree = "<group>"; };
+		A13820822E45CB58000D1EF9 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		A13820842E45CB58000D1EF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A13820862E45CB58000D1EF9 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
+		A13820892E45CB58000D1EF9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		A138208B2E45CB58000D1EF9 /* KanjiCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiCardView.swift; sourceTree = "<group>"; };
+		A138208C2E45CB58000D1EF9 /* MiniKanjiCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniKanjiCardView.swift; sourceTree = "<group>"; };
+		A138208E2E45CB58000D1EF9 /* LearningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningView.swift; sourceTree = "<group>"; };
+		A13820902E45CB58000D1EF9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A13820912E45CB58000D1EF9 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		A13820932E45CB58000D1EF9 /* QuizCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCardView.swift; sourceTree = "<group>"; };
+		A13820942E45CB58000D1EF9 /* QuizGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGridView.swift; sourceTree = "<group>"; };
+		A13820952E45CB58000D1EF9 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		A13820962E45CB58000D1EF9 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		A13820982E45CB58000D1EF9 /* StudyIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyIntroView.swift; sourceTree = "<group>"; };
+		A138209A2E45CB58000D1EF9 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		A138209C2E45CB58000D1EF9 /* DataInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInitializer.swift; sourceTree = "<group>"; };
+		A138209D2E45CB58000D1EF9 /* JsonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
+		A138209E2E45CB58000D1EF9 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		A13820A02E45CB58000D1EF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A13820A12E45CB58000D1EF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunKanjiApp.swift; sourceTree = "<group>"; };
 		A18F65242D93D4A2003C5C6E /* MunKanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MunKanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE55A02D9AB26A00DE62D6 /* MunKanjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MunKanjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		A1412BD12E0703CD00811F86 /* Exceptions for "MunKanji" folder in "MunKanji" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = A18F65232D93D4A2003C5C6E /* MunKanji */;
-		};
-		A1BE55AF2D9AD58800DE62D6 /* Exceptions for "MunKanji" folder in "MunKanjiTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Json/kanji_2136.json,
-				Json/newwords.json,
-			);
-			target = A1BE559F2D9AB26A00DE62D6 /* MunKanjiTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A18F65262D93D4A2003C5C6E /* MunKanji */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A1412BD12E0703CD00811F86 /* Exceptions for "MunKanji" folder in "MunKanji" target */,
-				A1BE55AF2D9AD58800DE62D6 /* Exceptions for "MunKanji" folder in "MunKanjiTests" target */,
-			);
-			path = MunKanji;
-			sourceTree = "<group>";
-		};
 		A1BE55A12D9AB26A00DE62D6 /* MunKanjiTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MunKanjiTests;
@@ -74,10 +125,182 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A13820792E45CB58000D1EF9 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				A13820702E45CB58000D1EF9 /* Pretendard-Black.otf */,
+				A13820712E45CB58000D1EF9 /* Pretendard-Bold.otf */,
+				A13820722E45CB58000D1EF9 /* Pretendard-ExtraBold.otf */,
+				A13820732E45CB58000D1EF9 /* Pretendard-ExtraLight.otf */,
+				A13820742E45CB58000D1EF9 /* Pretendard-Light.otf */,
+				A13820752E45CB58000D1EF9 /* Pretendard-Medium.otf */,
+				A13820762E45CB58000D1EF9 /* Pretendard-Regular.otf */,
+				A13820772E45CB58000D1EF9 /* Pretendard-SemiBold.otf */,
+				A13820782E45CB58000D1EF9 /* Pretendard-Thin.otf */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		A138207B2E45CB58000D1EF9 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A13820792E45CB58000D1EF9 /* static */,
+				A138207A2E45CB58000D1EF9 /* Font.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		A138207E2E45CB58000D1EF9 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				A138207C2E45CB58000D1EF9 /* kanji_2136.json */,
+				A138207D2E45CB58000D1EF9 /* newwords.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		A13820832E45CB58000D1EF9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A138207F2E45CB58000D1EF9 /* Dummy.swift */,
+				A13820802E45CB58000D1EF9 /* Kanji.swift */,
+				A13820812E45CB58000D1EF9 /* StudyLog.swift */,
+				A13820822E45CB58000D1EF9 /* Word.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A13820852E45CB58000D1EF9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A13820842E45CB58000D1EF9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A13820872E45CB58000D1EF9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A13820862E45CB58000D1EF9 /* Components.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A138208A2E45CB58000D1EF9 /* HistoryView */ = {
+			isa = PBXGroup;
+			children = (
+				A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */,
+				A13820892E45CB58000D1EF9 /* HistoryView.swift */,
+			);
+			path = HistoryView;
+			sourceTree = "<group>";
+		};
+		A138208D2E45CB58000D1EF9 /* KanjiCardView */ = {
+			isa = PBXGroup;
+			children = (
+				A138208B2E45CB58000D1EF9 /* KanjiCardView.swift */,
+				A138208C2E45CB58000D1EF9 /* MiniKanjiCardView.swift */,
+			);
+			path = KanjiCardView;
+			sourceTree = "<group>";
+		};
+		A138208F2E45CB58000D1EF9 /* LearningView */ = {
+			isa = PBXGroup;
+			children = (
+				A138208E2E45CB58000D1EF9 /* LearningView.swift */,
+			);
+			path = LearningView;
+			sourceTree = "<group>";
+		};
+		A13820922E45CB58000D1EF9 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				A13820902E45CB58000D1EF9 /* MainView.swift */,
+				A13820912E45CB58000D1EF9 /* SettingView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		A13820972E45CB58000D1EF9 /* QuizView */ = {
+			isa = PBXGroup;
+			children = (
+				A13820932E45CB58000D1EF9 /* QuizCardView.swift */,
+				A13820942E45CB58000D1EF9 /* QuizGridView.swift */,
+				A13820952E45CB58000D1EF9 /* QuizView.swift */,
+				A13820962E45CB58000D1EF9 /* QuizViewModel.swift */,
+			);
+			path = QuizView;
+			sourceTree = "<group>";
+		};
+		A13820992E45CB58000D1EF9 /* StudyIntroView */ = {
+			isa = PBXGroup;
+			children = (
+				A13820982E45CB58000D1EF9 /* StudyIntroView.swift */,
+			);
+			path = StudyIntroView;
+			sourceTree = "<group>";
+		};
+		A138209B2E45CB58000D1EF9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A13820CB2E45CBEE000D1EF9 /* SubView */,
+				A13820922E45CB58000D1EF9 /* MainView */,
+				A13820992E45CB58000D1EF9 /* StudyIntroView */,
+				A138208F2E45CB58000D1EF9 /* LearningView */,
+				A13820972E45CB58000D1EF9 /* QuizView */,
+				A13820CC2E45CC05000D1EF9 /* ResultView */,
+				A138208A2E45CB58000D1EF9 /* HistoryView */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A138209F2E45CB58000D1EF9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A138209C2E45CB58000D1EF9 /* DataInitializer.swift */,
+				A138209D2E45CB58000D1EF9 /* JsonManager.swift */,
+				A138209E2E45CB58000D1EF9 /* UserInfo.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		A13820A32E45CB58000D1EF9 /* MunKanji */ = {
+			isa = PBXGroup;
+			children = (
+				A138207B2E45CB58000D1EF9 /* Font */,
+				A138207E2E45CB58000D1EF9 /* Json */,
+				A13820832E45CB58000D1EF9 /* Models */,
+				A138209B2E45CB58000D1EF9 /* UI */,
+				A138209F2E45CB58000D1EF9 /* Util */,
+				A13820852E45CB58000D1EF9 /* Preview Content */,
+				A13820A02E45CB58000D1EF9 /* Assets.xcassets */,
+				A13820A12E45CB58000D1EF9 /* Info.plist */,
+				A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */,
+			);
+			path = MunKanji;
+			sourceTree = "<group>";
+		};
+		A13820CB2E45CBEE000D1EF9 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A13820872E45CB58000D1EF9 /* Components */,
+				A138208D2E45CB58000D1EF9 /* KanjiCardView */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A13820CC2E45CC05000D1EF9 /* ResultView */ = {
+			isa = PBXGroup;
+			children = (
+				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
+			);
+			path = ResultView;
+			sourceTree = "<group>";
+		};
 		A18F651B2D93D4A2003C5C6E = {
 			isa = PBXGroup;
 			children = (
-				A18F65262D93D4A2003C5C6E /* MunKanji */,
+				A13820A32E45CB58000D1EF9 /* MunKanji */,
 				A1BE55A12D9AB26A00DE62D6 /* MunKanjiTests */,
 				A18F65252D93D4A2003C5C6E /* Products */,
 			);
@@ -106,9 +329,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				A18F65262D93D4A2003C5C6E /* MunKanji */,
 			);
 			name = MunKanji;
 			packageProductDependencies = (
@@ -184,6 +404,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13820BB2E45CB58000D1EF9 /* Pretendard-Black.otf in Resources */,
+				A13820BC2E45CB58000D1EF9 /* Pretendard-Bold.otf in Resources */,
+				A13820BD2E45CB58000D1EF9 /* Pretendard-ExtraBold.otf in Resources */,
+				A13820BE2E45CB58000D1EF9 /* Pretendard-ExtraLight.otf in Resources */,
+				A13820BF2E45CB58000D1EF9 /* Pretendard-Light.otf in Resources */,
+				A13820C02E45CB58000D1EF9 /* Pretendard-Medium.otf in Resources */,
+				A13820C12E45CB58000D1EF9 /* Pretendard-Regular.otf in Resources */,
+				A13820C22E45CB58000D1EF9 /* Pretendard-SemiBold.otf in Resources */,
+				A13820C32E45CB58000D1EF9 /* Pretendard-Thin.otf in Resources */,
+				A13820C42E45CB58000D1EF9 /* kanji_2136.json in Resources */,
+				A13820C52E45CB58000D1EF9 /* newwords.json in Resources */,
+				A13820C62E45CB58000D1EF9 /* Preview Assets.xcassets in Resources */,
+				A13820C72E45CB58000D1EF9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +424,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */,
+				A13820CA2E45CB58000D1EF9 /* newwords.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +436,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13820A42E45CB58000D1EF9 /* Font.swift in Sources */,
+				A13820A52E45CB58000D1EF9 /* Dummy.swift in Sources */,
+				A13820A62E45CB58000D1EF9 /* Kanji.swift in Sources */,
+				A13820A72E45CB58000D1EF9 /* StudyLog.swift in Sources */,
+				A13820A82E45CB58000D1EF9 /* Word.swift in Sources */,
+				A13820A92E45CB58000D1EF9 /* Components.swift in Sources */,
+				A13820AA2E45CB58000D1EF9 /* HistoryDetailView.swift in Sources */,
+				A13820AB2E45CB58000D1EF9 /* HistoryView.swift in Sources */,
+				A13820AC2E45CB58000D1EF9 /* KanjiCardView.swift in Sources */,
+				A13820AD2E45CB58000D1EF9 /* MiniKanjiCardView.swift in Sources */,
+				A13820AE2E45CB58000D1EF9 /* LearningView.swift in Sources */,
+				A13820AF2E45CB58000D1EF9 /* MainView.swift in Sources */,
+				A13820B02E45CB58000D1EF9 /* SettingView.swift in Sources */,
+				A13820B12E45CB58000D1EF9 /* QuizCardView.swift in Sources */,
+				A13820B22E45CB58000D1EF9 /* QuizGridView.swift in Sources */,
+				A13820B32E45CB58000D1EF9 /* QuizView.swift in Sources */,
+				A13820B42E45CB58000D1EF9 /* QuizViewModel.swift in Sources */,
+				A13820B52E45CB58000D1EF9 /* StudyIntroView.swift in Sources */,
+				A13820B62E45CB58000D1EF9 /* ResultView.swift in Sources */,
+				A13820B72E45CB58000D1EF9 /* DataInitializer.swift in Sources */,
+				A13820B82E45CB58000D1EF9 /* JsonManager.swift in Sources */,
+				A13820B92E45CB58000D1EF9 /* UserInfo.swift in Sources */,
+				A13820BA2E45CB58000D1EF9 /* MunKanjiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +621,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = project.MunKanji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -398,7 +656,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = project.MunKanji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

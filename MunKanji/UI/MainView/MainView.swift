@@ -67,6 +67,9 @@ struct MainView: View {
             }
             .sheet(isPresented: $showSheet, content: {
                 SettingView(showSheet: $showSheet)
+                    .presentationDetents([.fraction(0.6)])
+                    .presentationDragIndicator(.visible)
+                    .presentationCornerRadius(35)
             })
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -97,4 +100,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environmentObject(UserSettings())
 }
