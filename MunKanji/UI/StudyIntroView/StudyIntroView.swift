@@ -69,35 +69,63 @@ struct StudyIntroView: View {
                 ZStack{
                     Rectangle()
                         .foregroundStyle(.white)
-                        .frame(width: 331, height: 211)
+                        .frame(width: 331, height: 222)
                         .cornerRadius(20)
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-                    HStack(spacing: 59) {
-                        VStack{
-                            Text("외울 한자")
-                                .font(.pretendardRegular(size: 14))
-                            Text("\(unseenKanjisCount)개")
-                                .padding(.vertical, 3)
-                                .font(.pretendardSemiBold(size: 48))
-                            //unseen보다 틀린 한자 부터 쭉 찾아야겠지?
-                        }
-                        VStack{
+                    VStack(spacing: 22) {
+                        HStack{
+                            Circle()
+                                .fill(.incorrect)
+                                .frame(width: 12)
                             Text("틀렸던 한자")
-                                .font(.pretendardRegular(size: 14))
-                            Text("\(inCorrectKanjisCount)개")
-                                .padding(.vertical, 3)
-                                .foregroundStyle(.point)
-                                .font(.pretendardSemiBold(size: 48))
+                                .font(.pretendardLight(size: 24))
+                                .foregroundStyle(.introFont)
+                            HStack(spacing: 4) {
+                                    Text("\(inCorrectKanjisCount)")
+                                        .foregroundStyle(.main)
+                                        .font(.pretendardSemiBold(size: 24))
+                                    Text("개")
+                                        .foregroundStyle(.main)
+                                        .font(.pretendardLight(size: 24))
+                                }
+                                .padding(.leading, 76)
                         }
                         
-                        VStack{
-                            Text("리뷰 한자")
-                                .font(.pretendardRegular(size: 14))
-                            Text("\(reviewKanjisCount)개")
-                                .padding(.vertical, 3)
-                                .foregroundStyle(.point)
-                                .font(.pretendardSemiBold(size: 48))
+                        HStack{
+                            Circle()
+                                .fill(.point)
+                                .frame(width: 12)
+                            Text("복습할 한자")
+                                .font(.pretendardLight(size: 24))
+                                .foregroundStyle(.introFont)
+                            HStack(spacing: 4) {
+                                    Text("\(reviewKanjisCount)")
+                                        .foregroundStyle(.main)
+                                        .font(.pretendardSemiBold(size: 24))
+                                    Text("개")
+                                        .foregroundStyle(.main)
+                                        .font(.pretendardLight(size: 24))
+                                }
+                                .padding(.leading, 76)
                         }
+                        HStack{
+                            Circle()
+                                .fill(.main)
+                                .frame(width: 12)
+                            Text("새로운 한자")
+                                .foregroundStyle(.introFont)
+                                .font(.pretendardLight(size: 24))
+                            HStack(spacing: 4) {
+                                    Text("\(unseenKanjisCount)")
+                                        .foregroundStyle(.main)
+                                        .font(.pretendardSemiBold(size: 24))
+                                    Text("개")
+                                        .foregroundStyle(.main)
+                                        .font(.pretendardLight(size: 24))
+                                }
+                                .padding(.leading, 76)
+                        }
+                       
                     }
                 }
                 .padding(.vertical, 195)
