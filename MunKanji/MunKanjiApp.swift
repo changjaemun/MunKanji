@@ -11,6 +11,7 @@ import SwiftData
 @main
 struct MunKanjiApp: App {
     @StateObject private var userSettings = UserSettings()
+    @StateObject private var userCurrentSession = UserCurrentSession()
 
     // 2. 앱 전체에서 사용할 '데이터 도서관'(ModelContainer)을 보관할 변수를 만듭니다.
     let container: ModelContainer
@@ -43,6 +44,7 @@ struct MunKanjiApp: App {
         WindowGroup {
             MainView()
                 .environmentObject(userSettings)
+                .environmentObject(userCurrentSession)
                 .onAppear {
                     DataInitializer.migrateToNewKanjiDataIfNeeded(modelContext: container.mainContext)
                     DataInitializer.seedInitialData(modelContext: container.mainContext)

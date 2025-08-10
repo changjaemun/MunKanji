@@ -11,6 +11,7 @@ import SwiftData
 struct LearningView: View {
     @State private var currentIndex: Int = 0
     @Binding var path: NavigationPath
+    @EnvironmentObject var userCurrentSession: UserCurrentSession
     @Environment(\.dismiss) private var dismiss
     
     @Query
@@ -39,7 +40,7 @@ struct LearningView: View {
                     HStack {
                         Spacer().frame(width: 20)
                         ForEach(learningKanjis, id: \.id) { kanji in
-                            KanjiCardView(kanji: kanji)
+                            KanjiCardView(kanji: kanji, studyLog: learningStudyLogs.filter{$0.kanjiID == kanji.id}.first!)
                                 .id(kanji.id)
                         }
                         Spacer().frame(width: 20)
@@ -53,6 +54,7 @@ struct LearningView: View {
                     .padding()
                     .padding(.bottom, 20)
             }
+            .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
             .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
