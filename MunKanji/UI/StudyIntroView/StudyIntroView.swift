@@ -66,6 +66,7 @@ struct StudyIntroView: View {
             Color.backGround
                 .ignoresSafeArea()
             VStack{
+                Spacer()
                 ZStack{
                     Rectangle()
                         .foregroundStyle(.white)
@@ -131,8 +132,9 @@ struct StudyIntroView: View {
                        
                     }
                 }
-                .padding(.vertical, 195)
+                Spacer()
                 NavyNavigationLink(title: "학습시작", value: NavigationTarget.learning(learningStudyLogs))
+                    .padding(.bottom, 40)
             }.navigationBarBackButtonHidden()
                 .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
             .toolbar {
