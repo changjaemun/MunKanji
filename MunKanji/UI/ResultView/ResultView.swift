@@ -40,24 +40,42 @@ struct ResultView: View {
                     VStack(spacing: 20){
                         HStack{
                             Spacer()
+                            Circle()
+                                .fill(.main)
+                                .frame(width: 12)
+                                .padding(.trailing, 10)
                             Text("맞힌 한자")
-                                .foregroundStyle(.main)
-                                .font(.pretendardRegular(size: 28))
+                                .foregroundStyle(.introFont)
+                                .font(.pretendardRegular(size: 24))
                             Spacer()
-                            Text("\(correctCount)개")
-                                .foregroundStyle(.main)
-                                .font(.pretendardBold(size: 28))
+                            HStack(spacing: 4) {
+                                Text("\(correctCount)")
+                                    .foregroundStyle(.main)
+                                    .font(.pretendardSemiBold(size: 24))
+                                Text("개")
+                                    .foregroundStyle(.main)
+                                    .font(.pretendardLight(size: 24))
+                            }
                             Spacer()
                         }
                         HStack{
                             Spacer()
+                            Circle()
+                                .fill(.incorrect)
+                                .frame(width: 12)
+                                .padding(.trailing, 10)
                             Text("틀린 한자")
-                                .foregroundStyle(.main)
-                                .font(.pretendardRegular(size: 28))
+                                .foregroundStyle(.introFont)
+                                .font(.pretendardRegular(size: 24))
                             Spacer()
-                            Text("\(incorrectCount)개")
-                                .foregroundStyle(.red)
-                                .font(.pretendardBold(size: 28))
+                            HStack(spacing: 4) {
+                                Text("\(incorrectCount)")
+                                    .foregroundStyle(.main)
+                                    .font(.pretendardSemiBold(size: 24))
+                                Text("개")
+                                    .foregroundStyle(.main)
+                                    .font(.pretendardLight(size: 24))
+                            }
                             Spacer()
                         }
                     }
