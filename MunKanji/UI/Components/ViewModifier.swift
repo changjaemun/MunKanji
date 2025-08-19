@@ -17,9 +17,34 @@ struct StudyIntroTextStyle: ViewModifier {
 struct CardStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .background(.white)
+            .foregroundStyle(.white)
             .cornerRadius(20)
             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
     }
 }
 
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+}
+
+struct BackgroundStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(Color.backGround)
+            .ignoresSafeArea()
+    }
+}

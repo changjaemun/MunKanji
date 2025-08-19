@@ -16,8 +16,7 @@ struct StudyIntroView: View {
     @Binding var path: NavigationPath
     @Environment(\.dismiss) private var dismiss
     
-    @Query
-    var studyLogs: [StudyLog]
+    @Query var studyLogs: [StudyLog]
     
     private var learningStudyLogs:[StudyLog]{
         
@@ -67,83 +66,18 @@ struct StudyIntroView: View {
                 .ignoresSafeArea()
             VStack{
                 Spacer()
-                ZStack{
-                    Rectangle()
-                        .frame(width: 331, height: 222)
-                        .modifier(CardStyle())
-                    VStack(spacing: 22) {
-                        HStack{
-                            Circle()
-                                .fill(.incorrect)
-                                .frame(width: 12)
-                                .padding(.trailing, 10)
-                            Text("틀렸던 한자")
-                                .modifier(StudyIntroTextStyle())
-                            HStack(spacing: 4) {
-                                    Text("\(inCorrectKanjisCount)")
-                                        .foregroundStyle(.main)
-                                        .font(.pretendardSemiBold(size: 24))
-                                    Text("개")
-                                        .foregroundStyle(.main)
-                                        .font(.pretendardLight(size: 24))
-                                }
-                                .padding(.leading, 76)
-                        }
-                        
-                        HStack{
-                            Circle()
-                                .fill(.point)
-                                .frame(width: 12)
-                                .padding(.trailing, 10)
-                            Text("복습할 한자")
-                                .modifier(StudyIntroTextStyle())
-                            HStack(spacing: 4) {
-                                    Text("\(reviewKanjisCount)")
-                                        .foregroundStyle(.main)
-                                        .font(.pretendardSemiBold(size: 24))
-                                    Text("개")
-                                        .foregroundStyle(.main)
-                                        .font(.pretendardLight(size: 24))
-                                }
-                                .padding(.leading, 76)
-                        }
-                        HStack{
-                            Circle()
-                                .fill(.main)
-                                .frame(width: 12)
-                                .padding(.trailing, 10)
-                            Text("새로운 한자")
-                                .modifier(StudyIntroTextStyle())
-                            HStack(spacing: 4) {
-                                    Text("\(unseenKanjisCount)")
-                                        .foregroundStyle(.main)
-                                        .font(.pretendardSemiBold(size: 24))
-                                    Text("개")
-                                        .foregroundStyle(.main)
-                                        .font(.pretendardLight(size: 24))
-                                }
-                                .padding(.leading, 76)
-                        }
-                       
-                    }
-                }
+                StudyInfoCountInfoView(inCorrectKanjisCount: inCorrectKanjisCount, reviewKanjisCount: reviewKanjisCount, unseenKanjisCount: unseenKanjisCount)
                 Spacer()
                 NavyNavigationLink(title: "학습시작", value: NavigationTarget.learning(learningStudyLogs))
                     .padding(.bottom, 40)
             }.navigationBarBackButtonHidden()
                 .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    backButton(action: { dismiss() })
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        backButton(action: { dismiss() })
+                    }
                 }
-            }
         }
     }
-}
-
-#Preview {
-    @State var path = NavigationPath()
-    return StudyIntroView(path: $path)
-        .environmentObject(UserSettings())
-        .environmentObject(UserCurrentSession())
 }

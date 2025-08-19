@@ -85,3 +85,77 @@ struct backButton: View {
     }
 }
 
+struct KanjiCardView: View {
+    let kanji: Kanji
+    let studyLog: StudyLog
+    
+    
+    func statusBarColor() -> Color {
+        if studyLog.status == .incorrect {
+            return .incorrect
+        }
+        
+        if let nextReviewDate = studyLog.nextReviewDate, nextReviewDate <= Date() {
+            return .point
+        }
+        
+        return .white
+    }
+    
+    var body: some View {
+                ZStack{
+                    Rectangle()
+                        .frame(width: 338, height: 360)
+                        .modifier(CardStyle())
+                    VStack{
+                        Rectangle()
+                            .foregroundStyle(statusBarColor())
+                            .frame(width: 338, height: 24)
+                            .cornerRadius(20, corners: [.topLeft, .topRight])
+                        Spacer()
+                    }.frame(height: 360)
+                    VStack{
+                        VStack{
+                            Text(kanji.kanji)
+                                .foregroundStyle(.main)
+                                .font(.pretendardBold(size: 80))
+                            Text(kanji.korean)
+                                .foregroundStyle(.main)
+                                .font(.pretendardRegular(size: 24))
+                        }.frame(width: 338)
+                            .padding(.bottom, 30)
+                        Divider()
+                            .frame(width: 310)
+                        HStack{
+                            VStack(alignment:.leading, spacing: 20){
+                                Text("음: \(kanji.sound)")
+                                    .foregroundStyle(.main)
+                                    .font(.pretendardRegular(size: 24))
+                                Text("훈: \(kanji.meaning)")
+                                    .foregroundStyle(.main)
+                                    .font(.pretendardRegular(size: 24))
+                            }.padding(.horizontal)
+                            Spacer()
+                        }.padding()
+                        
+                    }.frame(width: 338, height: 388)
+                    
+                }
+        }
+    }
+
+struct MiniKanjiCardView: View {
+    let kanji: Kanji
+    
+    var body: some View {
+        ZStack{
+            Rectangle()
+                .foregroundColor(.white)
+              .frame(width: 105, height: 97)
+              .cornerRadius(20)
+              .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+            Text(kanji.kanji)
+                .font(.pretendardRegular(size: 40))
+        }
+    }
+}
