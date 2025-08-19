@@ -84,9 +84,4 @@ struct backButton: View {
         }
     }
 }
-func test() -> Void{
-    //
-}
-#Preview(body: {
-    backButton(action: test)
-})
+

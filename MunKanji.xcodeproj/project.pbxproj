@@ -45,6 +45,7 @@
 		A13820C72E45CB58000D1EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13820A02E45CB58000D1EF9 /* Assets.xcassets */; };
 		A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207C2E45CB58000D1EF9 /* kanji_2136.json */; };
 		A13820CA2E45CB58000D1EF9 /* newwords.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207D2E45CB58000D1EF9 /* newwords.json */; };
+		A1648E982E54257B00DAF244 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648E972E54257600DAF244 /* ViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		A13820A02E45CB58000D1EF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A13820A12E45CB58000D1EF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunKanjiApp.swift; sourceTree = "<group>"; };
+		A1648E972E54257600DAF244 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 		A18F65242D93D4A2003C5C6E /* MunKanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MunKanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE55A02D9AB26A00DE62D6 /* MunKanjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MunKanjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -178,14 +180,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A13820872E45CB58000D1EF9 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				A13820862E45CB58000D1EF9 /* Components.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		A138208A2E45CB58000D1EF9 /* HistoryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +237,7 @@
 		A138209B2E45CB58000D1EF9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A1648E962E54256D00DAF244 /* Components */,
 				A13820CB2E45CBEE000D1EF9 /* SubView */,
 				A13820922E45CB58000D1EF9 /* MainView */,
 				A13820992E45CB58000D1EF9 /* StudyIntroView */,
@@ -283,7 +278,6 @@
 		A13820CB2E45CBEE000D1EF9 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				A13820872E45CB58000D1EF9 /* Components */,
 				A138208D2E45CB58000D1EF9 /* KanjiCardView */,
 			);
 			path = SubView;
@@ -295,6 +289,15 @@
 				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
 			);
 			path = ResultView;
+			sourceTree = "<group>";
+		};
+		A1648E962E54256D00DAF244 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A1648E972E54257600DAF244 /* ViewModifier.swift */,
+				A13820862E45CB58000D1EF9 /* Components.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		A18F651B2D93D4A2003C5C6E = {
@@ -443,6 +446,7 @@
 				A13820A82E45CB58000D1EF9 /* Word.swift in Sources */,
 				A13820A92E45CB58000D1EF9 /* Components.swift in Sources */,
 				A13820AA2E45CB58000D1EF9 /* HistoryDetailView.swift in Sources */,
+				A1648E982E54257B00DAF244 /* ViewModifier.swift in Sources */,
 				A13820AB2E45CB58000D1EF9 /* HistoryView.swift in Sources */,
 				A13820AC2E45CB58000D1EF9 /* KanjiCardView.swift in Sources */,
 				A13820AD2E45CB58000D1EF9 /* MiniKanjiCardView.swift in Sources */,

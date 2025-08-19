@@ -31,10 +31,8 @@ struct HistoryView: View {
                 } label: {
                     ZStack{
                         Rectangle()
-                            .foregroundColor(.white)
-                          .frame(width: 362, height: 190)
-                          .cornerRadius(20)
-                          .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                            .frame(width: 362, height: 190)
+                            .modifier(CardStyle())
                         VStack(spacing: 10){
                             Text("\(correctCount)")
                                 .foregroundStyle(.main)
@@ -50,10 +48,8 @@ struct HistoryView: View {
                 } label: {
                     ZStack{
                         Rectangle()
-                            .foregroundColor(.white)
-                          .frame(width: 362, height: 190)
-                          .cornerRadius(20)
-                          .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                            .frame(width: 362, height: 190)
+                            .modifier(CardStyle())
                         VStack(spacing: 10){
                             Text("\(incorrectCount)")
                                 .foregroundStyle(.point)

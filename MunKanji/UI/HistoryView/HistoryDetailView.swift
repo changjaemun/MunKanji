@@ -47,7 +47,6 @@ struct HistoryDetailView: View {
                 .padding()
             }
         }
-        
         .navigationTitle(title)
         .navigationBarBackButtonHidden()
         .toolbar(content: {

@@ -69,10 +69,8 @@ struct StudyIntroView: View {
                 Spacer()
                 ZStack{
                     Rectangle()
-                        .foregroundStyle(.white)
                         .frame(width: 331, height: 222)
-                        .cornerRadius(20)
-                        .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                        .modifier(CardStyle())
                     VStack(spacing: 22) {
                         HStack{
                             Circle()
@@ -80,8 +78,7 @@ struct StudyIntroView: View {
                                 .frame(width: 12)
                                 .padding(.trailing, 10)
                             Text("틀렸던 한자")
-                                .font(.pretendardLight(size: 24))
-                                .foregroundStyle(.introFont)
+                                .modifier(StudyIntroTextStyle())
                             HStack(spacing: 4) {
                                     Text("\(inCorrectKanjisCount)")
                                         .foregroundStyle(.main)
@@ -99,8 +96,7 @@ struct StudyIntroView: View {
                                 .frame(width: 12)
                                 .padding(.trailing, 10)
                             Text("복습할 한자")
-                                .font(.pretendardLight(size: 24))
-                                .foregroundStyle(.introFont)
+                                .modifier(StudyIntroTextStyle())
                             HStack(spacing: 4) {
                                     Text("\(reviewKanjisCount)")
                                         .foregroundStyle(.main)
@@ -117,8 +113,7 @@ struct StudyIntroView: View {
                                 .frame(width: 12)
                                 .padding(.trailing, 10)
                             Text("새로운 한자")
-                                .foregroundStyle(.introFont)
-                                .font(.pretendardLight(size: 24))
+                                .modifier(StudyIntroTextStyle())
                             HStack(spacing: 4) {
                                     Text("\(unseenKanjisCount)")
                                         .foregroundStyle(.main)
