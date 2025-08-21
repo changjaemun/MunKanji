@@ -96,9 +96,3 @@ struct MainView: View {
         }
     }
 }
-
-
-#Preview {
-    MainView()
-        .environmentObject(UserSettings())
-}

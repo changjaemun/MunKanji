@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct StudyIntroView: View {
-    
     @EnvironmentObject var userSettings: UserSettings
     @EnvironmentObject var userCurrentSession: UserCurrentSession
     
