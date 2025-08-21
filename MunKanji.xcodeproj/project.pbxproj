@@ -268,6 +268,7 @@
 				A138209B2E45CB58000D1EF9 /* UI */,
 				A138209F2E45CB58000D1EF9 /* Util */,
 				A13820852E45CB58000D1EF9 /* Preview Content */,
+				A13820A12E45CB58000D1EF9 /* Info.plist */,
 			);
 			path = MunKanji;
 			sourceTree = "<group>";
@@ -402,7 +403,6 @@
 			isa = PBXGroup;
 			children = (
 				A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */,
-				A13820A12E45CB58000D1EF9 /* Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
