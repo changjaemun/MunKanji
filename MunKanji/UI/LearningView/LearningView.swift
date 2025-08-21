@@ -11,15 +11,14 @@ import SwiftData
 struct LearningView: View {
     @State private var currentIndex: Int = 0
     @Binding var path: NavigationPath
+    
     @EnvironmentObject var userCurrentSession: UserCurrentSession
     @Environment(\.dismiss) private var dismiss
     
-    @Query
-    private var kanjis: [Kanji]
+    @Query private var kanjis: [Kanji]
     
     let learningStudyLogs: [StudyLog]
     
-    // learningStudyLogs를 기반으로 실제 Kanji 객체 배열을 만듭니다.
     private var learningKanjis: [Kanji] {
         var tray: [Kanji] = []
         for log in learningStudyLogs {
@@ -31,37 +30,22 @@ struct LearningView: View {
     }
     
     var body: some View {
-        ZStack{
-            Color.backGround
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        Spacer().frame(width: 20)
-                        ForEach(learningKanjis, id: \.id) { kanji in
-                            KanjiCardView(kanji: kanji, studyLog: learningStudyLogs.filter{$0.kanjiID == kanji.id}.first!)
-                                .id(kanji.id)
-                        }
-                        Spacer().frame(width: 20)
-                    }
-                    .padding()
-                    .scrollTargetLayout()
-                }
-                .scrollTargetBehavior(.viewAligned)
-                Spacer()
-                NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
-                    .padding()
-                    .padding(.bottom, 20)
-            }
-            .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
-            .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    backButton(action: {dismiss()})
-                }
+        VStack {
+            Spacer()
+            LearningCardScrollView(learningKanjis: learningKanjis, learningStudyLogs: learningStudyLogs)
+            Spacer()
+            NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
+                .padding()
+                .padding(.bottom, 20)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.backGround.ignoresSafeArea())
+        .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                backButton(action: {dismiss()})
             }
         }
-        
     }
 }

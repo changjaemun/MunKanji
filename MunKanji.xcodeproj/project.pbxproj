@@ -44,8 +44,10 @@
 		A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207C2E45CB58000D1EF9 /* kanji_2136.json */; };
 		A13820CA2E45CB58000D1EF9 /* newwords.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207D2E45CB58000D1EF9 /* newwords.json */; };
 		A1648E982E54257B00DAF244 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648E972E54257600DAF244 /* ViewModifier.swift */; };
-		A1648E9B2E54748000DAF244 /* CountInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648E9A2E54747200DAF244 /* CountInfoRowView.swift */; };
 		A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA02E547F6C00DAF244 /* CountInfoView.swift */; };
+		A1648EA52E548A1200DAF244 /* LearningCardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */; };
+		A1648EA92E55532700DAF244 /* ResultInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA82E55532100DAF244 /* ResultInfoView.swift */; };
+		A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,8 +97,10 @@
 		A13820A12E45CB58000D1EF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunKanjiApp.swift; sourceTree = "<group>"; };
 		A1648E972E54257600DAF244 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
-		A1648E9A2E54747200DAF244 /* CountInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountInfoRowView.swift; sourceTree = "<group>"; };
 		A1648EA02E547F6C00DAF244 /* CountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountInfoView.swift; sourceTree = "<group>"; };
+		A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningCardScrollView.swift; sourceTree = "<group>"; };
+		A1648EA82E55532100DAF244 /* ResultInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfoView.swift; sourceTree = "<group>"; };
+		A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNavigationLink.swift; sourceTree = "<group>"; };
 		A18F65242D93D4A2003C5C6E /* MunKanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MunKanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE55A02D9AB26A00DE62D6 /* MunKanjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MunKanjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -183,6 +187,7 @@
 		A138208A2E45CB58000D1EF9 /* HistoryView */ = {
 			isa = PBXGroup;
 			children = (
+				A1648EAA2E56E5F700DAF244 /* SubView */,
 				A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */,
 				A13820892E45CB58000D1EF9 /* HistoryView.swift */,
 			);
@@ -192,6 +197,7 @@
 		A138208F2E45CB58000D1EF9 /* LearningView */ = {
 			isa = PBXGroup;
 			children = (
+				A1648EA22E5489EA00DAF244 /* SubView */,
 				A138208E2E45CB58000D1EF9 /* LearningView.swift */,
 			);
 			path = LearningView;
@@ -209,8 +215,7 @@
 		A13820972E45CB58000D1EF9 /* QuizView */ = {
 			isa = PBXGroup;
 			children = (
-				A13820932E45CB58000D1EF9 /* QuizCardView.swift */,
-				A13820942E45CB58000D1EF9 /* QuizGridView.swift */,
+				A1648EA62E5551B000DAF244 /* SubView */,
 				A13820952E45CB58000D1EF9 /* QuizView.swift */,
 				A13820962E45CB58000D1EF9 /* QuizViewModel.swift */,
 			);
@@ -269,6 +274,7 @@
 		A13820CC2E45CC05000D1EF9 /* ResultView */ = {
 			isa = PBXGroup;
 			children = (
+				A1648EA72E5552FD00DAF244 /* SubView */,
 				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
 			);
 			path = ResultView;
@@ -287,7 +293,39 @@
 			isa = PBXGroup;
 			children = (
 				A1648EA02E547F6C00DAF244 /* CountInfoView.swift */,
-				A1648E9A2E54747200DAF244 /* CountInfoRowView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EA22E5489EA00DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EA62E5551B000DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A13820932E45CB58000D1EF9 /* QuizCardView.swift */,
+				A13820942E45CB58000D1EF9 /* QuizGridView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EA72E5552FD00DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EA82E55532100DAF244 /* ResultInfoView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EAA2E56E5F700DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -431,14 +469,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */,
 				A13820A42E45CB58000D1EF9 /* Font.swift in Sources */,
-				A1648E9B2E54748000DAF244 /* CountInfoRowView.swift in Sources */,
+				A1648EA52E548A1200DAF244 /* LearningCardScrollView.swift in Sources */,
 				A13820A52E45CB58000D1EF9 /* Dummy.swift in Sources */,
 				A13820A62E45CB58000D1EF9 /* Kanji.swift in Sources */,
 				A13820A72E45CB58000D1EF9 /* StudyLog.swift in Sources */,
 				A13820A82E45CB58000D1EF9 /* Word.swift in Sources */,
 				A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */,
 				A13820A92E45CB58000D1EF9 /* Components.swift in Sources */,
+				A1648EA92E55532700DAF244 /* ResultInfoView.swift in Sources */,
 				A13820AA2E45CB58000D1EF9 /* HistoryDetailView.swift in Sources */,
 				A1648E982E54257B00DAF244 /* ViewModifier.swift in Sources */,
 				A13820AB2E45CB58000D1EF9 /* HistoryView.swift in Sources */,

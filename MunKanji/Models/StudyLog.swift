@@ -44,4 +44,6 @@ final class StudyLog {
         self.kanjiID = kanjiID
         self.status = .unseen // 모든 학습 기록은 "안 본 상태"에서 시작
     }
+    
+    
 }

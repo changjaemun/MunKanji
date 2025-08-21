@@ -22,54 +22,20 @@ struct HistoryView: View {
     }
     
     var body: some View {
-        ZStack{
-            Color.backGround.ignoresSafeArea()
-            VStack(spacing:55){
-                Spacer()
-                NavigationLink {
-                    HistoryDetailView(title: "외운 한자", statusFilter: [.correct])
-                } label: {
-                    ZStack{
-                        Rectangle()
-                            .frame(width: 362, height: 190)
-                            .modifier(CardStyle())
-                        VStack(spacing: 10){
-                            Text("\(correctCount)")
-                                .foregroundStyle(.main)
-                                .font(.pretendardBold(size: 60))
-                            Text("외운 한자")
-                                .foregroundStyle(.main)
-                                .font(.pretendardRegular(size: 20))
-                        }
-                    }
-                }
-                NavigationLink {
-                    HistoryDetailView(title: "못외운 한자", statusFilter: [.unseen, .incorrect])
-                } label: {
-                    ZStack{
-                        Rectangle()
-                            .frame(width: 362, height: 190)
-                            .modifier(CardStyle())
-                        VStack(spacing: 10){
-                            Text("\(incorrectCount)")
-                                .foregroundStyle(.point)
-                                .font(.pretendardBold(size: 60))
-                            Text("못외운 한자")
-                                .foregroundStyle(.main)
-                                .font(.pretendardRegular(size: 20))
-                        }
-                    }
-                }
+        VStack(spacing:55){
+            Spacer()
+            HistoryDetailView(title: "외운 한자", statusFilter: [.correct])
+            HistoryDetailView(title: "못외운 한자", statusFilter: [.unseen, .incorrect])
                 .padding(.bottom, 160)
-            }
-        }
-        .navigationBarBackButtonHidden()
-        .toolbar(content: {
-            ToolbarItem(placement: .topBarLeading) {
-                backButton(action: {dismiss()})
-            }
-        })
-        .navigationTitle("기록")
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.backGround.ignoresSafeArea())
+            .navigationBarBackButtonHidden()
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    backButton(action: {dismiss()})
+                }
+            })
+            .navigationTitle("기록")
     }
 }
 

@@ -61,23 +61,22 @@ struct StudyIntroView: View {
     }
     
     var body: some View {
-        ZStack{
-            Color.backGround
-                .ignoresSafeArea()
-            VStack{
-                Spacer()
-                StudyInfoCountInfoView(inCorrectKanjisCount: inCorrectKanjisCount, reviewKanjisCount: reviewKanjisCount, unseenKanjisCount: unseenKanjisCount)
-                Spacer()
-                NavyNavigationLink(title: "학습시작", value: NavigationTarget.learning(learningStudyLogs))
-                    .padding(.bottom, 40)
-            }.navigationBarBackButtonHidden()
-                .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        backButton(action: { dismiss() })
-                    }
-                }
+        VStack{
+            Spacer()
+            StudyInfoCountInfoView(inCorrectKanjisCount: inCorrectKanjisCount, reviewKanjisCount: reviewKanjisCount, unseenKanjisCount: unseenKanjisCount)
+            Spacer()
+            NavyNavigationLink(title: "학습시작", value: NavigationTarget.learning(learningStudyLogs))
+                .padding(.bottom, 40)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.backGround.ignoresSafeArea())
+        .navigationBarBackButtonHidden()
+        .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                backButton(action: { dismiss() })
+            }
         }
     }
 }

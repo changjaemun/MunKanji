@@ -18,9 +18,9 @@ struct StudyInfoCountInfoView: View {
             GeometryReader{ geo in
                 VStack(alignment: .leading, spacing: 22) {
                     Spacer()
-                    StudyIntroCountInfoRowView(statusCircleColor: .incorrect, count: inCorrectKanjisCount, title: "틀렸던 한자")
-                    StudyIntroCountInfoRowView(statusCircleColor: .point, count: reviewKanjisCount, title: "리뷰할 한자")
-                    StudyIntroCountInfoRowView(statusCircleColor: .main, count: unseenKanjisCount, title: "새로운 한자")
+                    CountInfoRowView(statusCircleColor: .incorrect, count: inCorrectKanjisCount, title: "틀렸던 한자")
+                    CountInfoRowView(statusCircleColor: .point, count: reviewKanjisCount, title: "리뷰할 한자")
+                    CountInfoRowView(statusCircleColor: .main, count: unseenKanjisCount, title: "새로운 한자")
                     Spacer()
                 }
             }

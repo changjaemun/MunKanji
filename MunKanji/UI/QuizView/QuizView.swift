@@ -10,8 +10,7 @@ import SwiftData
 
 struct QuizView: View {
     
-    @Query
-    var kanjis:[Kanji]
+    @Query var kanjis:[Kanji]
     
     @Binding var path: NavigationPath
     let learningStudyLogs: [StudyLog]
@@ -32,31 +31,21 @@ struct QuizView: View {
     
     var body: some View {
         ZStack{
-            //Color.backGround.ignoresSafeArea()
-            
             if learningKanjis.isEmpty {
                 ProgressView()
                     .scaleEffect(2)
             } else if viewModel.isFinished {
-                // 퀴즈 완료 화면
                 ResultView(path: $path, results: viewModel.results, learningKanjis: learningKanjis)
             } else {
-                // 퀴즈 진행 화면
                 VStack(spacing: 64){
-                    // 진행률 표시
                     Text("\(viewModel.currentIndex + 1) / \(viewModel.learningKanjis.count)")
                         .foregroundStyle(.fontGray)
                         .font(.pretendardSemiBold(size: 24))
-                    
-                    // 현재 한자 표시
                     Text(viewModel.currentKanji)
                         .foregroundStyle(.main)
                         .font(.pretendardSemiBold(size: 80))
-                    
-                    // 보기 그리드
                     QuizGridView(viewModel: viewModel)
                         .frame(width: 346, height: 340)
-                    
                     Spacer()
                 }
                 .padding()
@@ -75,9 +64,4 @@ struct QuizView: View {
             viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext, currentSession: userCurrentSession.currentSessionNumber)
         }
     }
-}
-
-#Preview {
-    @State var path = NavigationPath()
-    return QuizView(path: $path, learningStudyLogs: Dummy.studylog).environmentObject(UserCurrentSession())
 }
