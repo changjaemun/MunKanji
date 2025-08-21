@@ -68,11 +68,11 @@ struct NavyButton: View {
     }
 }
 
-struct backButton: View {
-    let action: () -> Void
+struct BackButton: View {
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        Button(action: action){
+        Button(action: {dismiss()}){
             ZStack{
                 Rectangle()
                     .foregroundStyle(.clear)
@@ -80,7 +80,6 @@ struct backButton: View {
                     .resizable()
                     .foregroundStyle(.accent)
             }
-            
         }
     }
 }
@@ -89,16 +88,13 @@ struct KanjiCardView: View {
     let kanji: Kanji
     let studyLog: StudyLog
     
-    
     func statusBarColor() -> Color {
         if studyLog.status == .incorrect {
             return .incorrect
         }
-        
         if let nextReviewDate = studyLog.nextReviewDate, nextReviewDate <= Date() {
             return .point
         }
-        
         return .white
     }
     

@@ -15,7 +15,6 @@ struct QuizView: View {
     @Binding var path: NavigationPath
     let learningStudyLogs: [StudyLog]
     
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var userCurrentSession: UserCurrentSession
     @StateObject private var viewModel: QuizViewModel = QuizViewModel()
@@ -56,7 +55,7 @@ struct QuizView: View {
         .toolbar(content: {
             if !viewModel.isFinished {
                 ToolbarItem(placement: .topBarLeading) {
-                    backButton(action: {dismiss()})
+                    BackButton()
                 }
             }
         })

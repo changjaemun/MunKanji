@@ -22,9 +22,9 @@ struct HistoryNavigationLink: View {
                     .modifier(CardStyle())
                 VStack(spacing: 10){
                     Text("\(count)")
-                        .foregroundStyle(.main)
+                        .foregroundStyle(title == "못외운 한자" ? .point : .main)
                         .font(.pretendardBold(size: 60))
-                    Text("외운 한자")
+                    Text(title)
                         .foregroundStyle(.main)
                         .font(.pretendardRegular(size: 20))
                 }

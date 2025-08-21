@@ -11,7 +11,7 @@ import SwiftData
 // 내비게이션 타겟을 정의하는 Hashable Enum
 enum NavigationTarget: Hashable {
     case studyIntro
-    case learning([StudyLog])
+    case learning
     case quiz([StudyLog])
     case history
 
@@ -20,9 +20,8 @@ enum NavigationTarget: Hashable {
         switch self {
         case .studyIntro:
             hasher.combine(0)
-        case .learning(let logs):
+        case .learning:
             hasher.combine(1)
-            hasher.combine(logs.map { $0.id })
         case .quiz(let logs):
             hasher.combine(2)
             hasher.combine(logs.map { $0.id })
@@ -35,8 +34,8 @@ enum NavigationTarget: Hashable {
         switch (lhs, rhs) {
         case (.studyIntro, .studyIntro):
             return true
-        case (.learning(let lhsLogs), .learning(let rhsLogs)):
-            return lhsLogs.map { $0.id } == rhsLogs.map { $0.id }
+        case (.learning, .learning):
+            return true
         case (.quiz(let lhsLogs), .quiz(let rhsLogs)):
             return lhsLogs.map { $0.id } == rhsLogs.map { $0.id }
         case (.history, .history):
@@ -49,16 +48,21 @@ enum NavigationTarget: Hashable {
 
 
 struct MainView: View {
+    
     @State var showSheet: Bool = false
     @State private var path = NavigationPath()
     
-    @Query
-    private var allStudyLogs: [StudyLog]
+    @Query var kanjis: [Kanji]
+    @Query var studyLogs: [StudyLog]
+    
+    @EnvironmentObject var userCurrentSession: UserCurrentSession
+    @EnvironmentObject var userSettings: UserSettings
+    
     
     var body: some View {
         NavigationStack(path: $path){
             VStack{
-                Text("\(allStudyLogs.filter{ log in log.status == .correct}.count)")
+                Text("\(studyLogs.filter{ log in log.status == .correct}.count)")
                     .font(.pretendardBold(size: 130))
                     .foregroundStyle(.main)
                     .padding(.vertical, 169)
@@ -84,9 +88,9 @@ struct MainView: View {
             .navigationDestination(for: NavigationTarget.self) { target in
                 switch target {
                 case .studyIntro:
-                    StudyIntroView(path: $path)
-                case .learning(let logs):
-                    LearningView(path: $path, learningStudyLogs: logs)
+                    StudyIntroView(viewModel: StudyIntroViewModel(userSettings: userSettings, studyLogs: studyLogs), path: $path)
+                case .learning:
+                    LearningView(path: $path, viewModel: LerningViewModel(kanjis: kanjis, studyLogs: studyLogs, userSettings: userSettings))
                 case .quiz(let logs):
                     QuizView(path: $path, learningStudyLogs: logs)
                 case .history:

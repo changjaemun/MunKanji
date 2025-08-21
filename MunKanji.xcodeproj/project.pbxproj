@@ -49,6 +49,7 @@
 		A1648EA92E55532700DAF244 /* ResultInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA82E55532100DAF244 /* ResultInfoView.swift */; };
 		A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */; };
 		A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */; };
+		A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EC12E57566700DAF244 /* LerningViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		A1648EA82E55532100DAF244 /* ResultInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfoView.swift; sourceTree = "<group>"; };
 		A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNavigationLink.swift; sourceTree = "<group>"; };
 		A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyIntroViewModel.swift; sourceTree = "<group>"; };
+		A1648EC12E57566700DAF244 /* LerningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LerningViewModel.swift; sourceTree = "<group>"; };
 		A18F65242D93D4A2003C5C6E /* MunKanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MunKanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE55A02D9AB26A00DE62D6 /* MunKanjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MunKanjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -199,8 +201,8 @@
 		A138208F2E45CB58000D1EF9 /* LearningView */ = {
 			isa = PBXGroup;
 			children = (
-				A1648EA22E5489EA00DAF244 /* SubView */,
-				A138208E2E45CB58000D1EF9 /* LearningView.swift */,
+				A1648EBC2E57564000DAF244 /* View */,
+				A1648EBD2E57564B00DAF244 /* ViewModel */,
 			);
 			path = LearningView;
 			sourceTree = "<group>";
@@ -217,9 +219,8 @@
 		A13820972E45CB58000D1EF9 /* QuizView */ = {
 			isa = PBXGroup;
 			children = (
-				A1648EA62E5551B000DAF244 /* SubView */,
-				A13820952E45CB58000D1EF9 /* QuizView.swift */,
-				A13820962E45CB58000D1EF9 /* QuizViewModel.swift */,
+				A1648EC52E5774E700DAF244 /* View */,
+				A1648EC62E5774ED00DAF244 /* ViewModel */,
 			);
 			path = QuizView;
 			sourceTree = "<group>";
@@ -227,9 +228,8 @@
 		A13820992E45CB58000D1EF9 /* StudyIntroView */ = {
 			isa = PBXGroup;
 			children = (
+				A1648EBB2E57563300DAF244 /* View */,
 				A1648EAD2E56EA1800DAF244 /* ViewModel */,
-				A1648E992E54746A00DAF244 /* SubView */,
-				A13820982E45CB58000D1EF9 /* StudyIntroView.swift */,
 			);
 			path = StudyIntroView;
 			sourceTree = "<group>";
@@ -261,15 +261,13 @@
 		A13820A32E45CB58000D1EF9 /* MunKanji */ = {
 			isa = PBXGroup;
 			children = (
-				A138207B2E45CB58000D1EF9 /* Font */,
+				A1648EC92E57754D00DAF244 /* App */,
+				A1648ECB2E57759100DAF244 /* Resource */,
 				A138207E2E45CB58000D1EF9 /* Json */,
 				A13820832E45CB58000D1EF9 /* Models */,
 				A138209B2E45CB58000D1EF9 /* UI */,
 				A138209F2E45CB58000D1EF9 /* Util */,
 				A13820852E45CB58000D1EF9 /* Preview Content */,
-				A13820A02E45CB58000D1EF9 /* Assets.xcassets */,
-				A13820A12E45CB58000D1EF9 /* Info.plist */,
-				A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */,
 			);
 			path = MunKanji;
 			sourceTree = "<group>";
@@ -277,8 +275,8 @@
 		A13820CC2E45CC05000D1EF9 /* ResultView */ = {
 			isa = PBXGroup;
 			children = (
-				A1648EA72E5552FD00DAF244 /* SubView */,
-				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
+				A1648EC72E57750500DAF244 /* View */,
+				A1648EC82E57750C00DAF244 /* ViewModel */,
 			);
 			path = ResultView;
 			sourceTree = "<group>";
@@ -339,6 +337,83 @@
 				A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1648EBB2E57563300DAF244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A13820982E45CB58000D1EF9 /* StudyIntroView.swift */,
+				A1648E992E54746A00DAF244 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1648EBC2E57564000DAF244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A138208E2E45CB58000D1EF9 /* LearningView.swift */,
+				A1648EA22E5489EA00DAF244 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1648EBD2E57564B00DAF244 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EC12E57566700DAF244 /* LerningViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1648EC52E5774E700DAF244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A13820952E45CB58000D1EF9 /* QuizView.swift */,
+				A1648EA62E5551B000DAF244 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1648EC62E5774ED00DAF244 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A13820962E45CB58000D1EF9 /* QuizViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1648EC72E57750500DAF244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
+				A1648EA72E5552FD00DAF244 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1648EC82E57750C00DAF244 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1648EC92E57754D00DAF244 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */,
+				A13820A12E45CB58000D1EF9 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1648ECB2E57759100DAF244 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A13820A02E45CB58000D1EF9 /* Assets.xcassets */,
+				A138207B2E45CB58000D1EF9 /* Font */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		A18F651B2D93D4A2003C5C6E = {
@@ -488,6 +563,7 @@
 				A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */,
 				A13820A72E45CB58000D1EF9 /* StudyLog.swift in Sources */,
 				A13820A82E45CB58000D1EF9 /* Word.swift in Sources */,
+				A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */,
 				A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */,
 				A13820A92E45CB58000D1EF9 /* Components.swift in Sources */,
 				A1648EA92E55532700DAF244 /* ResultInfoView.swift in Sources */,

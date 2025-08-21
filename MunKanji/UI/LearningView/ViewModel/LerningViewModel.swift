@@ -1,21 +1,35 @@
 //
-//  StudyIntroViewModel.swift
+//  LerningViewModel.swift
 //  MunKanji
 //
 //  Created by 문창재 on 8/21/25.
 //
-import SwiftData
+
 import SwiftUI
 
-class StudyIntroViewModel: ObservableObject {
-    var studyLogs: [StudyLog]
+class LerningViewModel: ObservableObject {
+    @Published var currentIndex:Int = 0
     
-    init(userSettings: UserSettings, studyLogs: [StudyLog]) {
+    var kanjis:[Kanji]
+    var studyLogs:[StudyLog]
+    var userSettings: UserSettings
+    
+    
+    init(kanjis: [Kanji], studyLogs: [StudyLog], userSettings: UserSettings) {
+        self.kanjis = kanjis
         self.studyLogs = studyLogs
         self.userSettings = userSettings
     }
     
-    var userSettings: UserSettings
+    var learningKanjis:[Kanji] {
+        var tray: [Kanji] = []
+        for log in learningStudyLogs {
+            if let kanji = kanjis.first(where: { $0.id == log.kanjiID }) {
+                tray.append(kanji)
+            }
+        }
+        return tray
+    }
     
     var learningStudyLogs:[StudyLog]{
     
@@ -46,17 +60,4 @@ class StudyIntroViewModel: ObservableObject {
     
     return Array(tray)
 }
-    
-    var inCorrectKanjisCount:Int{
-        learningStudyLogs.filter{$0.status == .incorrect}.count
-    }
-    
-    var reviewKanjisCount:Int{
-    learningStudyLogs.filter{ if $0.nextReviewDate != nil {return true} else {return false}}.count
-}
-    
-    var unseenKanjisCount:Int{
-        learningStudyLogs.filter{$0.status == .unseen}.count
-    }
-    
 }
