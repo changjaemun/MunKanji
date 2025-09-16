@@ -12,7 +12,6 @@ struct HistoryDetailView: View {
     let title: String
     let statusFilter: [StudyStatus]
     
-    @Environment(\.dismiss) private var dismiss
     @Query private var allKanjis: [Kanji]
     @Query private var allStudyLogs: [StudyLog]
     
@@ -20,7 +19,7 @@ struct HistoryDetailView: View {
     
     private var filteredKanjis: [Kanji] {
         let targetLogIDs = allStudyLogs.filter { statusFilter.contains($0.status) }.map { $0.kanjiID }
-        return allKanjis.filter { targetLogIDs.contains($0.id) }
+        return allKanjis.filter { targetLogIDs.contains($0.id) }.sorted{$0.id < $1.id}
     }
     
     let columns = [
@@ -47,12 +46,12 @@ struct HistoryDetailView: View {
                 .padding()
             }
         }
-        
         .navigationTitle(title)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar(content: {
             ToolbarItem(placement: .topBarLeading) {
-                backButton(action: {dismiss()})
+                BackButton()
             }
         })
         .sheet(item: $selectedKanji) { kanji in

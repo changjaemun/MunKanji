@@ -30,4 +30,3 @@ import Foundation
         self.meaning = meaning
     }
 }
-

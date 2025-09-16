@@ -1,7 +1,6 @@
 import SwiftUI
 import SwiftData
 
-// 퀴즈 진행 중의 임시 결과를 저장하기 위한 간단한 구조체
 struct QuizResult {
     let kanjiID: Int
     let newStatus: StudyStatus
