@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12425542E799275009F8DAC /* SelectModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12425532E799275009F8DAC /* SelectModeView.swift */; };
 		A13820A42E45CB58000D1EF9 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138207A2E45CB58000D1EF9 /* Font.swift */; };
 		A13820A52E45CB58000D1EF9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138207F2E45CB58000D1EF9 /* Dummy.swift */; };
 		A13820A62E45CB58000D1EF9 /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820802E45CB58000D1EF9 /* Kanji.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A12425532E799275009F8DAC /* SelectModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeView.swift; sourceTree = "<group>"; };
 		A13820702E45CB58000D1EF9 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		A13820712E45CB58000D1EF9 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		A13820722E45CB58000D1EF9 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A12425552E79927D009F8DAC /* SelectModeView */ = {
+			isa = PBXGroup;
+			children = (
+				A12425532E799275009F8DAC /* SelectModeView.swift */,
+			);
+			path = SelectModeView;
+			sourceTree = "<group>";
+		};
 		A13820792E45CB58000D1EF9 /* static */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +247,7 @@
 		A138209B2E45CB58000D1EF9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A12425552E79927D009F8DAC /* SelectModeView */,
 				A1648E962E54256D00DAF244 /* Components */,
 				A13820922E45CB58000D1EF9 /* MainView */,
 				A13820992E45CB58000D1EF9 /* StudyIntroView */,
@@ -573,6 +584,7 @@
 				A13820AE2E45CB58000D1EF9 /* LearningView.swift in Sources */,
 				A13820AF2E45CB58000D1EF9 /* MainView.swift in Sources */,
 				A13820B02E45CB58000D1EF9 /* SettingView.swift in Sources */,
+				A12425542E799275009F8DAC /* SelectModeView.swift in Sources */,
 				A13820B12E45CB58000D1EF9 /* QuizCardView.swift in Sources */,
 				A13820B22E45CB58000D1EF9 /* QuizGridView.swift in Sources */,
 				A13820B32E45CB58000D1EF9 /* QuizView.swift in Sources */,
