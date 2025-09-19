@@ -36,7 +36,7 @@ struct MunKanjiApp: App {
     var body: some Scene {
         
         WindowGroup {
-            MainView()
+            SelectModeView()
                 .environmentObject(userSettings)
                 .environmentObject(userCurrentSession)
                 .onAppear {

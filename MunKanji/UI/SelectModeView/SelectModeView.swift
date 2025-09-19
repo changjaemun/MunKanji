@@ -6,32 +6,52 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 struct SelectModeView: View {
+    @State private var path = NavigationPath()
+    @Query var kanjis: [Kanji]
+    @Query var studyLogs: [StudyLog]
+    
+    @EnvironmentObject var userCurrentSession: UserCurrentSession
+    @EnvironmentObject var userSettings: UserSettings
+    
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 12){
-                
-                Button{
-                    //
-                }label: {
+        NavigationStack(path: $path){
+            VStack(spacing: 20){
+                Divider()
+                    .padding(.horizontal)
+                NavigationLink(value: NavigationTarget.studyMain) {
                     ModeCardView(mode: "한자 모드", description: "한자의 모양과 음, 뜻을 한글로 학습합니다.", correctCount: 1026, totalCount: 2136)
                 }
-                
                 Button{
                     //
                 }label: {
                     ModeCardView(mode: "음훈 모드", description: "한자의 모양과 음, 뜻을 한글로 학습합니다.", correctCount: 1026, totalCount: 2136)
                 }
-                Spacer()
-                Button{
-                    
-                }label: {
+                Divider()
+                    .padding(.horizontal)
+                NavigationLink(value: NavigationTarget.history) {
                     HistoryModeCardView()
                 }
                 Spacer()
-            }.padding(.top, 35)
-            .navigationTitle("학습하기")
+            }.padding(.top, 20)
+            .navigationTitle("홈")
+            .navigationDestination(for: NavigationTarget.self) { target in
+                switch target {
+                case .studyMain:
+                    MainView(path: $path)
+                case .studyIntro:
+                    StudyIntroView(viewModel: StudyIntroViewModel(userSettings: userSettings, studyLogs: studyLogs), path: $path)
+                case .learning:
+                    LearningView(path: $path, viewModel: LerningViewModel(kanjis: kanjis, studyLogs: studyLogs, userSettings: userSettings))
+                case .quiz(let logs):
+                    QuizView(path: $path, learningStudyLogs: logs)
+                case .history:
+                    HistoryView()
+                }
+            }
         }
     }
 }
@@ -122,7 +142,7 @@ struct ModeCardView: View {
 struct HistoryModeCardView: View {
     let mode: String = "기록 보기"
     let description: String = "학습 기록을 확인합니다."
-    let backgroundKanji: String = "기록"
+    let backgroundKanji: String = "記錄"
     let cardColor: Color = .fontGray
     var body: some View{
         ZStack{
