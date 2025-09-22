@@ -25,9 +25,7 @@ struct SelectModeView: View {
                 NavigationLink(value: NavigationTarget.studyMain) {
                     ModeCardView(mode: "한자 모드", description: "한자의 모양과 음, 뜻을 한글로 학습합니다.", correctCount: 1026, totalCount: 2136)
                 }
-                Button{
-                    //
-                }label: {
+                NavigationLink(value: NavigationTarget.studyMain) {
                     ModeCardView(mode: "음훈 모드", description: "한자의 모양과 음, 뜻을 한글로 학습합니다.", correctCount: 1026, totalCount: 2136)
                 }
                 Divider()

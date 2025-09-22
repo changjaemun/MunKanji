@@ -101,16 +101,17 @@ struct KanjiCardView: View {
     var body: some View {
                 ZStack{
                     Rectangle()
-                        .frame(width: 338, height: 360)
-                        .modifier(CardStyle())
-                    VStack{
+                        .foregroundStyle(.white)
+                        .cornerRadius(20)
+                        .shadow(radius: 10, x: 4, y: 4)
+                    VStack(spacing:0){
                         Rectangle()
                             .foregroundStyle(statusBarColor())
-                            .frame(width: 338, height: 24)
+                            .frame(height: 20)
                             .cornerRadius(20, corners: [.topLeft, .topRight])
-                        Spacer()
-                    }.frame(height: 360)
-                    VStack{
+                        Rectangle()
+                            .modifier(CardStyle())
+                    }
                         VStack{
                             Text(kanji.kanji)
                                 .foregroundStyle(.main)
@@ -118,27 +119,11 @@ struct KanjiCardView: View {
                             Text(kanji.korean)
                                 .foregroundStyle(.main)
                                 .font(.pretendardRegular(size: 24))
-                        }.frame(width: 338)
-                            .padding(.bottom, 30)
-                        Divider()
-                            .frame(width: 310)
-                        HStack{
-                            VStack(alignment:.leading, spacing: 20){
-                                Text("음: \(kanji.sound)")
-                                    .foregroundStyle(.main)
-                                    .font(.pretendardRegular(size: 24))
-                                Text("훈: \(kanji.meaning)")
-                                    .foregroundStyle(.main)
-                                    .font(.pretendardRegular(size: 24))
-                            }.padding(.horizontal)
-                            Spacer()
-                        }.padding()
-                        
-                    }.frame(width: 338, height: 388)
-                    
-                }
+                        }
+                }.frame(width: 338, height: 230)
         }
     }
+
 
 struct MiniKanjiCardView: View {
     let kanji: Kanji
@@ -182,3 +167,6 @@ struct CountInfoRowView:View {
     }
 }
 
+#Preview(body: {
+    KanjiCardView(kanji: Dummy.kanji, studyLog: Dummy.studylog.first!)
+})
