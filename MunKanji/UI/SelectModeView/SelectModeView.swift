@@ -13,6 +13,7 @@ struct SelectModeView: View {
     @State private var path = NavigationPath()
     @Query var kanjis: [Kanji]
     @Query var studyLogs: [StudyLog]
+    @Query var kanjiExamples: [KanjiExample]
     
     @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
@@ -20,6 +21,9 @@ struct SelectModeView: View {
     var body: some View {
         NavigationStack(path: $path){
             VStack(spacing: 20){
+                if let kanjiEx = kanjiExamples.first{
+                    Text(kanjiEx.kanji)
+                }
                 Divider()
                     .padding(.horizontal)
                 NavigationLink(value: NavigationTarget.studyMain) {

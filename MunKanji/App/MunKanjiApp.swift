@@ -12,7 +12,7 @@ import SwiftData
 struct MunKanjiApp: App {
     @StateObject private var userSettings = UserSettings()
     @StateObject private var userCurrentSession = UserCurrentSession()
-
+    
     let container: ModelContainer
     
     init() {
@@ -42,6 +42,9 @@ struct MunKanjiApp: App {
                 .onAppear {
                     DataInitializer.migrateToNewKanjiDataIfNeeded(modelContext: container.mainContext)
                     DataInitializer.seedInitialData(modelContext: container.mainContext)
+                    KanjiExampleLoader.shared.loadKanjiExamplesIfNeeded(
+                        modelContext: container.mainContext
+                    )
                 }
         }.modelContainer(container)
     }

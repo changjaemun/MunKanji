@@ -108,9 +108,16 @@ struct KanjiCardView: View {
                         Rectangle()
                             .foregroundStyle(statusBarColor())
                             .frame(height: 20)
-                            .cornerRadius(20, corners: [.topLeft, .topRight])
+                            .clipShape(UnevenRoundedRectangle(
+                                topLeadingRadius: 20,
+                                bottomLeadingRadius: 0, bottomTrailingRadius: 0, topTrailingRadius: 20
+                            ))
                         Rectangle()
-                            .modifier(CardStyle())
+                            .foregroundStyle(.white)
+                            .clipShape(UnevenRoundedRectangle(
+                                topLeadingRadius: 0,
+                                bottomLeadingRadius: 20, bottomTrailingRadius: 20, topTrailingRadius: 0
+                            ))
                     }
                         VStack{
                             Text(kanji.kanji)
@@ -124,6 +131,87 @@ struct KanjiCardView: View {
         }
     }
 
+struct KanjiWithExampleCardView: View {
+    let kanji: Kanji
+    
+    var body: some View {
+        ZStack{
+            Rectangle()
+                .foregroundStyle(.white)
+                .cornerRadius(20)
+                .shadow(radius: 10, x: 4, y: 4)
+            VStack{
+                VStack(spacing: 30){
+                    VStack(spacing: 2){
+                        Text(kanji.kanji)
+                            .font(.pretendardBold(size: 64))
+                            .foregroundStyle(.main)
+                        Text(kanji.korean)
+                            .font(.pretendardRegular(size: 18))
+                            .foregroundStyle(.main)
+                    }
+                    HStack(spacing: 50){
+                        HStack(spacing: 14){
+                            Text("음")
+                                .foregroundStyle(.white)
+                                .font(.pretendardRegular(size: 20))
+                                .background{
+                                    Rectangle()
+                                        .foregroundStyle(.main)
+                                        .frame(width: 30, height: 30)
+                                        .cornerRadius(5)
+                                }
+                            Text(kanji.sound)
+                                .font(.pretendardRegular(size: 24))
+                            
+                        }
+                        HStack(spacing: 14){
+                            Text("훈")
+                                .foregroundStyle(.white)
+                                .font(.pretendardRegular(size: 20))
+                                .background{
+                                    Rectangle()
+                                        .foregroundStyle(.main)
+                                        .frame(width: 30, height: 30)
+                                        .cornerRadius(5)
+                                }
+                            Text(kanji.meaning)
+                                .font(.pretendardRegular(size: 24))
+                        }
+                    }
+                }
+            }
+        }.frame(width: 338, height: 212)
+        
+    }
+}
+
+struct KanjiExampleRowView:View {
+    var body: some View {
+        ZStack{
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.gray, lineWidth: 0.5)
+            HStack{
+                Spacer()
+                Text("棟木")
+                    .font(.pretendardRegular(size: 28))
+                    //.border(.black)
+                Spacer()
+                Divider()
+                    .padding(.vertical)
+                VStack(alignment: .leading, spacing: 9){
+                    Text("むなぎ")
+                        .font(.pretendardMedium(size: 20))
+                    Text("마룻대로 쓰는 목재")
+                        .font(.pretendardLight(size: 12))
+                        .foregroundStyle(.introFont)
+                }.padding(.leading, 4)
+                Spacer()
+            }
+        }.frame(width: 298, height: 70)
+            .padding(4)
+    }
+}
 
 struct MiniKanjiCardView: View {
     let kanji: Kanji
@@ -168,5 +256,13 @@ struct CountInfoRowView:View {
 }
 
 #Preview(body: {
-    KanjiCardView(kanji: Dummy.kanji, studyLog: Dummy.studylog.first!)
+    ZStack{
+        Color.gray
+        KanjiWithExampleCardView(kanji: Dummy.kanji)
+    }.ignoresSafeArea()
 })
+
+#Preview(body: {
+    KanjiExampleRowView()
+})
+

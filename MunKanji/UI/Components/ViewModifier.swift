@@ -18,7 +18,8 @@ struct CardStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundStyle(.white)
-            .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
+            .cornerRadius(20)
+            .shadow(radius: 10, x: 4, y: 4)
     }
 }
 
