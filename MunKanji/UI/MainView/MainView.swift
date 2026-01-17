@@ -65,12 +65,14 @@ struct MainView: View {
     
     var body: some View {
         VStack{
-            Text("\(studyLogs.filter{ log in log.status == .correct}.count)")
-                .font(.pretendardBold(size: 130))
-                .foregroundStyle(.main)
-                .padding(.vertical, 169)
+            NavigationLink(value: NavigationTarget.history) {
+                Text("\(studyLogs.filter{ log in log.status == .correct}.count)")
+                    .font(.pretendardBold(size: 130))
+                    .foregroundStyle(.main)
+                    .padding(.vertical, 169)
+            }
+            
             NavyNavigationLink(title: "학습하기", value: NavigationTarget.studyIntro)
-            GrayNavigationLink(title: "기록보기", value: NavigationTarget.history)
         }
         .sheet(isPresented: $showSheet, content: {
             SettingView(showSheet: $showSheet)
@@ -89,5 +91,15 @@ struct MainView: View {
             }
         }
         
+    }
+}
+
+#Preview {
+    @Previewable @State var path = NavigationPath()
+    NavigationStack {
+        MainView(path: $path)
+            .modelContainer(for: [Kanji.self, StudyLog.self], inMemory: true)
+            .environmentObject(UserCurrentSession())
+            .environmentObject(UserSettings())
     }
 }
