@@ -90,7 +90,6 @@ struct MainView: View {
                 }
             }
         }
-        
     }
 }
 

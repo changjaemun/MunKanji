@@ -70,16 +70,12 @@ struct NavyButton: View {
 
 struct BackButton: View {
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
-        Button(action: {dismiss()}){
-            ZStack{
-                Rectangle()
-                    .foregroundStyle(.clear)
-                Image(systemName: "chevron.left")
-                    .resizable()
-                    .foregroundStyle(.accent)
-            }
+        Button(action: { dismiss() }) {
+            Image(systemName: "chevron.backward")
+                .font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(.blue)
         }
     }
 }

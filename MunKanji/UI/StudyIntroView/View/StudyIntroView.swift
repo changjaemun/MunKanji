@@ -24,9 +24,9 @@ struct StudyIntroView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.backGround.ignoresSafeArea())
-        .navigationBarBackButtonHidden()
         .navigationTitle("\(userCurrentSession.currentSessionNumber)회차")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 BackButton()

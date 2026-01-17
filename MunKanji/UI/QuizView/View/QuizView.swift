@@ -52,13 +52,13 @@ struct QuizView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
-        .toolbar(content: {
+        .toolbar {
             if !viewModel.isFinished {
                 ToolbarItem(placement: .topBarLeading) {
                     BackButton()
                 }
             }
-        })
+        }
         .onAppear {
             viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext, currentSession: userCurrentSession.currentSessionNumber)
         }

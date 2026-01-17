@@ -49,11 +49,11 @@ struct HistoryDetailView: View {
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
-        .toolbar(content: {
+        .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 BackButton()
             }
-        })
+        }
         .sheet(item: $selectedKanji) { kanji in
             ZStack{
                 Color.backGround
