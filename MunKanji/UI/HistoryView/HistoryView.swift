@@ -9,32 +9,56 @@ import SwiftUI
 import SwiftData
 
 struct HistoryView: View {
-    
+
+    @Query private var allKanjis: [Kanji]
     @Query private var allStudyLogs: [StudyLog]
-    
-    private var correctCount: Int {
-        allStudyLogs.filter { $0.status == .correct }.count
+
+    @State private var selectedKanji: Kanji?
+
+    private var filteredKanjis: [Kanji] {
+        let targetLogIDs = allStudyLogs.filter { $0.status == .correct }.map { $0.kanjiID }
+        return allKanjis.filter { targetLogIDs.contains($0.id) }.sorted{$0.id < $1.id}
     }
-    
-    private var incorrectCount: Int {
-        allStudyLogs.count - correctCount
-    }
-    
+
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+
     var body: some View {
-        VStack(spacing:55){
-            Spacer()
-            HistoryNavigationLink(count: correctCount, title: "외운 한자", statusFilter: [.correct])
-            HistoryNavigationLink(count: incorrectCount, title: "못외운 한자", statusFilter: [.unseen, .incorrect])
-                .padding(.bottom, 160)
-        }.frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.backGround.ignoresSafeArea())
-            .navigationBarBackButtonHidden()
-            .toolbar(content: {
-                ToolbarItem(placement: .topBarLeading) {
-                    BackButton()
+        ZStack{
+            Color.backGround
+                .ignoresSafeArea()
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(filteredKanjis, id: \.self) { kanji in
+                        Button {
+                            selectedKanji = kanji
+                        } label: {
+                            MiniKanjiCardView(kanji: kanji)
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
-            })
-            .navigationTitle("기록")
+                .padding()
+            }
+        }
+        .navigationTitle("기록")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarLeading) {
+                BackButton()
+            }
+        })
+        .sheet(item: $selectedKanji) { kanji in
+            ZStack{
+                Color.backGround
+                    .ignoresSafeArea()
+                KanjiCardView(kanji: kanji, studyLog: allStudyLogs.first { $0.kanjiID == kanji.id } ?? StudyLog(kanjiID: kanji.id))
+            }
+        }
     }
 }
 

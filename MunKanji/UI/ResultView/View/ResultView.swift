@@ -98,6 +98,6 @@ struct ResultView: View {
 }
 
 #Preview {
-    @State var path = NavigationPath()
+    @Previewable @State var path = NavigationPath()
     return ResultView(path: $path, results: [], learningKanjis: [])
 }

@@ -58,7 +58,7 @@ class QuizViewModel: ObservableObject {
     //MARK: --  답안 선택 시 호출
     func selectAnswer(selectedAnswer: String) {
         self.selectedAnswer = selectedAnswer
-        var isCorrect = selectedAnswer == learningKanjis[currentIndex].korean
+        let isCorrect = selectedAnswer == learningKanjis[currentIndex].korean
         let status: StudyStatus = isCorrect ? .correct : .incorrect
         
         // 결과 저장

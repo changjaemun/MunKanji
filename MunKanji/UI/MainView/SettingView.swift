@@ -11,10 +11,6 @@ struct SettingView: View {
     @EnvironmentObject var userSettings: UserSettings
     @Binding var showSheet: Bool
     
-    @State private var selectedReviewCycleCount: Int = 2 // 복습 주기는 임시로 유지
-    
-    let reviewCycleExplain: String = "[맞힌 한자 개수] = [회차당 외울 개수] x [복습 주기]일 때 복습이 진행됩니다."
-    
     var body: some View {
         ZStack {
             Color.backGround.ignoresSafeArea()

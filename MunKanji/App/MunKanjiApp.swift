@@ -12,7 +12,8 @@ import SwiftData
 struct MunKanjiApp: App {
     @StateObject private var userSettings = UserSettings()
     @StateObject private var userCurrentSession = UserCurrentSession()
-    
+    @State private var path = NavigationPath()
+
     let container: ModelContainer
     
     init() {
@@ -34,9 +35,9 @@ struct MunKanjiApp: App {
     }
     
     var body: some Scene {
-        
+
         WindowGroup {
-            SelectModeView()
+            ContentView(path: $path)
                 .environmentObject(userSettings)
                 .environmentObject(userCurrentSession)
                 .onAppear {
@@ -47,5 +48,34 @@ struct MunKanjiApp: App {
                     )
                 }
         }.modelContainer(container)
+    }
+}
+
+struct ContentView: View {
+    @Binding var path: NavigationPath
+    @Query var kanjis: [Kanji]
+    @Query var studyLogs: [StudyLog]
+
+    @EnvironmentObject var userCurrentSession: UserCurrentSession
+    @EnvironmentObject var userSettings: UserSettings
+
+    var body: some View {
+        NavigationStack(path: $path) {
+            MainView(path: $path)
+                .navigationDestination(for: NavigationTarget.self) { target in
+                    switch target {
+                    case .studyMain:
+                        MainView(path: $path)
+                    case .studyIntro:
+                        StudyIntroView(viewModel: StudyIntroViewModel(userSettings: userSettings, studyLogs: studyLogs), path: $path)
+                    case .learning:
+                        LearningView(path: $path, viewModel: LerningViewModel(kanjis: kanjis, studyLogs: studyLogs, userSettings: userSettings))
+                    case .quiz(let logs):
+                        QuizView(path: $path, learningStudyLogs: logs)
+                    case .history:
+                        HistoryView()
+                    }
+                }
+        }
     }
 }
