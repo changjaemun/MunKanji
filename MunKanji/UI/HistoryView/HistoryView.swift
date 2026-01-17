@@ -9,71 +9,56 @@ import SwiftUI
 import SwiftData
 
 struct HistoryView: View {
-    
+
+    @Query private var allKanjis: [Kanji]
     @Query private var allStudyLogs: [StudyLog]
-    @Environment(\.dismiss) private var dismiss
-    
-    private var correctCount: Int {
-        allStudyLogs.filter { $0.status == .correct }.count
+
+    @State private var selectedKanji: Kanji?
+
+    private var filteredKanjis: [Kanji] {
+        let targetLogIDs = allStudyLogs.filter { $0.status == .correct }.map { $0.kanjiID }
+        return allKanjis.filter { targetLogIDs.contains($0.id) }.sorted{$0.id < $1.id}
     }
-    
-    private var incorrectCount: Int {
-        allStudyLogs.count - correctCount
-    }
-    
+
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+
     var body: some View {
         ZStack{
-            Color.backGround.ignoresSafeArea()
-            VStack(spacing:55){
-                Spacer()
-                NavigationLink {
-                    HistoryDetailView(title: "외운 한자", statusFilter: [.correct])
-                } label: {
-                    ZStack{
-                        Rectangle()
-                            .foregroundColor(.white)
-                          .frame(width: 362, height: 190)
-                          .cornerRadius(20)
-                          .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-                        VStack(spacing: 10){
-                            Text("\(correctCount)")
-                                .foregroundStyle(.main)
-                                .font(.pretendardBold(size: 60))
-                            Text("외운 한자")
-                                .foregroundStyle(.main)
-                                .font(.pretendardRegular(size: 20))
+            Color.backGround
+                .ignoresSafeArea()
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(filteredKanjis, id: \.self) { kanji in
+                        Button {
+                            selectedKanji = kanji
+                        } label: {
+                            MiniKanjiCardView(kanji: kanji)
                         }
+                        .buttonStyle(.plain)
                     }
                 }
-                NavigationLink {
-                    HistoryDetailView(title: "못외운 한자", statusFilter: [.unseen, .incorrect])
-                } label: {
-                    ZStack{
-                        Rectangle()
-                            .foregroundColor(.white)
-                          .frame(width: 362, height: 190)
-                          .cornerRadius(20)
-                          .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-                        VStack(spacing: 10){
-                            Text("\(incorrectCount)")
-                                .foregroundStyle(.point)
-                                .font(.pretendardBold(size: 60))
-                            Text("못외운 한자")
-                                .foregroundStyle(.main)
-                                .font(.pretendardRegular(size: 20))
-                        }
-                    }
-                }
-                .padding(.bottom, 160)
+                .padding()
             }
         }
-        .navigationBarBackButtonHidden()
-        .toolbar(content: {
-            ToolbarItem(placement: .topBarLeading) {
-                backButton(action: {dismiss()})
-            }
-        })
         .navigationTitle("기록")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                BackButton()
+            }
+        }
+        .sheet(item: $selectedKanji) { kanji in
+            ZStack{
+                Color.backGround
+                    .ignoresSafeArea()
+                KanjiCardView(kanji: kanji, studyLog: allStudyLogs.first { $0.kanjiID == kanji.id } ?? StudyLog(kanjiID: kanji.id))
+            }
+        }
     }
 }
 

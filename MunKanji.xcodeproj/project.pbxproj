@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12425542E799275009F8DAC /* SelectModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12425532E799275009F8DAC /* SelectModeView.swift */; };
+		A12425572E843A0E009F8DAC /* Kanji_Examples.json in Resources */ = {isa = PBXBuildFile; fileRef = A12425562E843A0E009F8DAC /* Kanji_Examples.json */; };
+		A12425582E843A0E009F8DAC /* Kanji_Examples.json in Resources */ = {isa = PBXBuildFile; fileRef = A12425562E843A0E009F8DAC /* Kanji_Examples.json */; };
+		A124255A2E843A65009F8DAC /* ExampleWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12425592E843A4F009F8DAC /* ExampleWords.swift */; };
+		A124255C2E843C44009F8DAC /* KanjiExampleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124255B2E843C36009F8DAC /* KanjiExampleLoader.swift */; };
 		A13820A42E45CB58000D1EF9 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138207A2E45CB58000D1EF9 /* Font.swift */; };
 		A13820A52E45CB58000D1EF9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138207F2E45CB58000D1EF9 /* Dummy.swift */; };
 		A13820A62E45CB58000D1EF9 /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820802E45CB58000D1EF9 /* Kanji.swift */; };
@@ -15,8 +20,6 @@
 		A13820A92E45CB58000D1EF9 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820862E45CB58000D1EF9 /* Components.swift */; };
 		A13820AA2E45CB58000D1EF9 /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */; };
 		A13820AB2E45CB58000D1EF9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820892E45CB58000D1EF9 /* HistoryView.swift */; };
-		A13820AC2E45CB58000D1EF9 /* KanjiCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138208B2E45CB58000D1EF9 /* KanjiCardView.swift */; };
-		A13820AD2E45CB58000D1EF9 /* MiniKanjiCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138208C2E45CB58000D1EF9 /* MiniKanjiCardView.swift */; };
 		A13820AE2E45CB58000D1EF9 /* LearningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138208E2E45CB58000D1EF9 /* LearningView.swift */; };
 		A13820AF2E45CB58000D1EF9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820902E45CB58000D1EF9 /* MainView.swift */; };
 		A13820B02E45CB58000D1EF9 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13820912E45CB58000D1EF9 /* SettingView.swift */; };
@@ -45,6 +48,13 @@
 		A13820C72E45CB58000D1EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13820A02E45CB58000D1EF9 /* Assets.xcassets */; };
 		A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207C2E45CB58000D1EF9 /* kanji_2136.json */; };
 		A13820CA2E45CB58000D1EF9 /* newwords.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207D2E45CB58000D1EF9 /* newwords.json */; };
+		A1648E982E54257B00DAF244 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648E972E54257600DAF244 /* ViewModifier.swift */; };
+		A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA02E547F6C00DAF244 /* CountInfoView.swift */; };
+		A1648EA52E548A1200DAF244 /* LearningCardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */; };
+		A1648EA92E55532700DAF244 /* ResultInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA82E55532100DAF244 /* ResultInfoView.swift */; };
+		A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */; };
+		A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */; };
+		A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EC12E57566700DAF244 /* LerningViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +68,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A12425532E799275009F8DAC /* SelectModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeView.swift; sourceTree = "<group>"; };
+		A12425562E843A0E009F8DAC /* Kanji_Examples.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Kanji_Examples.json; sourceTree = "<group>"; };
+		A12425592E843A4F009F8DAC /* ExampleWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleWords.swift; sourceTree = "<group>"; };
+		A124255B2E843C36009F8DAC /* KanjiExampleLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiExampleLoader.swift; sourceTree = "<group>"; };
 		A13820702E45CB58000D1EF9 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		A13820712E45CB58000D1EF9 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		A13820722E45CB58000D1EF9 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -78,8 +92,6 @@
 		A13820862E45CB58000D1EF9 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
 		A13820892E45CB58000D1EF9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		A138208B2E45CB58000D1EF9 /* KanjiCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiCardView.swift; sourceTree = "<group>"; };
-		A138208C2E45CB58000D1EF9 /* MiniKanjiCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniKanjiCardView.swift; sourceTree = "<group>"; };
 		A138208E2E45CB58000D1EF9 /* LearningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningView.swift; sourceTree = "<group>"; };
 		A13820902E45CB58000D1EF9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A13820912E45CB58000D1EF9 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -95,6 +107,13 @@
 		A13820A02E45CB58000D1EF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A13820A12E45CB58000D1EF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunKanjiApp.swift; sourceTree = "<group>"; };
+		A1648E972E54257600DAF244 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
+		A1648EA02E547F6C00DAF244 /* CountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountInfoView.swift; sourceTree = "<group>"; };
+		A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningCardScrollView.swift; sourceTree = "<group>"; };
+		A1648EA82E55532100DAF244 /* ResultInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfoView.swift; sourceTree = "<group>"; };
+		A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNavigationLink.swift; sourceTree = "<group>"; };
+		A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyIntroViewModel.swift; sourceTree = "<group>"; };
+		A1648EC12E57566700DAF244 /* LerningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LerningViewModel.swift; sourceTree = "<group>"; };
 		A18F65242D93D4A2003C5C6E /* MunKanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MunKanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE55A02D9AB26A00DE62D6 /* MunKanjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MunKanjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -125,17 +144,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A12425552E79927D009F8DAC /* SelectModeView */ = {
+			isa = PBXGroup;
+			children = (
+				A12425532E799275009F8DAC /* SelectModeView.swift */,
+			);
+			path = SelectModeView;
+			sourceTree = "<group>";
+		};
+		A12425612E8ADD74009F8DAC /* ExampleLearningView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExampleLearningView;
+			sourceTree = "<group>";
+		};
 		A13820792E45CB58000D1EF9 /* static */ = {
 			isa = PBXGroup;
 			children = (
 				A13820702E45CB58000D1EF9 /* Pretendard-Black.otf */,
-				A13820712E45CB58000D1EF9 /* Pretendard-Bold.otf */,
 				A13820722E45CB58000D1EF9 /* Pretendard-ExtraBold.otf */,
-				A13820732E45CB58000D1EF9 /* Pretendard-ExtraLight.otf */,
-				A13820742E45CB58000D1EF9 /* Pretendard-Light.otf */,
+				A13820712E45CB58000D1EF9 /* Pretendard-Bold.otf */,
+				A13820772E45CB58000D1EF9 /* Pretendard-SemiBold.otf */,
 				A13820752E45CB58000D1EF9 /* Pretendard-Medium.otf */,
 				A13820762E45CB58000D1EF9 /* Pretendard-Regular.otf */,
-				A13820772E45CB58000D1EF9 /* Pretendard-SemiBold.otf */,
+				A13820742E45CB58000D1EF9 /* Pretendard-Light.otf */,
+				A13820732E45CB58000D1EF9 /* Pretendard-ExtraLight.otf */,
 				A13820782E45CB58000D1EF9 /* Pretendard-Thin.otf */,
 			);
 			path = static;
@@ -154,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				A138207C2E45CB58000D1EF9 /* kanji_2136.json */,
+				A12425562E843A0E009F8DAC /* Kanji_Examples.json */,
 				A138207D2E45CB58000D1EF9 /* newwords.json */,
 			);
 			path = Json;
@@ -162,6 +197,7 @@
 		A13820832E45CB58000D1EF9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A12425592E843A4F009F8DAC /* ExampleWords.swift */,
 				A138207F2E45CB58000D1EF9 /* Dummy.swift */,
 				A13820802E45CB58000D1EF9 /* Kanji.swift */,
 				A13820812E45CB58000D1EF9 /* StudyLog.swift */,
@@ -178,36 +214,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A13820872E45CB58000D1EF9 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				A13820862E45CB58000D1EF9 /* Components.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		A138208A2E45CB58000D1EF9 /* HistoryView */ = {
 			isa = PBXGroup;
 			children = (
+				A1648EAA2E56E5F700DAF244 /* SubView */,
 				A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */,
 				A13820892E45CB58000D1EF9 /* HistoryView.swift */,
 			);
 			path = HistoryView;
 			sourceTree = "<group>";
 		};
-		A138208D2E45CB58000D1EF9 /* KanjiCardView */ = {
-			isa = PBXGroup;
-			children = (
-				A138208B2E45CB58000D1EF9 /* KanjiCardView.swift */,
-				A138208C2E45CB58000D1EF9 /* MiniKanjiCardView.swift */,
-			);
-			path = KanjiCardView;
-			sourceTree = "<group>";
-		};
 		A138208F2E45CB58000D1EF9 /* LearningView */ = {
 			isa = PBXGroup;
 			children = (
-				A138208E2E45CB58000D1EF9 /* LearningView.swift */,
+				A1648EBC2E57564000DAF244 /* View */,
+				A1648EBD2E57564B00DAF244 /* ViewModel */,
 			);
 			path = LearningView;
 			sourceTree = "<group>";
@@ -224,10 +245,8 @@
 		A13820972E45CB58000D1EF9 /* QuizView */ = {
 			isa = PBXGroup;
 			children = (
-				A13820932E45CB58000D1EF9 /* QuizCardView.swift */,
-				A13820942E45CB58000D1EF9 /* QuizGridView.swift */,
-				A13820952E45CB58000D1EF9 /* QuizView.swift */,
-				A13820962E45CB58000D1EF9 /* QuizViewModel.swift */,
+				A1648EC52E5774E700DAF244 /* View */,
+				A1648EC62E5774ED00DAF244 /* ViewModel */,
 			);
 			path = QuizView;
 			sourceTree = "<group>";
@@ -235,7 +254,8 @@
 		A13820992E45CB58000D1EF9 /* StudyIntroView */ = {
 			isa = PBXGroup;
 			children = (
-				A13820982E45CB58000D1EF9 /* StudyIntroView.swift */,
+				A1648EBB2E57563300DAF244 /* View */,
+				A1648EAD2E56EA1800DAF244 /* ViewModel */,
 			);
 			path = StudyIntroView;
 			sourceTree = "<group>";
@@ -243,7 +263,9 @@
 		A138209B2E45CB58000D1EF9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A13820CB2E45CBEE000D1EF9 /* SubView */,
+				A12425612E8ADD74009F8DAC /* ExampleLearningView */,
+				A1648E962E54256D00DAF244 /* Components */,
+				A12425552E79927D009F8DAC /* SelectModeView */,
 				A13820922E45CB58000D1EF9 /* MainView */,
 				A13820992E45CB58000D1EF9 /* StudyIntroView */,
 				A138208F2E45CB58000D1EF9 /* LearningView */,
@@ -257,6 +279,7 @@
 		A138209F2E45CB58000D1EF9 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A124255B2E843C36009F8DAC /* KanjiExampleLoader.swift */,
 				A138209C2E45CB58000D1EF9 /* DataInitializer.swift */,
 				A138209D2E45CB58000D1EF9 /* JsonManager.swift */,
 				A138209E2E45CB58000D1EF9 /* UserInfo.swift */,
@@ -267,34 +290,159 @@
 		A13820A32E45CB58000D1EF9 /* MunKanji */ = {
 			isa = PBXGroup;
 			children = (
-				A138207B2E45CB58000D1EF9 /* Font */,
+				A1648EC92E57754D00DAF244 /* App */,
+				A1648ECB2E57759100DAF244 /* Resource */,
 				A138207E2E45CB58000D1EF9 /* Json */,
 				A13820832E45CB58000D1EF9 /* Models */,
 				A138209B2E45CB58000D1EF9 /* UI */,
 				A138209F2E45CB58000D1EF9 /* Util */,
 				A13820852E45CB58000D1EF9 /* Preview Content */,
-				A13820A02E45CB58000D1EF9 /* Assets.xcassets */,
 				A13820A12E45CB58000D1EF9 /* Info.plist */,
-				A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */,
 			);
 			path = MunKanji;
-			sourceTree = "<group>";
-		};
-		A13820CB2E45CBEE000D1EF9 /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-				A13820872E45CB58000D1EF9 /* Components */,
-				A138208D2E45CB58000D1EF9 /* KanjiCardView */,
-			);
-			path = SubView;
 			sourceTree = "<group>";
 		};
 		A13820CC2E45CC05000D1EF9 /* ResultView */ = {
 			isa = PBXGroup;
 			children = (
-				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
+				A1648EC72E57750500DAF244 /* View */,
+				A1648EC82E57750C00DAF244 /* ViewModel */,
 			);
 			path = ResultView;
+			sourceTree = "<group>";
+		};
+		A1648E962E54256D00DAF244 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A1648E972E54257600DAF244 /* ViewModifier.swift */,
+				A13820862E45CB58000D1EF9 /* Components.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A1648E992E54746A00DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EA02E547F6C00DAF244 /* CountInfoView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EA22E5489EA00DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EA62E5551B000DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A13820932E45CB58000D1EF9 /* QuizCardView.swift */,
+				A13820942E45CB58000D1EF9 /* QuizGridView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EA72E5552FD00DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EA82E55532100DAF244 /* ResultInfoView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EAA2E56E5F700DAF244 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A1648EAD2E56EA1800DAF244 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1648EBB2E57563300DAF244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A13820982E45CB58000D1EF9 /* StudyIntroView.swift */,
+				A1648E992E54746A00DAF244 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1648EBC2E57564000DAF244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A138208E2E45CB58000D1EF9 /* LearningView.swift */,
+				A1648EA22E5489EA00DAF244 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1648EBD2E57564B00DAF244 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A1648EC12E57566700DAF244 /* LerningViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1648EC52E5774E700DAF244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A13820952E45CB58000D1EF9 /* QuizView.swift */,
+				A1648EA62E5551B000DAF244 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1648EC62E5774ED00DAF244 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A13820962E45CB58000D1EF9 /* QuizViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1648EC72E57750500DAF244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A138209A2E45CB58000D1EF9 /* ResultView.swift */,
+				A1648EA72E5552FD00DAF244 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1648EC82E57750C00DAF244 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A1648EC92E57754D00DAF244 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1648ECB2E57759100DAF244 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A13820A02E45CB58000D1EF9 /* Assets.xcassets */,
+				A138207B2E45CB58000D1EF9 /* Font */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		A18F651B2D93D4A2003C5C6E = {
@@ -414,6 +562,7 @@
 				A13820C22E45CB58000D1EF9 /* Pretendard-SemiBold.otf in Resources */,
 				A13820C32E45CB58000D1EF9 /* Pretendard-Thin.otf in Resources */,
 				A13820C42E45CB58000D1EF9 /* kanji_2136.json in Resources */,
+				A12425572E843A0E009F8DAC /* Kanji_Examples.json in Resources */,
 				A13820C52E45CB58000D1EF9 /* newwords.json in Resources */,
 				A13820C62E45CB58000D1EF9 /* Preview Assets.xcassets in Resources */,
 				A13820C72E45CB58000D1EF9 /* Assets.xcassets in Resources */,
@@ -425,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */,
+				A12425582E843A0E009F8DAC /* Kanji_Examples.json in Resources */,
 				A13820CA2E45CB58000D1EF9 /* newwords.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,21 +586,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */,
 				A13820A42E45CB58000D1EF9 /* Font.swift in Sources */,
+				A1648EA52E548A1200DAF244 /* LearningCardScrollView.swift in Sources */,
 				A13820A52E45CB58000D1EF9 /* Dummy.swift in Sources */,
 				A13820A62E45CB58000D1EF9 /* Kanji.swift in Sources */,
+				A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */,
 				A13820A72E45CB58000D1EF9 /* StudyLog.swift in Sources */,
 				A13820A82E45CB58000D1EF9 /* Word.swift in Sources */,
+				A124255A2E843A65009F8DAC /* ExampleWords.swift in Sources */,
+				A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */,
+				A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */,
 				A13820A92E45CB58000D1EF9 /* Components.swift in Sources */,
+				A1648EA92E55532700DAF244 /* ResultInfoView.swift in Sources */,
 				A13820AA2E45CB58000D1EF9 /* HistoryDetailView.swift in Sources */,
+				A1648E982E54257B00DAF244 /* ViewModifier.swift in Sources */,
 				A13820AB2E45CB58000D1EF9 /* HistoryView.swift in Sources */,
-				A13820AC2E45CB58000D1EF9 /* KanjiCardView.swift in Sources */,
-				A13820AD2E45CB58000D1EF9 /* MiniKanjiCardView.swift in Sources */,
 				A13820AE2E45CB58000D1EF9 /* LearningView.swift in Sources */,
 				A13820AF2E45CB58000D1EF9 /* MainView.swift in Sources */,
 				A13820B02E45CB58000D1EF9 /* SettingView.swift in Sources */,
+				A12425542E799275009F8DAC /* SelectModeView.swift in Sources */,
 				A13820B12E45CB58000D1EF9 /* QuizCardView.swift in Sources */,
 				A13820B22E45CB58000D1EF9 /* QuizGridView.swift in Sources */,
+				A124255C2E843C44009F8DAC /* KanjiExampleLoader.swift in Sources */,
 				A13820B32E45CB58000D1EF9 /* QuizView.swift in Sources */,
 				A13820B42E45CB58000D1EF9 /* QuizViewModel.swift in Sources */,
 				A13820B52E45CB58000D1EF9 /* StudyIntroView.swift in Sources */,
@@ -621,7 +779,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = project.MunKanji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -656,7 +814,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = project.MunKanji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
