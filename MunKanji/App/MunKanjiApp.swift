@@ -7,6 +7,19 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
+
+// MARK: - Navigation Bar 숨김 상태에서 Swipe Back Gesture 활성화
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}
 
 @main
 struct MunKanjiApp: App {
