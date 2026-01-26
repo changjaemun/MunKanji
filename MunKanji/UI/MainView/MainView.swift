@@ -72,20 +72,20 @@ struct MainView: View {
                 } label: {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: 20))
-                        .foregroundStyle(.main)
+                        .foregroundStyle(userSettings.currentMode.primaryColor)
                 }
             }
             .padding(.horizontal)
             .padding(.top, 8)
-            
+
             Spacer()
-            
+
             NavigationLink(value: NavigationTarget.history) {
                 Text("\(studyLogs.filter{ log in log.status == .correct}.count)")
                     .font(.pretendardBold(size: 130))
-                    .foregroundStyle(.main)
+                    .foregroundStyle(userSettings.currentMode.primaryColor)
             }
-            
+
             Spacer()
             NavyNavigationLink(title: "학습하기", value: NavigationTarget.studyIntro)
         }
@@ -101,9 +101,8 @@ struct MainView: View {
 
 struct ModeSelectButton: View {
     @State private var showModeMenu: Bool = false
-    @State private var selectedMode: String = "한자모드"
-    
-    
+    @EnvironmentObject var userSettings: UserSettings
+
     var body: some View {
         Button {
             withAnimation(.easeInOut(duration: 0.2)) {
@@ -111,7 +110,7 @@ struct ModeSelectButton: View {
             }
         } label: {
             HStack(spacing: 4) {
-                Text(selectedMode)
+                Text(userSettings.currentMode.displayName)
                     .font(.pretendardBold(size: 22))
                     .foregroundStyle(.white)
                 Image(systemName: "chevron.down")
@@ -122,70 +121,52 @@ struct ModeSelectButton: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 10)
             .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(selectedMode == "한자모드" ? Color.main : Color.eumHunMode)
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(userSettings.currentMode.primaryColor)
             )
         }
         .popover(isPresented: $showModeMenu, arrowEdge: .top) {
-            ModeSelectionView(selectedMode: $selectedMode, showModeMenu: $showModeMenu)
+            ModeSelectionView(showModeMenu: $showModeMenu)
         }
     }
 }
 
 struct ModeSelectionView: View {
-    @Binding var selectedMode: String
     @Binding var showModeMenu: Bool
-    
+    @EnvironmentObject var userSettings: UserSettings
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Button {
-                selectedMode = "한자모드"
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    showModeMenu = false
-                }
-            } label: {
-                HStack {
-                    Text("한자모드")
-                        .font(.pretendardRegular(size: 17))
-                        .foregroundStyle(.primary)
-                    Spacer()
-                    if selectedMode == "한자모드" {
-                        Image(systemName: "checkmark")
-                            .foregroundStyle(.blue)
+            ForEach(StudyMode.allCases, id: \.self) { mode in
+                Button {
+                    userSettings.currentMode = mode
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        showModeMenu = false
                     }
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            
-            Rectangle()
-                .fill(Color.gray.opacity(0.3))
-                .frame(height: 0.5)
-                .padding(.horizontal)
-            
-            Button {
-                selectedMode = "음훈모드"
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    showModeMenu = false
-                }
-            } label: {
-                HStack {
-                    Text("음훈모드")
-                        .font(.pretendardRegular(size: 17))
-                        .foregroundStyle(.primary)
-                    Spacer()
-                    if selectedMode == "음훈모드" {
-                        Image(systemName: "checkmark")
-                            .foregroundStyle(.blue)
+                } label: {
+                    HStack {
+                        Text(mode.displayName)
+                            .font(.pretendardRegular(size: 17))
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        if userSettings.currentMode == mode {
+                            Image(systemName: "checkmark")
+                                .foregroundStyle(mode.primaryColor)
+                        }
                     }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .contentShape(Rectangle())
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                .contentShape(Rectangle())
+                .buttonStyle(.plain)
+
+                if mode != StudyMode.allCases.last {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(height: 0.5)
+                        .padding(.horizontal)
+                }
             }
-            .buttonStyle(.plain)
         }
         .frame(width: 200)
         .presentationCompactAdaptation(.popover)
