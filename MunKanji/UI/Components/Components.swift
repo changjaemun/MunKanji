@@ -185,32 +185,6 @@ struct KanjiWithExampleCardView: View {
     }
 }
 
-struct KanjiExampleRowView:View {
-    var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.gray, lineWidth: 0.5)
-            HStack{
-                Spacer()
-                Text("棟木")
-                    .font(.pretendardRegular(size: 28))
-                    //.border(.black)
-                Spacer()
-                Divider()
-                    .padding(.vertical)
-                VStack(alignment: .leading, spacing: 9){
-                    Text("むなぎ")
-                        .font(.pretendardMedium(size: 20))
-                    Text("마룻대로 쓰는 목재")
-                        .font(.pretendardLight(size: 12))
-                        .foregroundStyle(.introFont)
-                }.padding(.leading, 4)
-                Spacer()
-            }
-        }.frame(width: 298, height: 70)
-            .padding(4)
-    }
-}
 
 struct MiniKanjiCardView: View {
     let kanji: Kanji
@@ -260,9 +234,7 @@ struct CountInfoRowView: View {
         Color.gray
         KanjiWithExampleCardView(kanji: Dummy.kanji)
     }.ignoresSafeArea()
+        .environmentObject(UserSettings())
 })
 
-#Preview(body: {
-    KanjiExampleRowView()
-})
 

@@ -10,15 +10,20 @@ import SwiftData
 
 struct LearningView: View {
     @Binding var path: NavigationPath
-    
+
     @EnvironmentObject var userCurrentSession: UserCurrentSession
-    
+    @EnvironmentObject var userSettings: UserSettings
+
     @ObservedObject var viewModel: LerningViewModel
-    
+
     var body: some View {
         VStack {
             Spacer()
-            LearningCardScrollView(learningKanjis: viewModel.learningKanjis, learningStudyLogs: viewModel.learningStudyLogs)
+            if userSettings.currentMode == .eumhun {
+                EumHunLearningCardView(learningKanjis: viewModel.learningKanjis)
+            } else {
+                LearningCardScrollView(learningKanjis: viewModel.learningKanjis, learningStudyLogs: viewModel.learningStudyLogs)
+            }
             Spacer()
             NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(viewModel.learningStudyLogs))
                 .padding()

@@ -43,11 +43,9 @@
 		A13820C22E45CB58000D1EF9 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820772E45CB58000D1EF9 /* Pretendard-SemiBold.otf */; };
 		A13820C32E45CB58000D1EF9 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13820782E45CB58000D1EF9 /* Pretendard-Thin.otf */; };
 		A13820C42E45CB58000D1EF9 /* kanji_2136.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207C2E45CB58000D1EF9 /* kanji_2136.json */; };
-		A13820C52E45CB58000D1EF9 /* newwords.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207D2E45CB58000D1EF9 /* newwords.json */; };
 		A13820C62E45CB58000D1EF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13820842E45CB58000D1EF9 /* Preview Assets.xcassets */; };
 		A13820C72E45CB58000D1EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13820A02E45CB58000D1EF9 /* Assets.xcassets */; };
 		A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207C2E45CB58000D1EF9 /* kanji_2136.json */; };
-		A13820CA2E45CB58000D1EF9 /* newwords.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207D2E45CB58000D1EF9 /* newwords.json */; };
 		A1648E982E54257B00DAF244 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648E972E54257600DAF244 /* ViewModifier.swift */; };
 		A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA02E547F6C00DAF244 /* CountInfoView.swift */; };
 		A1648EA52E548A1200DAF244 /* LearningCardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */; };
@@ -55,6 +53,7 @@
 		A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */; };
 		A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */; };
 		A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EC12E57566700DAF244 /* LerningViewModel.swift */; };
+		A1EUMHUN2E97A001009F8DAC /* EumHunLearningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EUMHUN2E97A000009F8DAC /* EumHunLearningCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +82,6 @@
 		A13820782E45CB58000D1EF9 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		A138207A2E45CB58000D1EF9 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		A138207C2E45CB58000D1EF9 /* kanji_2136.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kanji_2136.json; sourceTree = "<group>"; };
-		A138207D2E45CB58000D1EF9 /* newwords.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = newwords.json; sourceTree = "<group>"; };
 		A138207F2E45CB58000D1EF9 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		A13820802E45CB58000D1EF9 /* Kanji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kanji.swift; sourceTree = "<group>"; };
 		A13820812E45CB58000D1EF9 /* StudyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyLog.swift; sourceTree = "<group>"; };
@@ -116,6 +114,7 @@
 		A1648EC12E57566700DAF244 /* LerningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LerningViewModel.swift; sourceTree = "<group>"; };
 		A18F65242D93D4A2003C5C6E /* MunKanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MunKanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE55A02D9AB26A00DE62D6 /* MunKanjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MunKanjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1EUMHUN2E97A000009F8DAC /* EumHunLearningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EumHunLearningCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -189,7 +188,6 @@
 			children = (
 				A138207C2E45CB58000D1EF9 /* kanji_2136.json */,
 				A12425562E843A0E009F8DAC /* Kanji_Examples.json */,
-				A138207D2E45CB58000D1EF9 /* newwords.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -332,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */,
+				A1EUMHUN2E97A000009F8DAC /* EumHunLearningCardView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -563,7 +562,6 @@
 				A13820C32E45CB58000D1EF9 /* Pretendard-Thin.otf in Resources */,
 				A13820C42E45CB58000D1EF9 /* kanji_2136.json in Resources */,
 				A12425572E843A0E009F8DAC /* Kanji_Examples.json in Resources */,
-				A13820C52E45CB58000D1EF9 /* newwords.json in Resources */,
 				A13820C62E45CB58000D1EF9 /* Preview Assets.xcassets in Resources */,
 				A13820C72E45CB58000D1EF9 /* Assets.xcassets in Resources */,
 			);
@@ -575,7 +573,6 @@
 			files = (
 				A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */,
 				A12425582E843A0E009F8DAC /* Kanji_Examples.json in Resources */,
-				A13820CA2E45CB58000D1EF9 /* newwords.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +586,7 @@
 				A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */,
 				A13820A42E45CB58000D1EF9 /* Font.swift in Sources */,
 				A1648EA52E548A1200DAF244 /* LearningCardScrollView.swift in Sources */,
+				A1EUMHUN2E97A001009F8DAC /* EumHunLearningCardView.swift in Sources */,
 				A13820A52E45CB58000D1EF9 /* Dummy.swift in Sources */,
 				A13820A62E45CB58000D1EF9 /* Kanji.swift in Sources */,
 				A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */,

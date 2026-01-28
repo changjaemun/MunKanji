@@ -51,29 +51,20 @@ enum NavigationTarget: Hashable {
 
 
 struct MainView: View {
-    
-    @State var showSheet: Bool = false
     @Binding var path: NavigationPath
-    
+
     @Query var kanjis: [Kanji]
     @Query var studyLogs: [StudyLog]
-    
+
     @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
-    
-    
+
+
     var body: some View {
         VStack(spacing: 0) {
             HStack {
                 ModeSelectButton()
                 Spacer()
-                Button {
-                    showSheet = true
-                } label: {
-                    Image(systemName: "gearshape.fill")
-                        .font(.system(size: 20))
-                        .foregroundStyle(userSettings.currentMode.primaryColor)
-                }
             }
             .padding(.horizontal)
             .padding(.top, 8)
@@ -90,12 +81,6 @@ struct MainView: View {
             NavyNavigationLink(title: "학습하기", value: NavigationTarget.studyIntro)
         }
         .toolbar(.hidden, for: .navigationBar)
-        .sheet(isPresented: $showSheet, content: {
-            SettingView(showSheet: $showSheet)
-                .presentationDetents([.fraction(0.6)])
-                .presentationDragIndicator(.visible)
-                .presentationCornerRadius(35)
-        })
     }
 }
 
