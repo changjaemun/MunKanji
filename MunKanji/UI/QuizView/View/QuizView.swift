@@ -9,14 +9,15 @@ import SwiftUI
 import SwiftData
 
 struct QuizView: View {
-    
+
     @Query var kanjis:[Kanji]
-    
+
     @Binding var path: NavigationPath
     let learningStudyLogs: [StudyLog]
-    
+
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var userCurrentSession: UserCurrentSession
+    @EnvironmentObject var userSettings: UserSettings
     @StateObject private var viewModel: QuizViewModel = QuizViewModel()
     
     var learningKanjis:[Kanji]{
@@ -60,7 +61,7 @@ struct QuizView: View {
             }
         }
         .onAppear {
-            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext, currentSession: userCurrentSession.currentSessionNumber)
+            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext, currentSession: userCurrentSession.currentSessionNumber, studyMode: userSettings.currentMode)
         }
     }
 }

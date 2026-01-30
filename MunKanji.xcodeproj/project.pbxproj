@@ -10,7 +10,7 @@
 		A12425542E799275009F8DAC /* SelectModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12425532E799275009F8DAC /* SelectModeView.swift */; };
 		A12425572E843A0E009F8DAC /* Kanji_Examples.json in Resources */ = {isa = PBXBuildFile; fileRef = A12425562E843A0E009F8DAC /* Kanji_Examples.json */; };
 		A12425582E843A0E009F8DAC /* Kanji_Examples.json in Resources */ = {isa = PBXBuildFile; fileRef = A12425562E843A0E009F8DAC /* Kanji_Examples.json */; };
-		A124255A2E843A65009F8DAC /* ExampleWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12425592E843A4F009F8DAC /* ExampleWords.swift */; };
+		A124255A2E843A65009F8DAC /* KanjiWithExampleWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12425592E843A4F009F8DAC /* KanjiWithExampleWords.swift */; };
 		A124255C2E843C44009F8DAC /* KanjiExampleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124255B2E843C36009F8DAC /* KanjiExampleLoader.swift */; };
 		A13820A42E45CB58000D1EF9 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138207A2E45CB58000D1EF9 /* Font.swift */; };
 		A13820A52E45CB58000D1EF9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138207F2E45CB58000D1EF9 /* Dummy.swift */; };
@@ -53,6 +53,7 @@
 		A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */; };
 		A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */; };
 		A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EC12E57566700DAF244 /* LerningViewModel.swift */; };
+		A192462C2F29F505008ED735 /* EumHunStudyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192462B2F29F4FF008ED735 /* EumHunStudyLog.swift */; };
 		A1EUMHUN2E97A001009F8DAC /* EumHunLearningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EUMHUN2E97A000009F8DAC /* EumHunLearningCardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +70,7 @@
 /* Begin PBXFileReference section */
 		A12425532E799275009F8DAC /* SelectModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeView.swift; sourceTree = "<group>"; };
 		A12425562E843A0E009F8DAC /* Kanji_Examples.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Kanji_Examples.json; sourceTree = "<group>"; };
-		A12425592E843A4F009F8DAC /* ExampleWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleWords.swift; sourceTree = "<group>"; };
+		A12425592E843A4F009F8DAC /* KanjiWithExampleWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiWithExampleWords.swift; sourceTree = "<group>"; };
 		A124255B2E843C36009F8DAC /* KanjiExampleLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiExampleLoader.swift; sourceTree = "<group>"; };
 		A13820702E45CB58000D1EF9 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		A13820712E45CB58000D1EF9 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyIntroViewModel.swift; sourceTree = "<group>"; };
 		A1648EC12E57566700DAF244 /* LerningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LerningViewModel.swift; sourceTree = "<group>"; };
 		A18F65242D93D4A2003C5C6E /* MunKanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MunKanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A192462B2F29F4FF008ED735 /* EumHunStudyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EumHunStudyLog.swift; sourceTree = "<group>"; };
 		A1BE55A02D9AB26A00DE62D6 /* MunKanjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MunKanjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1EUMHUN2E97A000009F8DAC /* EumHunLearningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EumHunLearningCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,13 +151,6 @@
 				A12425532E799275009F8DAC /* SelectModeView.swift */,
 			);
 			path = SelectModeView;
-			sourceTree = "<group>";
-		};
-		A12425612E8ADD74009F8DAC /* ExampleLearningView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ExampleLearningView;
 			sourceTree = "<group>";
 		};
 		A13820792E45CB58000D1EF9 /* static */ = {
@@ -195,10 +190,11 @@
 		A13820832E45CB58000D1EF9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A12425592E843A4F009F8DAC /* ExampleWords.swift */,
+				A12425592E843A4F009F8DAC /* KanjiWithExampleWords.swift */,
 				A138207F2E45CB58000D1EF9 /* Dummy.swift */,
 				A13820802E45CB58000D1EF9 /* Kanji.swift */,
 				A13820812E45CB58000D1EF9 /* StudyLog.swift */,
+				A192462B2F29F4FF008ED735 /* EumHunStudyLog.swift */,
 				A13820822E45CB58000D1EF9 /* Word.swift */,
 			);
 			path = Models;
@@ -261,7 +257,6 @@
 		A138209B2E45CB58000D1EF9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A12425612E8ADD74009F8DAC /* ExampleLearningView */,
 				A1648E962E54256D00DAF244 /* Components */,
 				A12425552E79927D009F8DAC /* SelectModeView */,
 				A13820922E45CB58000D1EF9 /* MainView */,
@@ -592,7 +587,7 @@
 				A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */,
 				A13820A72E45CB58000D1EF9 /* StudyLog.swift in Sources */,
 				A13820A82E45CB58000D1EF9 /* Word.swift in Sources */,
-				A124255A2E843A65009F8DAC /* ExampleWords.swift in Sources */,
+				A124255A2E843A65009F8DAC /* KanjiWithExampleWords.swift in Sources */,
 				A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */,
 				A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */,
 				A13820A92E45CB58000D1EF9 /* Components.swift in Sources */,
@@ -615,6 +610,7 @@
 				A13820B82E45CB58000D1EF9 /* JsonManager.swift in Sources */,
 				A13820B92E45CB58000D1EF9 /* UserInfo.swift in Sources */,
 				A13820BA2E45CB58000D1EF9 /* MunKanjiApp.swift in Sources */,
+				A192462C2F29F505008ED735 /* EumHunStudyLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,7 +773,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = project.MunKanji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -812,7 +808,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = project.MunKanji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

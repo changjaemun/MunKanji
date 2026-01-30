@@ -15,20 +15,22 @@ class QuizViewModel: ObservableObject {
     @Published var showResult: Bool = false
     @Published var selectedAnswer: String = "" // 선택된 답안 추적
     @Published var currentSession: Int = 0
-    
+
     var allKanjis: [Kanji] = []
     var learningKanjis: [Kanji] = []
     private var modelContext: ModelContext?
-    
+    private var studyMode: StudyMode = .kanji
+
     init() {
     }
-    
+
     // 초기화 및 퀴즈 설정
-    func setup(learningKanjis: [Kanji], allKanjis: [Kanji], modelContext: ModelContext, currentSession: Int) {
+    func setup(learningKanjis: [Kanji], allKanjis: [Kanji], modelContext: ModelContext, currentSession: Int, studyMode: StudyMode) {
         self.allKanjis = allKanjis
         self.modelContext = modelContext
         self.learningKanjis = learningKanjis
         self.currentSession = currentSession
+        self.studyMode = studyMode
         // 첫 문제의 보기 생성
         generateChoices()
     }
@@ -110,30 +112,60 @@ class QuizViewModel: ObservableObject {
             }
     }
     
-    //MARK: -- result 결과에 따라 StudyLog를 업데이트 하는 함수
+    //MARK: -- result 결과에 따라 StudyLog 또는 EumHunStudyLog를 업데이트 하는 함수
     func updateStudyLog(result: QuizResult, context: ModelContext){
         let idToFind = result.kanjiID
-        let descriptor = FetchDescriptor<StudyLog>(
-            predicate: #Predicate { $0.kanjiID == idToFind }
-        )
-        do {
-            let studyLogs = try context.fetch(descriptor)
-            let studyLog = studyLogs.first ?? StudyLog(kanjiID: idToFind)
-            
-            studyLog.status = result.newStatus
-            
-            if result.newStatus == .correct {
-                studyLog.reviewCount += 1
-                studyLog.lastStudiedDate = Date()
-            } else {
-                studyLog.lastStudiedDate = nil
-                if studyLog.reviewCount > 0 {
-                    studyLog.reviewCount -= 1
+
+        if studyMode == .eumhun {
+            // 음훈 모드: EumHunStudyLog 업데이트
+            let descriptor = FetchDescriptor<EumHunStudyLog>(
+                predicate: #Predicate { $0.kanjiID == idToFind }
+            )
+            do {
+                let eumhunStudyLogs = try context.fetch(descriptor)
+                let eumhunStudyLog = eumhunStudyLogs.first ?? EumHunStudyLog(kanjiID: idToFind)
+
+                eumhunStudyLog.status = result.newStatus
+
+                if result.newStatus == .correct {
+                    eumhunStudyLog.reviewCount += 1
+                    eumhunStudyLog.lastStudiedDate = Date()
+                } else {
+                    eumhunStudyLog.lastStudiedDate = nil
+                    if eumhunStudyLog.reviewCount > 0 {
+                        eumhunStudyLog.reviewCount -= 1
+                    }
                 }
+
+                print("✅ EumHunStudyLog 업데이트: kanjiID=\(idToFind), status=\(result.newStatus)")
+            } catch {
+                print("❌ EumHunStudyLog 업데이트 실패: \(error)")
             }
-            
-        } catch {
-            print("❌ StudyLog 업데이트 실패: \(error)")
+        } else {
+            // 한자 모드: StudyLog 업데이트
+            let descriptor = FetchDescriptor<StudyLog>(
+                predicate: #Predicate { $0.kanjiID == idToFind }
+            )
+            do {
+                let studyLogs = try context.fetch(descriptor)
+                let studyLog = studyLogs.first ?? StudyLog(kanjiID: idToFind)
+
+                studyLog.status = result.newStatus
+
+                if result.newStatus == .correct {
+                    studyLog.reviewCount += 1
+                    studyLog.lastStudiedDate = Date()
+                } else {
+                    studyLog.lastStudiedDate = nil
+                    if studyLog.reviewCount > 0 {
+                        studyLog.reviewCount -= 1
+                    }
+                }
+
+                print("✅ StudyLog 업데이트: kanjiID=\(idToFind), status=\(result.newStatus)")
+            } catch {
+                print("❌ StudyLog 업데이트 실패: \(error)")
+            }
         }
     }
     

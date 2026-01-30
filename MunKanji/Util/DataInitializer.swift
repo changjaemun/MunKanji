@@ -29,14 +29,18 @@ class DataInitializer {
             for (index, word) in words.enumerated(){
                 let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "")
                 modelContext.insert(newKanji)
-                
-                //newKanji와 짝이 될 StudyLog 객체 생성 및 저장
+
+                // 한자 모드용 StudyLog 생성
                 let newStudyLog = StudyLog(kanjiID: index)
                 modelContext.insert(newStudyLog)
+
+                // 음훈 모드용 EumHunStudyLog 생성
+                let newEumHunStudyLog = EumHunStudyLog(kanjiID: index)
+                modelContext.insert(newEumHunStudyLog)
             }
-            
-            
-            print("초기 데이터 로딩 완료!")
+
+
+            print("초기 데이터 로딩 완료! (Kanji: \(words.count), StudyLog: \(words.count), EumHunStudyLog: \(words.count))")
             
         } catch {
             fatalError("데이터 로딩 중 오류 발생: \(error)")
@@ -44,32 +48,79 @@ class DataInitializer {
     }
     
     static func migrateToNewKanjiDataIfNeeded(modelContext: ModelContext) {
-        let currentDataVersion = "kanji_2136_v1"
+        let currentDataVersion = "kanji_2136_v2_eumhun"
         let savedDataVersion = UserDefaults.standard.string(forKey: "dataVersion")
-        
+
         // 이미 최신 데이터면 아무것도 안 함
-        guard savedDataVersion != currentDataVersion else { return }
-        
+        guard savedDataVersion != currentDataVersion else {
+            // EumHunStudyLog가 없으면 생성 (기존 사용자 대응)
+            addEumHunStudyLogIfNeeded(modelContext: modelContext)
+            return
+        }
+
         do {
-            // 1. 기존 Kanji 전체 삭제
+            // ⚠️ 사용자 학습 기록 보존: StudyLog와 EumHunStudyLog는 절대 삭제하지 않음!
+            // 1. 기존 Kanji만 삭제 (학습 기록은 보존)
             let kanjiDescriptor = FetchDescriptor<Kanji>()
             let allKanjis = try modelContext.fetch(kanjiDescriptor)
             for kanji in allKanjis {
                 modelContext.delete(kanji)
             }
-            // 2. 기존 StudyLog 전체 삭제
-            let logDescriptor = FetchDescriptor<StudyLog>()
-            let allLogs = try modelContext.fetch(logDescriptor)
-            for log in allLogs {
-                modelContext.delete(log)
+
+            // 2. 새 Kanji 데이터만 저장
+            let words: [Word] = Word.allWords
+            for (index, word) in words.enumerated() {
+                let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "")
+                modelContext.insert(newKanji)
             }
-            // 3. 새 데이터 저장
-            seedInitialData(modelContext: modelContext)
-            // 4. 버전 저장
+
+            // 3. StudyLog가 없으면 생성 (기존 사용자는 이미 있으므로 건너뜀)
+            let studyLogDescriptor = FetchDescriptor<StudyLog>()
+            let studyLogCount = try modelContext.fetchCount(studyLogDescriptor)
+            if studyLogCount == 0 {
+                for (index, _) in words.enumerated() {
+                    let newStudyLog = StudyLog(kanjiID: index)
+                    modelContext.insert(newStudyLog)
+                }
+            }
+
+            // 4. EumHunStudyLog가 없으면 생성
+            addEumHunStudyLogIfNeeded(modelContext: modelContext)
+
+            // 5. 버전 저장
             UserDefaults.standard.set(currentDataVersion, forKey: "dataVersion")
-            print("✅ 데이터 마이그레이션 완료")
+            print("✅ 데이터 마이그레이션 완료 (학습 기록 보존)")
         } catch {
             print("❌ 데이터 마이그레이션 실패: \(error)")
+        }
+    }
+
+    // 기존 사용자를 위한 EumHunStudyLog 추가
+    static func addEumHunStudyLogIfNeeded(modelContext: ModelContext) {
+        do {
+            let descriptor = FetchDescriptor<EumHunStudyLog>()
+            let count = try modelContext.fetchCount(descriptor)
+
+            guard count == 0 else {
+                print("EumHunStudyLog 데이터가 이미 존재합니다.")
+                return
+            }
+
+            print("기존 사용자용 EumHunStudyLog 생성 중...")
+
+            // Kanji 개수만큼 EumHunStudyLog 생성
+            let kanjiDescriptor = FetchDescriptor<Kanji>()
+            let kanjis = try modelContext.fetch(kanjiDescriptor)
+
+            for kanji in kanjis {
+                let newEumhunLog = EumHunStudyLog(kanjiID: kanji.id)
+                modelContext.insert(newEumhunLog)
+            }
+
+            try modelContext.save()
+            print("✅ EumHunStudyLog \(kanjis.count)개 생성 완료")
+        } catch {
+            print("❌ EumHunStudyLog 생성 실패: \(error)")
         }
     }
 }

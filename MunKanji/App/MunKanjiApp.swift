@@ -36,12 +36,14 @@ struct MunKanjiApp: App {
         do {
             let schema = Schema([
                 Kanji.self,
-                StudyLog.self
+                StudyLog.self,
+                EumHunStudyLog.self,
+                KanjiWithExampleWords.self
             ])
             let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-            
+
             container = try ModelContainer(for: schema, configurations: [modelConfiguration])
-            
+
         } catch {
             fatalError("모델 컨테이너 생성 실패: \(error)")
         }
@@ -68,6 +70,7 @@ struct ContentView: View {
     @Binding var path: NavigationPath
     @Query var kanjis: [Kanji]
     @Query var studyLogs: [StudyLog]
+    @Query var eumhunStudyLogs: [EumHunStudyLog]
 
     @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
@@ -80,9 +83,9 @@ struct ContentView: View {
                     case .studyMain:
                         MainView(path: $path)
                     case .studyIntro:
-                        StudyIntroView(viewModel: StudyIntroViewModel(userSettings: userSettings, studyLogs: studyLogs), path: $path)
+                        StudyIntroView(viewModel: StudyIntroViewModel(studyLogs: studyLogs, eumhunStudyLogs: eumhunStudyLogs), path: $path)
                     case .learning:
-                        LearningView(path: $path, viewModel: LerningViewModel(kanjis: kanjis, studyLogs: studyLogs, userSettings: userSettings))
+                        LearningView(path: $path, viewModel: LerningViewModel(kanjis: kanjis, studyLogs: studyLogs, eumhunStudyLogs: eumhunStudyLogs))
                     case .quiz(let logs):
                         QuizView(path: $path, learningStudyLogs: logs)
                     case .history:

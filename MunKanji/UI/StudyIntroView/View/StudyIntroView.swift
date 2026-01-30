@@ -18,7 +18,11 @@ struct StudyIntroView: View {
     var body: some View {
         VStack{
             Spacer()
-            StudyInfoCountInfoView(inCorrectKanjisCount: viewModel.inCorrectKanjisCount, reviewKanjisCount: viewModel.reviewKanjisCount, unseenKanjisCount: viewModel.unseenKanjisCount)
+            StudyInfoCountInfoView(
+                inCorrectKanjisCount: viewModel.inCorrectKanjisCount(mode: userSettings.currentMode, countPerSession: userSettings.kanjiCountPerSession),
+                reviewKanjisCount: viewModel.reviewKanjisCount(mode: userSettings.currentMode, countPerSession: userSettings.kanjiCountPerSession),
+                unseenKanjisCount: viewModel.unseenKanjisCount(mode: userSettings.currentMode, countPerSession: userSettings.kanjiCountPerSession)
+            )
 
             Spacer()
 

@@ -13,11 +13,12 @@ struct SelectModeView: View {
     @State private var path = NavigationPath()
     @Query var kanjis: [Kanji]
     @Query var studyLogs: [StudyLog]
-    @Query var kanjiExamples: [KanjiExample]
-    
+    @Query var eumhunStudyLogs: [EumHunStudyLog]
+    @Query var kanjiExamples: [KanjiWithExampleWords]
+
     @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
-    
+
     var body: some View {
         NavigationStack(path: $path){
             VStack(spacing: 20){
@@ -45,9 +46,9 @@ struct SelectModeView: View {
                 case .studyMain:
                     MainView(path: $path)
                 case .studyIntro:
-                    StudyIntroView(viewModel: StudyIntroViewModel(userSettings: userSettings, studyLogs: studyLogs), path: $path)
+                    StudyIntroView(viewModel: StudyIntroViewModel(studyLogs: studyLogs, eumhunStudyLogs: eumhunStudyLogs), path: $path)
                 case .learning:
-                    LearningView(path: $path, viewModel: LerningViewModel(kanjis: kanjis, studyLogs: studyLogs, userSettings: userSettings))
+                    LearningView(path: $path, viewModel: LerningViewModel(kanjis: kanjis, studyLogs: studyLogs, eumhunStudyLogs: eumhunStudyLogs))
                 case .quiz(let logs):
                     QuizView(path: $path, learningStudyLogs: logs)
                 case .history:

@@ -17,15 +17,18 @@ struct LearningView: View {
     @ObservedObject var viewModel: LerningViewModel
 
     var body: some View {
-        VStack {
+        let learningKanjis = viewModel.learningKanjis(mode: userSettings.currentMode, countPerSession: userSettings.kanjiCountPerSession)
+        let learningStudyLogs = viewModel.learningStudyLogs(mode: userSettings.currentMode, countPerSession: userSettings.kanjiCountPerSession)
+
+        return VStack {
             Spacer()
             if userSettings.currentMode == .eumhun {
-                EumHunLearningCardView(learningKanjis: viewModel.learningKanjis)
+                EumHunLearningCardView(learningKanjis: learningKanjis)
             } else {
-                LearningCardScrollView(learningKanjis: viewModel.learningKanjis, learningStudyLogs: viewModel.learningStudyLogs)
+                LearningCardScrollView(learningKanjis: learningKanjis, learningStudyLogs: learningStudyLogs)
             }
             Spacer()
-            NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(viewModel.learningStudyLogs))
+            NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
                 .padding()
                 .padding(.bottom, 20)
         }

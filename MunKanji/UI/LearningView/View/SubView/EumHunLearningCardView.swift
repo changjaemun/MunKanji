@@ -12,7 +12,7 @@ struct EumHunLearningCardView: View {
     let learningKanjis: [Kanji]
     @State private var currentIndex: Int = 0
     @EnvironmentObject var userSettings: UserSettings
-    @Query private var kanjiExamples: [KanjiExample]
+    @Query private var kanjiExamples: [KanjiWithExampleWords]
 
     private var currentKanji: Kanji? {
         guard currentIndex < learningKanjis.count else { return nil }
@@ -21,7 +21,7 @@ struct EumHunLearningCardView: View {
 
     private var currentExamples: [ExampleData] {
         guard let kanji = currentKanji,
-              let kanjiExample = kanjiExamples.first(where: { $0.kanji == kanji.kanji }) else {
+              let kanjiExample = kanjiExamples.first(where: { $0.kanjiID == kanji.id }) else {
             return []
         }
         return kanjiExample.examples

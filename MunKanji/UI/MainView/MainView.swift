@@ -55,30 +55,47 @@ struct MainView: View {
 
     @Query var kanjis: [Kanji]
     @Query var studyLogs: [StudyLog]
+    @Query var eumhunStudyLogs: [EumHunStudyLog]
 
     @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
 
+    var correctCount: Int {
+        if userSettings.currentMode == .eumhun {
+            return eumhunStudyLogs.filter { $0.status == .correct }.count
+        } else {
+            return studyLogs.filter { $0.status == .correct }.count
+        }
+    }
 
     var body: some View {
         VStack(spacing: 0) {
+            // 모드선택 버튼: 오른쪽 상단
             HStack {
-                ModeSelectButton()
                 Spacer()
+                ModeSelectButton()
             }
-            .padding(.horizontal)
+            .padding(.trailing, 20)
             .padding(.top, 8)
 
             Spacer()
 
             NavigationLink(value: NavigationTarget.history) {
-                Text("\(studyLogs.filter{ log in log.status == .correct}.count)")
+                Text("\(correctCount)")
                     .font(.pretendardBold(size: 130))
                     .foregroundStyle(userSettings.currentMode.primaryColor)
             }
 
             Spacer()
+
+            // 학습하기 버튼: 홈인디케이터로부터 60 떨어지게
             NavyNavigationLink(title: "학습하기", value: NavigationTarget.studyIntro)
+                .font(.pretendardSemiBold(size: 24))
+                .containerRelativeFrame(.horizontal) { width, _ in
+                    min(width * 0.75, 320)  // 화면의 75%, 최대 320pt
+                }
+                .frame(height: 68)
+                .padding(.bottom, 60)
         }
         .toolbar(.hidden, for: .navigationBar)
     }
@@ -96,17 +113,16 @@ struct ModeSelectButton: View {
         } label: {
             HStack(spacing: 4) {
                 Text(userSettings.currentMode.displayName)
-                    .font(.pretendardBold(size: 22))
+                    .font(.pretendardSemiBold(size: 20))
                     .foregroundStyle(.white)
                 Image(systemName: "chevron.down")
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(.white)
                     .rotationEffect(.degrees(showModeMenu ? 180 : 0))
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
+            .frame(width: 110, height: 45)
             .background(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
                     .fill(userSettings.currentMode.primaryColor)
             )
         }
@@ -162,7 +178,7 @@ struct ModeSelectionView: View {
     @Previewable @State var path = NavigationPath()
     NavigationStack {
         MainView(path: $path)
-            .modelContainer(for: [Kanji.self, StudyLog.self], inMemory: true)
+            .modelContainer(for: [Kanji.self, StudyLog.self, EumHunStudyLog.self], inMemory: true)
             .environmentObject(UserCurrentSession())
             .environmentObject(UserSettings())
     }
