@@ -16,7 +16,6 @@ struct QuizView: View {
     let learningStudyLogs: [StudyLog]
 
     @Environment(\.modelContext) private var modelContext
-    @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
     @StateObject private var viewModel: QuizViewModel = QuizViewModel()
     
@@ -61,7 +60,7 @@ struct QuizView: View {
             }
         }
         .onAppear {
-            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext, currentSession: userCurrentSession.currentSessionNumber, studyMode: userSettings.currentMode)
+            viewModel.setup(learningKanjis: learningKanjis, allKanjis: kanjis, modelContext: modelContext, studyMode: userSettings.currentMode)
         }
     }
 }

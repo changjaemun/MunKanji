@@ -16,7 +16,6 @@ struct SelectModeView: View {
     @Query var eumhunStudyLogs: [EumHunStudyLog]
     @Query var kanjiExamples: [KanjiWithExampleWords]
 
-    @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
 
     var body: some View {

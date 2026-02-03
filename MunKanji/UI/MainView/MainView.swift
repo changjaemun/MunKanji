@@ -57,7 +57,6 @@ struct MainView: View {
     @Query var studyLogs: [StudyLog]
     @Query var eumhunStudyLogs: [EumHunStudyLog]
 
-    @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
 
     var correctCount: Int {
@@ -179,7 +178,6 @@ struct ModeSelectionView: View {
     NavigationStack {
         MainView(path: $path)
             .modelContainer(for: [Kanji.self, StudyLog.self, EumHunStudyLog.self], inMemory: true)
-            .environmentObject(UserCurrentSession())
             .environmentObject(UserSettings())
     }
 }

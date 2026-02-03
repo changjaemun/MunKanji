@@ -14,7 +14,6 @@ class QuizViewModel: ObservableObject {
     @Published var choices: [String] = []
     @Published var showResult: Bool = false
     @Published var selectedAnswer: String = "" // 선택된 답안 추적
-    @Published var currentSession: Int = 0
 
     var allKanjis: [Kanji] = []
     var learningKanjis: [Kanji] = []
@@ -25,11 +24,10 @@ class QuizViewModel: ObservableObject {
     }
 
     // 초기화 및 퀴즈 설정
-    func setup(learningKanjis: [Kanji], allKanjis: [Kanji], modelContext: ModelContext, currentSession: Int, studyMode: StudyMode) {
+    func setup(learningKanjis: [Kanji], allKanjis: [Kanji], modelContext: ModelContext, studyMode: StudyMode) {
         self.allKanjis = allKanjis
         self.modelContext = modelContext
         self.learningKanjis = learningKanjis
-        self.currentSession = currentSession
         self.studyMode = studyMode
         // 첫 문제의 보기 생성
         generateChoices()

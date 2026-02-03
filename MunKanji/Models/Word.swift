@@ -7,15 +7,16 @@
 import Foundation
 
 struct Word: Codable {
-    
+
     var grade: String?
     var kanji: String?
     var korean: String?
     var sound: String?
     var meaning: String?
-    
+    var memoryTip: String?
+
     enum CodingKeys: String, CodingKey {
-        case grade, kanji, korean, sound, meaning
+        case grade, kanji, korean, sound, meaning, memoryTip
     }
     
     static var allWords:[Word] = {

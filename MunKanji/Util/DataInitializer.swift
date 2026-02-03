@@ -27,7 +27,7 @@ class DataInitializer {
             let words: [Word] = Word.allWords
             // 변환 및 저장
             for (index, word) in words.enumerated(){
-                let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "")
+                let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "", memoryTip: word.memoryTip)
                 modelContext.insert(newKanji)
 
                 // 한자 모드용 StudyLog 생성
@@ -48,7 +48,7 @@ class DataInitializer {
     }
     
     static func migrateToNewKanjiDataIfNeeded(modelContext: ModelContext) {
-        let currentDataVersion = "kanji_2136_v2_eumhun"
+        let currentDataVersion = "kanji_2136_v3_memoryTip"
         let savedDataVersion = UserDefaults.standard.string(forKey: "dataVersion")
 
         // 이미 최신 데이터면 아무것도 안 함
@@ -70,7 +70,7 @@ class DataInitializer {
             // 2. 새 Kanji 데이터만 저장
             let words: [Word] = Word.allWords
             for (index, word) in words.enumerated() {
-                let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "")
+                let newKanji = Kanji(id: index, grade: word.grade ?? "", kanji: word.kanji ?? "", korean: word.korean ?? "", sound: word.sound ?? "", meaning: word.meaning ?? "", memoryTip: word.memoryTip)
                 modelContext.insert(newKanji)
             }
 

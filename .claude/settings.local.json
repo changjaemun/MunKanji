@@ -4,7 +4,17 @@
       "Bash(xcodebuild:*)",
       "Bash(git restore:*)",
       "WebSearch",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:levelup.gitconnected.com)",
+      "WebFetch(domain:www.hackingwithswift.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:ai.google.dev)",
+      "Bash(pip3 show:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python3:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(python add_memory_tip.py:*)"
     ]
   }
 }

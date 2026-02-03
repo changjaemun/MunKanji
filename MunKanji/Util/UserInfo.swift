@@ -23,10 +23,29 @@ enum StudyMode: String, CaseIterable {
 
 // MARK: - User Settings
 class UserSettings: ObservableObject {
+    // 모드별 학습 개수 (각각 저장)
     @AppStorage("kanji_count_per_session") var kanjiCountPerSession = 10
-    @Published var currentMode: StudyMode = .kanji
-}
+    @AppStorage("eumhun_count_per_session") var eumhunCountPerSession = 5
 
-class UserCurrentSession: ObservableObject {
-    @AppStorage("currentSessionNumber") var currentSessionNumber = 1
+    @Published var currentMode: StudyMode = .kanji
+
+    // 현재 모드에 맞는 학습 개수
+    var currentCountPerSession: Int {
+        get {
+            currentMode == .kanji ? kanjiCountPerSession : eumhunCountPerSession
+        }
+        set {
+            if currentMode == .kanji {
+                kanjiCountPerSession = newValue
+            } else {
+                eumhunCountPerSession = newValue
+            }
+        }
+    }
+
+    // 모드별 최소/최대값
+    var minCount: Int { 5 }
+    var maxCount: Int {
+        currentMode == .kanji ? 30 : 15
+    }
 }

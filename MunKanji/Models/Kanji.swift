@@ -21,12 +21,15 @@ import Foundation
     var sound: String
     var meaning: String
 
-    init(id: Int, grade: String, kanji: String, korean: String, sound: String, meaning: String) {
+    var memoryTip: String?
+
+    init(id: Int, grade: String, kanji: String, korean: String, sound: String, meaning: String, memoryTip: String? = nil) {
         self.id = id
         self.grade = grade
         self.kanji = kanji
         self.korean = korean
         self.sound = sound
         self.meaning = meaning
+        self.memoryTip = memoryTip
     }
 }

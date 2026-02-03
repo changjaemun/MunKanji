@@ -24,7 +24,6 @@ extension UINavigationController: UIGestureRecognizerDelegate {
 @main
 struct MunKanjiApp: App {
     @StateObject private var userSettings = UserSettings()
-    @StateObject private var userCurrentSession = UserCurrentSession()
     @State private var path = NavigationPath()
 
     let container: ModelContainer
@@ -54,7 +53,6 @@ struct MunKanjiApp: App {
         WindowGroup {
             ContentView(path: $path)
                 .environmentObject(userSettings)
-                .environmentObject(userCurrentSession)
                 .onAppear {
                     DataInitializer.migrateToNewKanjiDataIfNeeded(modelContext: container.mainContext)
                     DataInitializer.seedInitialData(modelContext: container.mainContext)
@@ -72,7 +70,6 @@ struct ContentView: View {
     @Query var studyLogs: [StudyLog]
     @Query var eumhunStudyLogs: [EumHunStudyLog]
 
-    @EnvironmentObject var userCurrentSession: UserCurrentSession
     @EnvironmentObject var userSettings: UserSettings
 
     var body: some View {

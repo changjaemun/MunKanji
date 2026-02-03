@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ResultView: View {
     @Binding var path: NavigationPath
-    @EnvironmentObject var userCurrentSession: UserCurrentSession
-    
+
     let results: [QuizResult]
     let learningKanjis: [Kanji]
     
@@ -86,8 +85,6 @@ struct ResultView: View {
                 NavyButton(title: "완료") {
                     // MainView로 돌아가기
                     path = NavigationPath()
-                    // session 수 늘리기
-                    userCurrentSession.currentSessionNumber += 1
                 }
                 .padding(.bottom, 84)
             }
