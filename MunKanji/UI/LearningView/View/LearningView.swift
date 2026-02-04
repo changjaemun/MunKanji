@@ -30,7 +30,7 @@ struct LearningView: View {
             Spacer()
  
             NavyNavigationLink(title: "퀴즈풀기", value: NavigationTarget.quiz(learningStudyLogs))
-                .padding(.bottom, 60)
+                .padding(.bottom, 20)
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

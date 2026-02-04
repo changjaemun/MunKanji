@@ -29,10 +29,6 @@ struct EumHunLearningCardView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Page Indicator
-            PageIndicatorView(totalPages: learningKanjis.count, currentPage: currentIndex)
-                .padding(.bottom, 16)
-
             // Kanji Card Carousel
             TabView(selection: $currentIndex) {
                 ForEach(Array(learningKanjis.enumerated()), id: \.element.id) { index, kanji in
@@ -40,42 +36,36 @@ struct EumHunLearningCardView: View {
                         .tag(index)
                 }
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .frame(height: 230)
+            .tabViewStyle(.page(indexDisplayMode: .always))
+            .frame(height: 250)
             .padding(.horizontal)
 
             // Example Words List
-            ScrollView {
-                VStack(spacing: 8) {
-                    ForEach(Array(currentExamples.enumerated()), id: \.offset) { _, example in
-                        KanjiExampleRowView(example: example)
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack(spacing: 8) {
+                        Color.clear
+                            .frame(height: 0)
+                            .id("scrollTop")
+
+                        ForEach(Array(currentExamples.enumerated()), id: \.offset) { _, example in
+                            KanjiExampleRowView(example: example)
+                        }
+                    }
+                    .padding(.top, 16)
+                    .padding(.bottom, 20)
+                }
+                .onChange(of: currentIndex) {
+                    withAnimation {
+                        proxy.scrollTo("scrollTop", anchor: .top)
                     }
                 }
-                .padding(.top, 16)
-                .padding(.bottom, 20)
             }
         }
     }
 }
 
-// MARK: - Page Indicator
-struct PageIndicatorView: View {
-    let totalPages: Int
-    let currentPage: Int
-    @EnvironmentObject var userSettings: UserSettings
-
-    var body: some View {
-        HStack(spacing: 6) {
-            ForEach(0..<totalPages, id: \.self) { index in
-                Circle()
-                    .fill(index == currentPage ? userSettings.currentMode.primaryColor : Color.gray.opacity(0.4))
-                    .frame(width: 8, height: 8)
-            }
-        }
-    }
-}
-
-// MARK: - Updated KanjiExampleRowView with ExampleData
+// MARK: - KanjiExampleRowView
 struct KanjiExampleRowView: View {
     var example: ExampleData? = nil
 
@@ -119,8 +109,7 @@ struct KanjiExampleRowView: View {
                 Spacer()
             }
         }
-        .frame(width: 298, height: 70)
-        .padding(4)
+        .frame(width: 338, height: 70)
     }
 }
 

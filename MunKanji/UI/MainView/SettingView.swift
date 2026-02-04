@@ -34,7 +34,7 @@ struct SettingView: View {
                 NavyButton(title: "설정완료") {
                     showSheet = false
                 }
-                .padding(.bottom, 64)
+                .padding(.bottom, 20)
             }
         }
     }

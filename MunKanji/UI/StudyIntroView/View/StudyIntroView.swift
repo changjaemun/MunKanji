@@ -74,7 +74,7 @@ struct StudyIntroView: View {
                     min(width * 0.75, 320)
                 }
                 .frame(height: 68)
-                .padding(.bottom, 60)
+                .padding(.bottom, 20)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.backGround.ignoresSafeArea())

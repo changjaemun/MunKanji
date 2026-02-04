@@ -86,7 +86,7 @@ struct ResultView: View {
                     // MainView로 돌아가기
                     path = NavigationPath()
                 }
-                .padding(.bottom, 84)
+                .padding(.bottom, 20)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)

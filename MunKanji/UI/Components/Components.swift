@@ -155,10 +155,9 @@ struct KanjiWithExampleCardView: View {
 
     var body: some View {
         ZStack{
-            Rectangle()
-                .foregroundStyle(.white)
-                .cornerRadius(20)
-                .shadow(radius: 10, x: 4, y: 4)
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(.white)
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 4)
             VStack{
                 VStack(spacing: 30){
                     VStack(spacing: 2){

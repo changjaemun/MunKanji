@@ -94,7 +94,7 @@ struct MainView: View {
                     min(width * 0.75, 320)  // 화면의 75%, 최대 320pt
                 }
                 .frame(height: 68)
-                .padding(.bottom, 60)
+                .padding(.bottom, 20)
         }
         .toolbar(.hidden, for: .navigationBar)
     }
