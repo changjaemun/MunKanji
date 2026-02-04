@@ -65,3 +65,6 @@ fastlane/test_output
 *.py
 .venv/
 memory_tip_progress.json
+
+# Claude Code
+.claude/
