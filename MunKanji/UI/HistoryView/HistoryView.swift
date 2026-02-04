@@ -22,14 +22,14 @@ struct HistoryView: View {
     private var filteredKanjis: [Kanji] {
         if userSettings.currentMode == .eumhun {
             let correctLogs = allEumHunStudyLogs
-                .filter { $0.status == .correct }
+                .filter { $0.status == .correct || $0.status == .mastered }
                 .sorted { ($0.lastStudiedDate ?? .distantPast) > ($1.lastStudiedDate ?? .distantPast) }
             return correctLogs.compactMap { log in
                 allKanjis.first { $0.id == log.kanjiID }
             }
         } else {
             let correctLogs = allStudyLogs
-                .filter { $0.status == .correct }
+                .filter { $0.status == .correct || $0.status == .mastered }
                 .sorted { ($0.lastStudiedDate ?? .distantPast) > ($1.lastStudiedDate ?? .distantPast) }
             return correctLogs.compactMap { log in
                 allKanjis.first { $0.id == log.kanjiID }

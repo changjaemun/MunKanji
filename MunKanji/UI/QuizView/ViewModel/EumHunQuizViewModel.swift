@@ -199,6 +199,9 @@ class EumHunQuizViewModel: ObservableObject {
             if result.newStatus == .correct {
                 log.reviewCount += 1
                 log.lastStudiedDate = Date()
+                if log.reviewCount >= 4 {
+                    log.status = .mastered
+                }
             } else {
                 log.lastStudiedDate = nil
                 if log.reviewCount > 0 {
@@ -206,7 +209,7 @@ class EumHunQuizViewModel: ObservableObject {
                 }
             }
 
-            print("✅ EumHunStudyLog 업데이트: kanjiID=\(idToFind), status=\(result.newStatus)")
+            print("✅ EumHunStudyLog 업데이트: kanjiID=\(idToFind), status=\(log.status)")
         } catch {
             print("❌ EumHunStudyLog 업데이트 실패: \(error)")
         }

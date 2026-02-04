@@ -61,11 +61,20 @@ struct MainView: View {
 
     var correctCount: Int {
         if userSettings.currentMode == .eumhun {
-            return eumhunStudyLogs.filter { $0.status == .correct }.count
+            return eumhunStudyLogs.filter { $0.status == .correct || $0.status == .mastered }.count
         } else {
-            return studyLogs.filter { $0.status == .correct }.count
+            return studyLogs.filter { $0.status == .correct || $0.status == .mastered }.count
         }
     }
+
+    private let totalKanjis = 2136
+
+    private var progress: Double {
+        guard totalKanjis > 0 else { return 0 }
+        return Double(correctCount) / Double(totalKanjis)
+    }
+
+    @State private var animatedProgress: Double = 0
 
     var body: some View {
         VStack(spacing: 0) {
@@ -80,9 +89,35 @@ struct MainView: View {
             Spacer()
 
             NavigationLink(value: NavigationTarget.history) {
-                Text("\(correctCount)")
-                    .font(.pretendardBold(size: 130))
-                    .foregroundStyle(userSettings.currentMode.primaryColor)
+                ZStack {
+                    // 배경 트랙
+                    Circle()
+                        .stroke(
+                            userSettings.currentMode.primaryColor.opacity(0.12),
+                            style: StrokeStyle(lineWidth: 16, lineCap: .round)
+                        )
+
+                    // 진행 링
+                    Circle()
+                        .trim(from: 0, to: animatedProgress)
+                        .stroke(
+                            userSettings.currentMode.primaryColor,
+                            style: StrokeStyle(lineWidth: 16, lineCap: .round)
+                        )
+                        .rotationEffect(.degrees(-90))
+
+                    // 중앙 텍스트
+                    VStack(spacing: 4) {
+                        Text("\(correctCount)")
+                            .font(.pretendardBold(size: 72))
+                            .foregroundStyle(userSettings.currentMode.primaryColor)
+                            .contentTransition(.numericText())
+                        Text("/ \(totalKanjis)")
+                            .font(.pretendardRegular(size: 18))
+                            .foregroundStyle(.fontGray)
+                    }
+                }
+                .frame(width: 240, height: 240)
             }
 
             Spacer()
@@ -97,6 +132,19 @@ struct MainView: View {
                 .padding(.bottom, 20)
         }
         .toolbar(.hidden, for: .navigationBar)
+        .onAppear {
+            // 처음 등장 시 0에서 시작하여 애니메이션
+            animatedProgress = 0
+            withAnimation(.easeOut(duration: 1.0)) {
+                animatedProgress = progress
+            }
+        }
+        .onChange(of: correctCount) { _, _ in
+            // 퀴즈 끝나고 돌아왔을 때 업데이트 애니메이션
+            withAnimation(.easeOut(duration: 0.6)) {
+                animatedProgress = progress
+            }
+        }
     }
 }
 

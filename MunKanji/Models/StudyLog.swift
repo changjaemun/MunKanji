@@ -6,6 +6,7 @@ enum StudyStatus: String, Codable {
     case unseen   // 아직 학습하지 않음
     case incorrect // 틀림
     case correct   // 맞힘
+    case mastered  // 4회 연속 정답으로 졸업
 }
 
 @Model

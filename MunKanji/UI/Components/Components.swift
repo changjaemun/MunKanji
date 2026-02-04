@@ -143,7 +143,7 @@ struct KanjiCardView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.white)
         }
-        .frame(width: 338, height: kanji.memoryTip != nil && !kanji.memoryTip!.isEmpty ? 280 : 230)
+        .frame(width: 338, height: kanji.memoryTip?.isEmpty == false ? 280 : 230)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 4)
     }

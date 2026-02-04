@@ -38,6 +38,7 @@ class LerningViewModel: ObservableObject {
             // 음훈 모드: EumHunStudyLog 사용
             let incorrectLogs = eumhunStudyLogs.filter { $0.status == .incorrect }.sorted { $0.kanjiID < $1.kanjiID }
             let reviewLogs = eumhunStudyLogs.filter {
+                guard $0.status != .mastered else { return false }
                 if let nextReviewDate = $0.nextReviewDate {
                     return nextReviewDate <= Date()
                 }
@@ -55,6 +56,7 @@ class LerningViewModel: ObservableObject {
             // 한자 모드: StudyLog 사용
             let incorrectLogs = studyLogs.filter { $0.status == .incorrect }.sorted { $0.kanjiID < $1.kanjiID }
             let reviewLogs = studyLogs.filter {
+                guard $0.status != .mastered else { return false }
                 if let nextReviewDate = $0.nextReviewDate {
                     return nextReviewDate <= Date()
                 }

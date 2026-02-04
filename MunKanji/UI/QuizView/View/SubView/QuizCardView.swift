@@ -25,6 +25,8 @@ struct QuizCardView: View {
             } else {
                 return .miniCard
             }
+        case .mastered:
+            return .miniCard
         }
     }
     

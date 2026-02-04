@@ -25,6 +25,8 @@ struct EumHunQuizCardView: View {
             } else {
                 return .miniCard
             }
+        case .mastered:
+            return .miniCard
         }
     }
 

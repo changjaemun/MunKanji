@@ -57,6 +57,7 @@ class QuizViewModel: ObservableObject {
     
     //MARK: --  답안 선택 시 호출
     func selectAnswer(selectedAnswer: String) {
+        guard currentIndex < learningKanjis.count else { return }
         self.selectedAnswer = selectedAnswer
         let isCorrect = selectedAnswer == learningKanjis[currentIndex].korean
         let status: StudyStatus = isCorrect ? .correct : .incorrect
@@ -128,6 +129,9 @@ class QuizViewModel: ObservableObject {
                 if result.newStatus == .correct {
                     eumhunStudyLog.reviewCount += 1
                     eumhunStudyLog.lastStudiedDate = Date()
+                    if eumhunStudyLog.reviewCount >= 4 {
+                        eumhunStudyLog.status = .mastered
+                    }
                 } else {
                     eumhunStudyLog.lastStudiedDate = nil
                     if eumhunStudyLog.reviewCount > 0 {
@@ -135,7 +139,7 @@ class QuizViewModel: ObservableObject {
                     }
                 }
 
-                print("✅ EumHunStudyLog 업데이트: kanjiID=\(idToFind), status=\(result.newStatus)")
+                print("✅ EumHunStudyLog 업데이트: kanjiID=\(idToFind), status=\(eumhunStudyLog.status)")
             } catch {
                 print("❌ EumHunStudyLog 업데이트 실패: \(error)")
             }
@@ -153,6 +157,9 @@ class QuizViewModel: ObservableObject {
                 if result.newStatus == .correct {
                     studyLog.reviewCount += 1
                     studyLog.lastStudiedDate = Date()
+                    if studyLog.reviewCount >= 4 {
+                        studyLog.status = .mastered
+                    }
                 } else {
                     studyLog.lastStudiedDate = nil
                     if studyLog.reviewCount > 0 {
@@ -160,7 +167,7 @@ class QuizViewModel: ObservableObject {
                     }
                 }
 
-                print("✅ StudyLog 업데이트: kanjiID=\(idToFind), status=\(result.newStatus)")
+                print("✅ StudyLog 업데이트: kanjiID=\(idToFind), status=\(studyLog.status)")
             } catch {
                 print("❌ StudyLog 업데이트 실패: \(error)")
             }
