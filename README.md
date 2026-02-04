@@ -2,8 +2,6 @@
 
 > 일본 상용한자 2136자를 가볍게, 자주, 재밌게 외우는 iOS 앱
 
-버스 기다리면서 3분, 점심 먹고 5분 — 짧은 시간에 한자를 반복 학습하고 퀴즈로 확인하는 간격 반복 학습 앱입니다.
-
 ## 목차
 
 - [프로젝트 소개](#프로젝트-소개)
@@ -72,10 +70,10 @@
 │─────────────────│    │──────────────────│    │──────────────────────│
 │ kanjiID: Int(PK)│    │ kanjiID: Int(PK) │    │ kanjiID: Int (PK)    │
 │ status: Enum    │    │ status: Enum     │    │ kanji: String        │
-│ reviewCount: Int│    │ reviewCount: Int  │    │ examples: [Example]  │
-│ lastStudied: Dt?│    │ lastStudied: Dt?  │    │  ├ word: String      │
-│ nextReview: Dt? │    │ nextReview: Dt?   │    │  ├ sound: String     │
-│ (computed)      │    │ (computed)        │    │  └ meaning: String   │
+│ reviewCount: Int│    │ reviewCount: Int │    │ examples: [Example]  │
+│ lastStudied: Dt?│    │ lastStudied: Dt? │    │  ├ word: String      │
+│ nextReview: Dt? │    │ nextReview: Dt?  │    │  ├ sound: String     │
+│ (computed)      │    │ (computed)       │    │  └ meaning: String   │
 └─────────────────┘    └──────────────────┘    └──────────────────────┘
    한자모드 진행도          음훈모드 진행도          예시단어 (~5개/한자)
 ```
@@ -219,7 +217,7 @@ MunKanji/
 
 ## 간격 반복 알고리즘
 
-한번 맞혔다고 끝이 아닙니다. 시간이 지나면 다시 출제되고, 맞힐수록 간격이 길어집니다.
+시간이 지나면 다시 출제되고, 맞힐수록 간격이 길어집니다. 망각곡선에 기반한 1,3,5,7,14일 주기 반복을 택했습니다.
 
 ### 복습 간격
 
