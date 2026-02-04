@@ -16,14 +16,12 @@ struct QuizCardView: View {
         case .unseen:
             return .miniCard
         case .correct:
-            // 정답을 선택한 경우: 선택한 답안만 초록색
-            return korean == viewModel.currentCorrectAnswer ? .accent : .miniCard
+            return korean == viewModel.currentCorrectAnswer ? .review : .miniCard
         case .incorrect:
-            // 오답을 선택한 경우: 정답은 초록색, 선택한 오답은 빨간색
             if korean == viewModel.currentCorrectAnswer {
-                return .accent // 정답 표시
+                return .review
             } else if korean == viewModel.selectedAnswer {
-                return .red // 선택한 오답 표시
+                return .incorrect
             } else {
                 return .miniCard
             }

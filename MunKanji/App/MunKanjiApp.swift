@@ -84,7 +84,11 @@ struct ContentView: View {
                     case .learning:
                         LearningView(path: $path, viewModel: LerningViewModel(kanjis: kanjis, studyLogs: studyLogs, eumhunStudyLogs: eumhunStudyLogs))
                     case .quiz(let logs):
-                        QuizView(path: $path, learningStudyLogs: logs)
+                        if userSettings.currentMode == .eumhun {
+                            EumHunQuizView(path: $path, learningStudyLogs: logs)
+                        } else {
+                            QuizView(path: $path, learningStudyLogs: logs)
+                        }
                     case .history:
                         HistoryView()
                     }

@@ -29,17 +29,17 @@ struct StudyIntroView: View {
             StudyChartData(
                 category: "틀림",
                 count: viewModel.inCorrectKanjisCount(mode: userSettings.currentMode, countPerSession: userSettings.currentCountPerSession),
-                color: Color(red: 0.9, green: 0.5, blue: 0.45)  // 코랄/살구
+                color: .incorrect
             ),
             StudyChartData(
                 category: "복습",
                 count: viewModel.reviewKanjisCount(mode: userSettings.currentMode, countPerSession: userSettings.currentCountPerSession),
-                color: Color(red: 0.45, green: 0.75, blue: 0.55)  // 세이지/민트 그린
+                color: .review
             ),
             StudyChartData(
                 category: "신규",
                 count: viewModel.unseenKanjisCount(mode: userSettings.currentMode, countPerSession: userSettings.currentCountPerSession),
-                color: Color(red: 0.4, green: 0.6, blue: 0.85)  // 스카이 블루
+                color: .newKanji
             )
         ]
     }
@@ -51,8 +51,9 @@ struct StudyIntroView: View {
 
             // 스테퍼
             KanjiCountStepper()
-                .padding(.bottom, 40)
 
+            Spacer()
+            
             // 차트
             StudyBarChart(data: chartData)
                 .frame(height: 280)
@@ -105,7 +106,8 @@ struct StudyBarChart: View {
             ForEach(data) { item in
                 BarMark(
                     x: .value("Category", item.category),
-                    y: .value("Count", item.count)
+                    y: .value("Count", item.count),
+                    width: 60
                 )
                 .foregroundStyle(item.color)
                 .cornerRadius(4)

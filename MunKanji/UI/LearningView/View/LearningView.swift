@@ -16,8 +16,8 @@ struct LearningView: View {
     @ObservedObject var viewModel: LerningViewModel
     
     var body: some View {
-        let learningKanjis = viewModel.learningKanjis(mode: userSettings.currentMode, countPerSession: userSettings.kanjiCountPerSession)
-        let learningStudyLogs = viewModel.learningStudyLogs(mode: userSettings.currentMode, countPerSession: userSettings.kanjiCountPerSession)
+        let learningKanjis = viewModel.learningKanjis(mode: userSettings.currentMode, countPerSession: userSettings.currentCountPerSession)
+        let learningStudyLogs = viewModel.learningStudyLogs(mode: userSettings.currentMode, countPerSession: userSettings.currentCountPerSession)
         
         VStack {
             Spacer()

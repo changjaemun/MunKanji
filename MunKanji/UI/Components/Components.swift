@@ -90,14 +90,14 @@ struct KanjiCardView: View {
     var statusColor: Color {
         // 틀림: 코랄
         if studyLog.status == .incorrect {
-            return Color(red: 0.9, green: 0.5, blue: 0.45)
+            return .incorrect
         }
         // 복습: 민트 그린
         if let nextReviewDate = studyLog.nextReviewDate, nextReviewDate <= Date() {
-            return Color(red: 0.45, green: 0.75, blue: 0.55)
+            return .review
         }
         // 신규: 스카이 블루
-        return Color(red: 0.4, green: 0.6, blue: 0.85)
+        return .newKanji
     }
 
     var body: some View {
@@ -151,55 +151,79 @@ struct KanjiCardView: View {
 
 struct KanjiWithExampleCardView: View {
     let kanji: Kanji
+    var statusColor: Color? = nil
     @EnvironmentObject var userSettings: UserSettings
 
     var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(.white)
-                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 4)
-            VStack{
-                VStack(spacing: 30){
-                    VStack(spacing: 2){
-                        Text(kanji.kanji)
-                            .font(.pretendardBold(size: 64))
-                            .foregroundStyle(userSettings.currentMode.primaryColor)
-                        Text(kanji.korean)
-                            .font(.pretendardRegular(size: 18))
+        VStack(spacing: 0) {
+            // 상단 색띠
+            if let color = statusColor {
+                Rectangle()
+                    .fill(color)
+                    .frame(height: 8)
+            }
+
+            // 메인 콘텐츠: 왼쪽 한자 | 오른쪽 음훈
+            HStack(spacing: 0) {
+                // 왼쪽: 한자 + 뜻
+                VStack(spacing: 4) {
+                    Text(kanji.kanji)
+                        .font(.pretendardBold(size: 64))
+                        .foregroundStyle(.fontBlack)
+                    Text(kanji.korean)
+                        .font(.pretendardRegular(size: 14))
+                        .foregroundStyle(.fontGray)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                }
+                .frame(width: 140)
+
+                // 구분선 (단어리스트 구분선과 동일 스타일)
+                Rectangle()
+                    .fill(Color.gray.opacity(0.25))
+                    .frame(width: 1, height: 40)
+
+                // 오른쪽: 음/훈
+                VStack(alignment: .leading, spacing: 20) {
+                    // 음
+                    HStack(alignment: .top, spacing: 8) {
+                        Text("음")
+                            .foregroundStyle(.white)
+                            .font(.pretendardRegular(size: 14))
+                            .frame(width: 24, height: 24)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5, style: .continuous)
+                                    .fill(.fontBlack)
+                            )
+                        Text(kanji.sound)
+                            .font(.pretendardRegular(size: 16))
                             .foregroundStyle(.fontBlack)
                     }
-                    HStack(spacing: 50){
-                        HStack(spacing: 14){
-                            Text("음")
-                                .foregroundStyle(.white)
-                                .font(.pretendardRegular(size: 20))
-                                .background{
-                                    Rectangle()
-                                        .foregroundStyle(userSettings.currentMode.primaryColor)
-                                        .frame(width: 30, height: 30)
-                                        .cornerRadius(5)
-                                }
-                            Text(kanji.sound)
-                                .font(.pretendardRegular(size: 24))
-
-                        }
-                        HStack(spacing: 14){
-                            Text("훈")
-                                .foregroundStyle(.white)
-                                .font(.pretendardRegular(size: 20))
-                                .background{
-                                    Rectangle()
-                                        .foregroundStyle(userSettings.currentMode.primaryColor)
-                                        .frame(width: 30, height: 30)
-                                        .cornerRadius(5)
-                                }
-                            Text(kanji.meaning)
-                                .font(.pretendardRegular(size: 24))
-                        }
+                    // 훈
+                    HStack(alignment: .top, spacing: 8) {
+                        Text("훈")
+                            .foregroundStyle(.white)
+                            .font(.pretendardRegular(size: 14))
+                            .frame(width: 24, height: 24)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5, style: .continuous)
+                                    .fill(.fontBlack)
+                            )
+                        Text(kanji.meaning)
+                            .font(.pretendardRegular(size: 16))
+                            .foregroundStyle(.fontBlack)
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 16)
             }
-        }.frame(width: 338, height: 212)
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.white)
+        }
+        .frame(width: 338, height: 190)
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 4)
     }
 }
 

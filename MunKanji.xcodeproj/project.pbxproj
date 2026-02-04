@@ -47,12 +47,14 @@
 		A13820C72E45CB58000D1EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13820A02E45CB58000D1EF9 /* Assets.xcassets */; };
 		A13820C92E45CB58000D1EF9 /* kanji_2136.json in Resources */ = {isa = PBXBuildFile; fileRef = A138207C2E45CB58000D1EF9 /* kanji_2136.json */; };
 		A1648E982E54257B00DAF244 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648E972E54257600DAF244 /* ViewModifier.swift */; };
-		A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA02E547F6C00DAF244 /* CountInfoView.swift */; };
 		A1648EA52E548A1200DAF244 /* LearningCardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */; };
 		A1648EA92E55532700DAF244 /* ResultInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EA82E55532100DAF244 /* ResultInfoView.swift */; };
-		A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */; };
 		A1648EAF2E56EA2700DAF244 /* StudyIntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */; };
 		A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1648EC12E57566700DAF244 /* LerningViewModel.swift */; };
+		A17C1F782F33D12300521F27 /* EumHunQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C1F772F33D12300521F27 /* EumHunQuizView.swift */; };
+		A17C1F7A2F33D13100521F27 /* EumHunQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C1F792F33D13100521F27 /* EumHunQuizViewModel.swift */; };
+		A17C1F7D2F33D13F00521F27 /* EumHunQuizGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C1F7C2F33D13F00521F27 /* EumHunQuizGridView.swift */; };
+		A17C1F7E2F33D13F00521F27 /* EumHunQuizCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C1F7B2F33D13F00521F27 /* EumHunQuizCardView.swift */; };
 		A192462C2F29F505008ED735 /* EumHunStudyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192462B2F29F4FF008ED735 /* EumHunStudyLog.swift */; };
 		A1EUMHUN2E97A001009F8DAC /* EumHunLearningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EUMHUN2E97A000009F8DAC /* EumHunLearningCardView.swift */; };
 /* End PBXBuildFile section */
@@ -107,12 +109,14 @@
 		A13820A12E45CB58000D1EF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A13820A22E45CB58000D1EF9 /* MunKanjiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunKanjiApp.swift; sourceTree = "<group>"; };
 		A1648E972E54257600DAF244 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
-		A1648EA02E547F6C00DAF244 /* CountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountInfoView.swift; sourceTree = "<group>"; };
 		A1648EA42E5489FA00DAF244 /* LearningCardScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningCardScrollView.swift; sourceTree = "<group>"; };
 		A1648EA82E55532100DAF244 /* ResultInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfoView.swift; sourceTree = "<group>"; };
-		A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNavigationLink.swift; sourceTree = "<group>"; };
 		A1648EAE2E56EA1F00DAF244 /* StudyIntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyIntroViewModel.swift; sourceTree = "<group>"; };
 		A1648EC12E57566700DAF244 /* LerningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LerningViewModel.swift; sourceTree = "<group>"; };
+		A17C1F772F33D12300521F27 /* EumHunQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EumHunQuizView.swift; sourceTree = "<group>"; };
+		A17C1F792F33D13100521F27 /* EumHunQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EumHunQuizViewModel.swift; sourceTree = "<group>"; };
+		A17C1F7B2F33D13F00521F27 /* EumHunQuizCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EumHunQuizCardView.swift; sourceTree = "<group>"; };
+		A17C1F7C2F33D13F00521F27 /* EumHunQuizGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EumHunQuizGridView.swift; sourceTree = "<group>"; };
 		A18F65242D93D4A2003C5C6E /* MunKanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MunKanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A192462B2F29F4FF008ED735 /* EumHunStudyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EumHunStudyLog.swift; sourceTree = "<group>"; };
 		A1BE55A02D9AB26A00DE62D6 /* MunKanjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MunKanjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,9 +215,8 @@
 		A138208A2E45CB58000D1EF9 /* HistoryView */ = {
 			isa = PBXGroup;
 			children = (
-				A1648EAA2E56E5F700DAF244 /* SubView */,
-				A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */,
 				A13820892E45CB58000D1EF9 /* HistoryView.swift */,
+				A13820882E45CB58000D1EF9 /* HistoryDetailView.swift */,
 			);
 			path = HistoryView;
 			sourceTree = "<group>";
@@ -316,7 +319,6 @@
 		A1648E992E54746A00DAF244 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				A1648EA02E547F6C00DAF244 /* CountInfoView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -333,6 +335,8 @@
 		A1648EA62E5551B000DAF244 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
+				A17C1F7B2F33D13F00521F27 /* EumHunQuizCardView.swift */,
+				A17C1F7C2F33D13F00521F27 /* EumHunQuizGridView.swift */,
 				A13820932E45CB58000D1EF9 /* QuizCardView.swift */,
 				A13820942E45CB58000D1EF9 /* QuizGridView.swift */,
 			);
@@ -343,14 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				A1648EA82E55532100DAF244 /* ResultInfoView.swift */,
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		A1648EAA2E56E5F700DAF244 /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-				A1648EAB2E56E60100DAF244 /* HistoryNavigationLink.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -392,6 +388,7 @@
 		A1648EC52E5774E700DAF244 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A17C1F772F33D12300521F27 /* EumHunQuizView.swift */,
 				A13820952E45CB58000D1EF9 /* QuizView.swift */,
 				A1648EA62E5551B000DAF244 /* SubView */,
 			);
@@ -401,6 +398,7 @@
 		A1648EC62E5774ED00DAF244 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A17C1F792F33D13100521F27 /* EumHunQuizViewModel.swift */,
 				A13820962E45CB58000D1EF9 /* QuizViewModel.swift */,
 			);
 			path = ViewModel;
@@ -578,7 +576,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1648EAC2E56E61200DAF244 /* HistoryNavigationLink.swift in Sources */,
 				A13820A42E45CB58000D1EF9 /* Font.swift in Sources */,
 				A1648EA52E548A1200DAF244 /* LearningCardScrollView.swift in Sources */,
 				A1EUMHUN2E97A001009F8DAC /* EumHunLearningCardView.swift in Sources */,
@@ -589,7 +586,7 @@
 				A13820A82E45CB58000D1EF9 /* Word.swift in Sources */,
 				A124255A2E843A65009F8DAC /* KanjiWithExampleWords.swift in Sources */,
 				A1648EC22E57566C00DAF244 /* LerningViewModel.swift in Sources */,
-				A1648EA12E547F7100DAF244 /* CountInfoView.swift in Sources */,
+				A17C1F782F33D12300521F27 /* EumHunQuizView.swift in Sources */,
 				A13820A92E45CB58000D1EF9 /* Components.swift in Sources */,
 				A1648EA92E55532700DAF244 /* ResultInfoView.swift in Sources */,
 				A13820AA2E45CB58000D1EF9 /* HistoryDetailView.swift in Sources */,
@@ -597,11 +594,14 @@
 				A13820AB2E45CB58000D1EF9 /* HistoryView.swift in Sources */,
 				A13820AE2E45CB58000D1EF9 /* LearningView.swift in Sources */,
 				A13820AF2E45CB58000D1EF9 /* MainView.swift in Sources */,
+				A17C1F7A2F33D13100521F27 /* EumHunQuizViewModel.swift in Sources */,
 				A13820B02E45CB58000D1EF9 /* SettingView.swift in Sources */,
 				A12425542E799275009F8DAC /* SelectModeView.swift in Sources */,
 				A13820B12E45CB58000D1EF9 /* QuizCardView.swift in Sources */,
 				A13820B22E45CB58000D1EF9 /* QuizGridView.swift in Sources */,
 				A124255C2E843C44009F8DAC /* KanjiExampleLoader.swift in Sources */,
+				A17C1F7D2F33D13F00521F27 /* EumHunQuizGridView.swift in Sources */,
+				A17C1F7E2F33D13F00521F27 /* EumHunQuizCardView.swift in Sources */,
 				A13820B32E45CB58000D1EF9 /* QuizView.swift in Sources */,
 				A13820B42E45CB58000D1EF9 /* QuizViewModel.swift in Sources */,
 				A13820B52E45CB58000D1EF9 /* StudyIntroView.swift in Sources */,

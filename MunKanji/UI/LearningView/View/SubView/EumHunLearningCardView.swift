@@ -13,6 +13,20 @@ struct EumHunLearningCardView: View {
     @State private var currentIndex: Int = 0
     @EnvironmentObject var userSettings: UserSettings
     @Query private var kanjiExamples: [KanjiWithExampleWords]
+    @Query private var eumhunStudyLogs: [EumHunStudyLog]
+
+    private func statusColor(for kanjiID: Int) -> Color {
+        guard let log = eumhunStudyLogs.first(where: { $0.kanjiID == kanjiID }) else {
+            return .newKanji
+        }
+        if log.status == .incorrect {
+            return .incorrect
+        }
+        if let nextReviewDate = log.nextReviewDate, nextReviewDate <= Date() {
+            return .review
+        }
+        return .newKanji
+    }
 
     private var currentKanji: Kanji? {
         guard currentIndex < learningKanjis.count else { return nil }
@@ -32,13 +46,19 @@ struct EumHunLearningCardView: View {
             // Kanji Card Carousel
             TabView(selection: $currentIndex) {
                 ForEach(Array(learningKanjis.enumerated()), id: \.element.id) { index, kanji in
-                    KanjiWithExampleCardView(kanji: kanji)
+                    KanjiWithExampleCardView(kanji: kanji, statusColor: statusColor(for: kanji.id))
                         .tag(index)
                 }
             }
-            .tabViewStyle(.page(indexDisplayMode: .always))
-            .frame(height: 250)
-            .padding(.horizontal)
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(height: 220)
+
+            // 카드 ↔ 단어리스트 구분선
+            Rectangle()
+                .fill(Color.gray.opacity(0.15))
+                .frame(height: 1)
+                .padding(.horizontal, 40)
+                .padding(.top, 8)
 
             // Example Words List
             ScrollViewReader { proxy in
@@ -82,34 +102,41 @@ struct KanjiExampleRowView: View {
     }
 
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.gray.opacity(0.3), lineWidth: 0.5)
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.white)
-                )
-            HStack {
-                Spacer()
-                Text(word)
-                    .font(.pretendardRegular(size: 28))
+        HStack(spacing: 0) {
+            // 왼쪽: 단어 (고정 너비)
+            Text(word)
+                .font(.pretendardRegular(size: 28))
+                .foregroundStyle(.fontBlack)
+                .frame(width: 140)
+
+            // 구분선
+            Rectangle()
+                .fill(Color.gray.opacity(0.25))
+                .frame(width: 1, height: 40)
+
+            // 오른쪽: 발음 + 뜻 (나머지 공간)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(sound)
+                    .font(.pretendardMedium(size: 20))
                     .foregroundStyle(.fontBlack)
-                Spacer()
-                Divider()
-                    .padding(.vertical)
-                VStack(alignment: .leading, spacing: 9) {
-                    Text(sound)
-                        .font(.pretendardMedium(size: 20))
-                        .foregroundStyle(.fontBlack)
-                    Text(meaning)
-                        .font(.pretendardLight(size: 12))
-                        .foregroundStyle(.introFont)
-                }
-                .padding(.leading, 4)
-                Spacer()
+                Text(meaning)
+                    .font(.pretendardLight(size: 12))
+                    .foregroundStyle(.introFont)
+                    .lineLimit(1)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading, 16)
         }
+        .padding(.horizontal, 16)
         .frame(width: 338, height: 70)
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(Color.white)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 0.5)
+        )
     }
 }
 
