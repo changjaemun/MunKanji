@@ -218,6 +218,11 @@ class EumHunQuizViewModel: ObservableObject {
         return questions[currentIndex].word
     }
 
+    var currentMeaning: String {
+        guard currentIndex < questions.count else { return "" }
+        return questions[currentIndex].correctMeaning
+    }
+
     var currentCorrectAnswer: EumHunChoice {
         guard currentIndex < questions.count else {
             return EumHunChoice(sound: "", meaning: "")

@@ -47,12 +47,18 @@ struct EumHunQuizView: View {
                         .foregroundStyle(.fontGray)
                         .font(.pretendardSemiBold(size: 24))
 
-                    // 예시단어 (출제 문제)
-                    Text(viewModel.currentWord)
-                        .foregroundStyle(.fontBlack)
-                        .font(.pretendardSemiBold(size: 56))
-                        .minimumScaleFactor(0.6)
-                        .lineLimit(1)
+                    // 예시단어 + 뜻
+                    VStack(spacing: 8) {
+                        Text(viewModel.currentWord)
+                            .foregroundStyle(.fontBlack)
+                            .font(.pretendardSemiBold(size: 56))
+                            .minimumScaleFactor(0.6)
+                            .lineLimit(1)
+                        Text(viewModel.currentMeaning)
+                            .foregroundStyle(.fontGray)
+                            .font(.pretendardRegular(size: 16))
+                            .lineLimit(1)
+                    }
 
                     // 4지선다
                     EumHunQuizGridView(viewModel: viewModel)

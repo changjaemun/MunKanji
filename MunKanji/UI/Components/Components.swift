@@ -85,27 +85,27 @@ struct BackButton: View {
 struct KanjiCardView: View {
     let kanji: Kanji
     let studyLog: StudyLog
+    var showStatusBar: Bool = true
     @EnvironmentObject var userSettings: UserSettings
 
     var statusColor: Color {
-        // 틀림: 코랄
         if studyLog.status == .incorrect {
             return .incorrect
         }
-        // 복습: 민트 그린
         if let nextReviewDate = studyLog.nextReviewDate, nextReviewDate <= Date() {
             return .review
         }
-        // 신규: 스카이 블루
         return .newKanji
     }
 
     var body: some View {
         VStack(spacing: 0) {
             // 상단 상태바
-            Rectangle()
-                .fill(statusColor)
-                .frame(height: 8)
+            if showStatusBar {
+                Rectangle()
+                    .fill(statusColor)
+                    .frame(height: 8)
+            }
 
             // 메인 콘텐츠
             VStack(spacing: 0) {

@@ -13,19 +13,28 @@ struct HistoryView: View {
     @Query private var allKanjis: [Kanji]
     @Query private var allStudyLogs: [StudyLog]
     @Query private var allEumHunStudyLogs: [EumHunStudyLog]
+    @Query private var allKanjiExamples: [KanjiWithExampleWords]
 
     @EnvironmentObject var userSettings: UserSettings
 
     @State private var selectedKanji: Kanji?
 
     private var filteredKanjis: [Kanji] {
-        let targetLogIDs: [Int]
         if userSettings.currentMode == .eumhun {
-            targetLogIDs = allEumHunStudyLogs.filter { $0.status == .correct }.map { $0.kanjiID }
+            let correctLogs = allEumHunStudyLogs
+                .filter { $0.status == .correct }
+                .sorted { ($0.lastStudiedDate ?? .distantPast) > ($1.lastStudiedDate ?? .distantPast) }
+            return correctLogs.compactMap { log in
+                allKanjis.first { $0.id == log.kanjiID }
+            }
         } else {
-            targetLogIDs = allStudyLogs.filter { $0.status == .correct }.map { $0.kanjiID }
+            let correctLogs = allStudyLogs
+                .filter { $0.status == .correct }
+                .sorted { ($0.lastStudiedDate ?? .distantPast) > ($1.lastStudiedDate ?? .distantPast) }
+            return correctLogs.compactMap { log in
+                allKanjis.first { $0.id == log.kanjiID }
+            }
         }
-        return allKanjis.filter { targetLogIDs.contains($0.id) }.sorted { $0.id < $1.id }
     }
 
     let columns = [
@@ -76,12 +85,29 @@ struct HistoryView: View {
                 Color.backGround
                     .ignoresSafeArea()
                 if userSettings.currentMode == .eumhun {
-                    KanjiWithExampleCardView(kanji: kanji)
+                    // 음훈모드: 카드 + 예시단어 리스트
+                    let examples = allKanjiExamples.first { $0.kanjiID == kanji.id }?.examples ?? []
+                    ScrollView {
+                        VStack(spacing: 12) {
+                            KanjiWithExampleCardView(kanji: kanji)
+                                .padding(.top, 24)
+
+                            ForEach(Array(examples.enumerated()), id: \.offset) { _, example in
+                                KanjiExampleRowView(example: example)
+                            }
+                        }
+                        .padding(.bottom, 24)
+                    }
                 } else {
-                    KanjiCardView(kanji: kanji, studyLog: allStudyLogs.first { $0.kanjiID == kanji.id } ?? StudyLog(kanjiID: kanji.id))
+                    // 한자모드: 색띠 없는 카드
+                    KanjiCardView(
+                        kanji: kanji,
+                        studyLog: allStudyLogs.first { $0.kanjiID == kanji.id } ?? StudyLog(kanjiID: kanji.id),
+                        showStatusBar: false
+                    )
                 }
             }
-            .presentationDetents([.medium])
+            .presentationDetents([.medium, .large])
         }
     }
 }

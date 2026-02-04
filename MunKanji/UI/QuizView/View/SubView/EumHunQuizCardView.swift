@@ -39,22 +39,13 @@ struct EumHunQuizCardView: View {
                     .cornerRadius(20)
                     .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
 
-                VStack(spacing: 8) {
-                    Text(choice.sound)
-                        .font(.pretendardSemiBold(size: 20))
-                        .foregroundStyle(.fontBlack)
-                        .minimumScaleFactor(0.6)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.center)
-
-                    Text(choice.meaning)
-                        .font(.pretendardRegular(size: 14))
-                        .foregroundStyle(.fontGray)
-                        .minimumScaleFactor(0.6)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.center)
-                }
-                .padding(.horizontal, 12)
+                Text(choice.sound)
+                    .font(.pretendardSemiBold(size: 28))
+                    .foregroundStyle(.fontBlack)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 12)
             }
         }
         .buttonStyle(.plain)
