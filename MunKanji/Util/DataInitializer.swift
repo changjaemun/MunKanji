@@ -48,7 +48,7 @@ class DataInitializer {
     }
     
     static func migrateToNewKanjiDataIfNeeded(modelContext: ModelContext) {
-        let currentDataVersion = "kanji_2136_v3_memoryTip"
+        let currentDataVersion = "kanji_2136_v4_naming"
         let savedDataVersion = UserDefaults.standard.string(forKey: "dataVersion")
 
         // 이미 최신 데이터면 아무것도 안 함
